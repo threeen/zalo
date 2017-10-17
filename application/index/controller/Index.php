@@ -17,7 +17,7 @@ class Index extends Controller
                 cookie('admin',$admin->name);
                 $this->redirect('index/phone/index');
             }else{
-                $this->error("登录失败");
+                $this->error("密码或帐号错误");
         }
     }
     public function logout(){
