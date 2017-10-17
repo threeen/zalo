@@ -4,6 +4,4 @@ composer.lock
 
 *.log
 
-thinkphp
-
 runtime
