@@ -46,7 +46,7 @@ class Api extends Controller
         }else{
             //进行数据库入库处理逻辑操作
             //url:   http://192.168.37.1/thinkphp5/public/index.php/index/api/getPostData
-            return "数据跟新成功";
+            return "更新成功";
         }
 
     }
