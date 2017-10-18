@@ -10,7 +10,9 @@
                 <th width="80">ID</th>
                 <th width="100">用户名</th>
                 <th width="30">好友总数</th>
-                <th width="150">新增好友数</th>
+                <th width="50">新增好友数</th>
+                <th width="50">新增附近的人</th>
+                <th width="50">附近的人通过率</th>
                 <th width="60">时间</th>
                 <th width="60">状态</th>
                 <th width="100">操作</th>
@@ -23,6 +25,8 @@
                 <td>{$vo.username}</td>
                 <td class="text-c">{$vo.friends}</td>
                 <td class="text-c">{$vo.new_friends}</td>
+                <td class="text-c">{$vo.new_nearby}</td>
+                <td class="text-c">{$vo.nearby_per}</td>
                 <td>{$vo.create_time}</td>
                 <td class="td-status"><a href="" title="点击修改状态"></a>{$vo.status|status}</td>
                 <td class="td-manage">
