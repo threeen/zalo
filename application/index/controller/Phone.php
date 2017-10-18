@@ -11,13 +11,13 @@ class Phone extends Controller{
     }
     public function list_phone(){
         if(isset($_COOKIE['admin'])) {
-                $data = model('Accounts')->getAccountsData();
-                $count = model('Accounts')->getCounts();
-                return $this->fetch('admin/list',[
-                    'data'=>$data,
-                    'count'=>$count,
-                ]);
-            }
+            $data = model('Accounts')->getAccountsData();
+            $count = model('Accounts')->getCounts();
+            return $this->fetch('admin/list',[
+                'data'=>$data,
+                'count'=>$count,
+            ]);
+        }
         else{
             $this->success('请先登录',url('index/index/index'));
         }
@@ -44,7 +44,6 @@ class Phone extends Controller{
             }else {
                 $id = input('id');
                 $data = model('Accounts')->editGetData($id);
-                //echo $data['username'];exit;
                 return $this->fetch('admin/edit', [
                     'data' => $data,
                 ]);
@@ -54,21 +53,36 @@ class Phone extends Controller{
         }
     }
     public function getPostData(){
-        //$model = Model('admin')->save(array('name'=>'chenwenzheng','password'=>'chenwenzheng'));
-        $data = input('post.');
-//        if(empty($data)){
-//            return "抛送数据为空";
-//        }else{
-            //进行数据库入库处理逻辑操作
-            //url:   http://192.168.13.109/thinkphp5/public/index.php/index/phone/getPostData
-            $arr = array('aaax',time(),34,23);
-            //$arr = explode('||',$data);
-            $account = array(
-                'username'=>$arr[0],
-                'friends'=>$arr[2],
-                'new_friends'=>$arr[3],
-                'create_time'=>date('Y-m-d H:i:s',$arr[1])
-            );
+        $data = input('');
+        if(empty($data)){
+            return "抛送数据为空";
+        }else{
+            $arr = explode('||',$data);
+            $acc = model('Accounts')->getOneAccounts($arr[0]);
+            if($acc){
+                $account = array(
+                    'username'=>$arr[0],
+                    'friends'=>$arr[2],
+                    'new_friends'=>$arr[2]-$acc['data2'],
+                    'new_nearby'=>$arr[1]-$acc['data2'],
+                    'nearby_per'=>($arr[1]-$acc['data2'])/45,
+                    'create_time'=>date($arr[3]),
+                    'data1'=>$arr[1],
+                    'data2'=>$arr[2]
+                );
+            }else{
+                $account = array(
+                    'username'=>$arr[0],
+                    'friends'=>$arr[2],
+                    'new_friends'=>$arr[2]-$arr[1],
+                    'new_nearby'=>0,
+                    'nearby_per'=>0,
+                    'create_time'=>date($arr[3]),
+                    'data1'=>$arr[1],
+                    'data2'=>$arr[2]
+                );
+            }
+
             $validate = validate('Accounts');
             if(!$validate->check($account)){
                 $this->error($validate->getError());
@@ -89,7 +103,7 @@ class Phone extends Controller{
                     return "数据更新失败";
                 }
             }
-        //}
+        }
     }
     //删除帐号
     public function accDel(){
