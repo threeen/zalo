@@ -1,0 +1,24 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<style type="text/css">
+.send{ width: 60px; height: 30px; margin-top: 10px; background-color: inherit; border-radius:5px; }
+.send:hover{ background-color: #ccc;}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 发朋友圈 </nav>
+<div class="page-container">
+    <form action="{:url('operate/xianshi')}" method="post">
+    <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
+    <input type="submit" class="send" value="提交">
+    </form>
+</div>
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="__ADMIN__/admin/utf8-php/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__ADMIN__/admin/utf8-php/ueditor.all.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+</script>
+<!--包含头部文件-->
+{include file="public/footer" /}

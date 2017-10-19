@@ -1,0 +1,22 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器分组 </nav>
+<div class="page-container">
+  模拟器&nbsp;:&nbsp;<select name="simulator" class="simulator">
+    <option class="option1" value="option1">test1</option><option class="option2" value="option2">test2</option>
+</select>&nbsp;&nbsp;
+  帐号&nbsp;:&nbsp;<select name="accounts" class="accounts"><option>option1</option></select>
+</div>
+
+<!--包含头部文件-->
+{include file="public/footer" /}
+<script type="text/javascript">
+$('.simulator').change(function(){
+    value = $(this).val();
+    var url = "{:url('Operate/test')}";
+    $.post(url,{'data':value},function(data){
+            $('.accounts').html("<option>"+data+"</option>");
+    },'json');
+});
+</script>
