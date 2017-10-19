@@ -22,6 +22,9 @@ class Accounts extends Model
     public function editGetData($id){
         return model('Accounts')->where(['id'=>$id])->find();
     }
+    public function getOneAccounts($username){
+        return model('Accounts')->where(['username'=>$username])->find();
+    }
     //重新启用帐号
     public function regain($id){
         return model('Accounts')->save(['status'=>1],['id'=>$id]);
