@@ -25,7 +25,7 @@ class Index extends Controller
         return $this->fetch('index/login');
     }
     public function register(){
-        return $this->fetch('index.php/index/register');
+        return $this->fetch('index/register');
     }
     public function registerCheck(){
         $data = input('post.');
