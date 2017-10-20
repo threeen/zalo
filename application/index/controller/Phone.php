@@ -60,16 +60,20 @@ class Phone extends Controller{
             $arr = explode('#',$data);
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
-                $account = array(
-                    'username'=>$arr[0],
-                    'friends'=>$arr[2],
-                    'new_friends'=>$arr[2]-$acc['data2'],
-                    'new_nearby'=>$arr[1]-$acc['data2'],
-                    'nearby_per'=>($arr[1]-$acc['data2'])/45,
-                    'create_time'=>date($arr[3]),
-                    'data1'=>$arr[1],
-                    'data2'=>$arr[2]
-                );
+                if($arr[2]==$acc['data2']){
+                    return "无好友增加";
+                }else {
+                    $account = array(
+                        'username' => $arr[0],
+                        'friends' => $arr[2],
+                        'new_friends' => $arr[2] - $acc['data2'],
+                        'new_nearby' => $arr[1] - $acc['data2'],
+                        'nearby_per' => ($arr[1] - $acc['data2']) / 45,
+                        'create_time' => date($arr[3]),
+                        'data1' => $arr[1],
+                        'data2' => $arr[2]
+                    );
+                }
             }else{
                 $account = array(
                     'username'=>$arr[0],
