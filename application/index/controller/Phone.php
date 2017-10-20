@@ -53,16 +53,15 @@ class Phone extends Controller{
         }
     }
     public function getPostData(){
-        $data = input('');
+        $data = input('post.userName');
         if(empty($data)){
             return "抛送数据为空";
         }else{
-            $arr = explode('#',$_POST['userName']);
-            echo $_POST['userName'];
+            $arr = explode('#',$data);
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
                 $account = array(
-                    'username'=>$_POST['userName'],
+                    'username'=>$arr[0],
                     'friends'=>$arr[2],
                     'new_friends'=>$arr[2]-$acc['data2'],
                     'new_nearby'=>$arr[1]-$acc['data2'],
