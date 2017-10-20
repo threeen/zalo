@@ -58,10 +58,11 @@ class Phone extends Controller{
             return "抛送数据为空";
         }else{
             $arr = explode('#',$_POST['userName']);
+            echo $_POST['userName'];
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
                 $account = array(
-                    'username'=>$arr[0],
+                    'username'=>$_POST['userName'],
                     'friends'=>$arr[2],
                     'new_friends'=>$arr[2]-$acc['data2'],
                     'new_nearby'=>$arr[1]-$acc['data2'],
