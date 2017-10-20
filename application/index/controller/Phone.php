@@ -54,10 +54,11 @@ class Phone extends Controller{
     }
     public function getPostData(){
         $data = input('');
+        $data = array_keys($data)[0];
         if(empty($data)){
             return "抛送数据为空";
         }else{
-            $arr = explode('-',$_POST);
+            $arr = explode('-',$data);
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
                 $account = array(
