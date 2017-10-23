@@ -139,7 +139,7 @@ class Phone extends Controller{
 
     //搜索功能函数
     public function search(){
-        $data = inpout('post.account');
+        $data = input('post.account');
         if(empty($data)){
             return ;
         }else{
