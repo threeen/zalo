@@ -141,10 +141,10 @@ class Phone extends Controller{
     public function search(){
         $data = input('post.account');
         if(empty($data)){
-            return ;
+            return "无搜索结果";
         }else{
             if(isset($_COOKIE['admin'])) {
-                $searchData = model('Accounts')->where('username','like','%{$data}%')->where(['status'=>1])->paginate();
+                $searchData = model('Accounts')->where(['username','like','%{$data}%'])->where(['status'=>1])->paginate();
                 return $this->fetch('admin/search',[
                     'data'=>$searchData,
                 ]);
