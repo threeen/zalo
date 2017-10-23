@@ -3,10 +3,10 @@ namespace app\index\controller;
 use think\Controller;
 class Operate extends Base{
     public function index(){
-        return $this->fetch('admin/operate/index');
+        return $this->fetch('operate/index');
     }
     public function moments(){
-        return $this->fetch('admin/operate/moments');
+        return $this->fetch('operate/moments');
     }
     public function xianshi(){
 //        $data=array('data'=>'chenwenzheng');
@@ -28,7 +28,7 @@ class Operate extends Base{
         $count = model('Accounts')->getCounts();
         $simulator = ceil($count/80)+1;
         $acc = model('Accounts')->getValueArea(0,80);
-        return $this->fetch('admin/group/index',[
+        return $this->fetch('group/index',[
             'data' => $data,
             'count' => $count,
             'simulator' => $simulator,
