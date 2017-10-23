@@ -144,6 +144,7 @@ class Phone extends Controller{
             return "无搜索结果";
         }else{
             if(isset($_COOKIE['admin'])) {
+                $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->paginate();
                 return $this->fetch('admin/search',[
                     'data'=>$searchData,
