@@ -136,4 +136,22 @@ class Phone extends Controller{
             echo "重新启用失败";
         }
     }
+
+    //搜索功能函数
+    public function search(){
+        $data = inpout('post.account');
+        if(empty($data)){
+            return ;
+        }else{
+            if(isset($_COOKIE['admin'])) {
+                $searchData = model('Accounts')->where('username','like','%{$data}%')->where(['status'=>1])->paginate();
+                return $this->fetch('admin/search',[
+                    'data'=>$searchData,
+                ]);
+            }
+            else{
+                $this->success('请先登录',url('index/index/index'));
+            }
+        }
+    }
 }

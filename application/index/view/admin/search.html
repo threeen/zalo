@@ -1,13 +1,12 @@
 <!--包含头部文件-->
 {include file="public/header" /}
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 帐号列表 </nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 搜索结果 </nav>
 <div class="page-container">
     <div class="mt-20">
-        帐号总数：{$count}
         <form action="{:url('Phone/search')}" method="post">
-        <button id="" style=" float: right; margin-bottom: 3px; height: 29px;;" class="btn btn_success" type="submit">搜索</button>
-        <input type="text" name="account" placeholder="按帐号搜索" style="width:250px; height: 26px; float: right; margin-bottom: 3px; margin-right: 5px;"  class="input_text" value="" >
+            <button id="" style=" float: right; margin-bottom: 3px; height: 29px;;" class="btn btn_success" type="submit">搜索</button>
+            <input type="text" name="account" placeholder="按帐号搜索" style="width:250px; height: 26px; float: right; margin-bottom: 3px; margin-right: 5px;"  class="input_text" value="" >
         </form>
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
