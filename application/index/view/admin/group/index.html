@@ -24,10 +24,11 @@ $('.simulator').change(function(){
     value = $(this).val();
     var url = "{:url('Operate/groupAccounts')}";
     $.post(url,{'data':value},function(data){
+        accounts_html="";
         $(data).each(function(i){
             accounts_html+="<option value="+this.id+">"+this.username+"</option>";
         });
-        $('.accounts').text(accounts_html);
+        $('.accounts').html(accounts_html);
     },'json');
 });
 </script>
