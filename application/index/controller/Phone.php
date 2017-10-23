@@ -143,8 +143,10 @@ class Phone extends Controller{
             if(isset($_COOKIE['admin'])) {
                 $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                $page = $searchData->render();
                 return $this->fetch('admin/search',[
                     'searchData'=>$searchData,
+                    'page' => $page
                 ]);
             }
             else{
