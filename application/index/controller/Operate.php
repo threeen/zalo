@@ -27,10 +27,12 @@ class Operate extends Controller{
         $data = model('Accounts')->getAccounts();
         $count = model('Accounts')->getCounts();
         $simulator = ceil($count/80)+1;
+        $acc = model('Accounts')->getValueArea(0,80);
         return $this->fetch('admin/group/index',[
             'data' => $data,
             'count' => $count,
             'simulator' => $simulator,
+            'acc' => $acc
         ]);
     }
     //测试方法
