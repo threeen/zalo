@@ -35,7 +35,7 @@ class Operate extends Controller{
             'acc' => $acc
         ]);
     }
-    //测试方法
+    //模拟器数据分组
     public function groupAccounts(){
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
@@ -43,4 +43,18 @@ class Operate extends Controller{
         $data = model('Accounts')->getValueArea($start,$end);
         echo json_encode($data);
     }
+    //数据回传到模拟器
+//    public function returnData(){
+//        $data = model('Accounts')->getAccountsData();
+//        $arr = array();$str = '';
+//        foreach($data as $key=>$value){
+//            $arr[]=$value;
+//        }
+//        foreach($arr as $value){
+//            $str .=$value."#";
+//        }
+//        $str =rtrim($str,'#');
+//        echo $str;
+//    }
+
 }

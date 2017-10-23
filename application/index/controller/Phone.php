@@ -146,9 +146,11 @@ class Phone extends Controller{
                 $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
                 $page = $searchData->render();
+                $count = model('Accounts')->getCounts();
                 return $this->fetch('admin/search',[
                     'searchData'=>$searchData,
-                    'page' => $page
+                    'page' => $page,
+                    'count' => $count,
                 ]);
             }
             else{
