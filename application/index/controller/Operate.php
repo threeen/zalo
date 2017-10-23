@@ -57,4 +57,8 @@ class Operate extends Controller{
 //        echo $str;
 //    }
 
+public function test(){
+    echo "hello world!";
+}
+
 }
