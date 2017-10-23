@@ -24,7 +24,7 @@ $('.simulator').change(function(){
     value = $(this).val();
     var url = "{:url('Operate/groupAccounts')}";
     $.post(url,{'data':value},function(data){
-           $.each(data,function(i,value){
+           $(data).each(function(value){
                 $('.accounts').html("<option>"+value.username+"</option>");
             });
     },'json');
