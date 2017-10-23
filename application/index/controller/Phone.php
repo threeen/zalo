@@ -140,9 +140,6 @@ class Phone extends Controller{
     //搜索功能函数
     public function search(){
         $data = input('post.account');
-        if(empty($data)){
-            return "无搜索结果";
-        }else{
             if(isset($_COOKIE['admin'])) {
                 $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->paginate();
@@ -153,6 +150,5 @@ class Phone extends Controller{
             else{
                 $this->success('请先登录',url('index/index/index'));
             }
-        }
     }
 }
