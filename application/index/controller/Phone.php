@@ -144,7 +144,7 @@ class Phone extends Controller{
                 $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
                 return $this->fetch('admin/search',[
-                    'data'=>$searchData,
+                    'searchData'=>$searchData,
                 ]);
             }
             else{
