@@ -145,6 +145,7 @@ class Phone extends Controller{
         }else{
             if(isset($_COOKIE['admin'])) {
                 $searchData = model('Accounts')->where(['username','like','%{$data}%','status'=>1])->paginate();
+                echo model('Accounts')->getLastSql();exit();
                 return $this->fetch('admin/search',[
                     'data'=>$searchData,
                 ]);
