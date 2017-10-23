@@ -35,7 +35,7 @@ class Operate extends Controller{
     }
     //测试方法
     public function groupAccounts(){
-        $value = input('post.data',1,intval());
+        $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = $value*80;
         $data = model('Accounts')->getValueArea($start,$end);
