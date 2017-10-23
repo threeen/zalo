@@ -140,7 +140,8 @@ class Phone extends Controller{
     //搜索功能函数
     public function search(){
             if(isset($_COOKIE['admin'])) {
-                $data = input('post.account',$_COOKIE['searchData']);
+                $isset = isset($_COOKIE['searchData']) ? $_COOKIE['searchData'] : '';
+                $data = input('post.account',$isset,'');
                 cookie('searchData',$data);
                 $data = trim($data);
                 $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
