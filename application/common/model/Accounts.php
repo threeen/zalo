@@ -20,7 +20,7 @@ class Accounts extends Model
     }
     //获取某段数据
     public function getValueArea($start,$end){
-        return model('Accounts')->where(['status'=>1])->limit($start, $end)->paginate();
+        return model('Accounts')->where(['status'=>1])->limit($start, $end)->select();
     }
     //删除帐号
     public function accDel($id){
