@@ -7,9 +7,9 @@
   模拟器&nbsp;:&nbsp;
 
     <select name="simulator" class="simulator">
-        {section name=loop loop=$count}
-         <option class="option2" value="option2">模拟器-{$smarty.section.loop.index}</option>
-        {/section}
+         {for start="1" end="$count"}
+         <option class="option2" value="option2">模拟器-{$i}</option>
+         {/for}
     </select>
 
     &nbsp;&nbsp;
