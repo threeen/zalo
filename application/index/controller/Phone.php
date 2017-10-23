@@ -142,7 +142,7 @@ class Phone extends Controller{
         $data = input('post.account');
             if(isset($_COOKIE['admin'])) {
                 $data = trim($data);
-                $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->select();
+                $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
                 return $this->fetch('admin/search',[
                     'searchData'=>$searchData,
                 ]);
