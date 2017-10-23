@@ -25,7 +25,7 @@ $('.simulator').change(function(){
     var url = "{:url('Operate/groupAccounts')}";
     $.post(url,{'data':value},function(data){
            $(data).each(function(i){
-                accounts_html += "<option value="+this.id+">"+this.username+"</option>";
+                accounts_html+="<option value="+this.id+">"+this.username+"</option>";
             });
         $('.accounts').html(accounts_html);
     },'json');
