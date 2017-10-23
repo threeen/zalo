@@ -26,7 +26,6 @@ class Operate extends Controller{
     public function group(){
         $data = model('Accounts')->getAccounts();
         $count = model('Accounts')->getCounts();
-        echo $count ;exit();
         $simulator = ceil($count/80);
         return $this->fetch('admin/group/index',[
             'data' => $data,
