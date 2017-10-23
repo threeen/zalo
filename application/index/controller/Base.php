@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 class Base extends Controller{
-    public function ch_Login(){
+    public function __construct(){
         if(isset($_COOKIE['admin'])){
 
         }else{
