@@ -18,6 +18,10 @@ class Accounts extends Model
     public function getCounts(){
         return model('Accounts')->where(['status'=>1])->count('id');
     }
+    //获取某段数据
+    public function getValueArea($start,$end){
+        return model('Accounts')->where(['status'=>1])->limit($start, $end)->paginate();
+    }
     //删除帐号
     public function accDel($id){
         return model('Accounts')->save(['status'=>-1],['id'=>$id]);

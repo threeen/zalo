@@ -8,7 +8,7 @@
 
     <select name="simulator" class="simulator">
          {for start="1" end="$simulator"}
-         <option class="option2" value="option2">模拟器-{$i}</option>
+         <option class="simulator" value="{$i}">模拟器-{$i}</option>
          {/for}
     </select>
 
@@ -22,7 +22,7 @@
 <script type="text/javascript">
 $('.simulator').change(function(){
     value = $(this).val();
-    var url = "{:url('Operate/test')}";
+    var url = "{:url('Operate/groupAccounts')}";
     $.post(url,{'data':value},function(data){
             $('.accounts').html("<option>"+data+"</option>");
     },'json');
