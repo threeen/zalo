@@ -24,7 +24,14 @@ class Operate extends Controller{
         echo $data;
     }
     public function group(){
-        return $this->fetch('admin/group/index');
+        $data = model('Accounts')->getAccounts();
+        $count = model('Accounts')->getCounts();
+        $simulator = ceil($count/80);
+        return $this->fetch('admin/group/index',[
+            'data' => $data,
+            'count' => $count,
+            'simulator' => $simulator
+        ]);
     }
     //测试方法
     public function test(){

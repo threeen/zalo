@@ -6,9 +6,13 @@ use think\Model;
 
 class Accounts extends Model
 {
-    //获取帐号列表数据
+    //获取帐号列表数据,通过时间排序
     public function getAccountsData(){
         return model('Accounts')->where(['status'=>1])->order(['create_time'=>'desc'])->paginate();
+    }
+    //获取帐号列表数据,通过时间排序
+    public function getAccounts(){
+        return model('Accounts')->where(['status'=>1])->order(['id'=>'asc'])->paginate();
     }
     //获取帐号总数
     public function getCounts(){
