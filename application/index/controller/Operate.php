@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-class Operate extends Controller{
+class Operate extends Base{
     public function index(){
         return $this->fetch('admin/operate/index');
     }
