@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-class Operate extends Base{
+class Operate extends Controller{
     public function index(){
         return $this->fetch('admin/operate/index');
     }
@@ -56,9 +56,5 @@ class Operate extends Base{
 //        $str =rtrim($str,'#');
 //        echo $str;
 //    }
-
-public function test(){
-    echo "hello world!";
-}
 
 }
