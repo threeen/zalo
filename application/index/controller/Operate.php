@@ -27,10 +27,12 @@ class Operate extends Controller{
         $data = model('Accounts')->getAccounts();
         $count = model('Accounts')->getCounts();
         $simulator = ceil($count/80);
+        $smarty = new Smarty();
         return $this->fetch('admin/group/index',[
             'data' => $data,
             'count' => $count,
-            'simulator' => $simulator
+            'simulator' => $simulator,
+            'smarty' => $smarty
         ]);
     }
     //测试方法
