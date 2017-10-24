@@ -9,7 +9,7 @@ class Operate extends Base{
             foreach($data as $value){
                 if(time()>(strtotime($value['create_time'])+60)){
                     echo time()."<br>";
-                    echo $value['create_time']+60;
+                    echo strtotime($value['create_time'])+60;
                     model('Accounts')->save(['login_status'=>0,'create_time'=>time()],['id'=>$value['id']]);
                 }
             }
