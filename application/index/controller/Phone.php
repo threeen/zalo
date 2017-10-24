@@ -166,6 +166,10 @@ class Phone extends Controller{
         foreach($arr as $key=>$value){
             $new = explode('|',$value);
         }
-        print_r($new);
+        foreach($new as $value){
+            echo $value."<br>";
+        }
+
+        //model('NewAccounts')->save();
     }
 }
