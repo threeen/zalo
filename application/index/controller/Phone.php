@@ -159,11 +159,13 @@ class Phone extends Controller{
                 $this->success('请先登录',url('index/index/index'));
             }
     }
-    public function test(){
-        $new = $arr = $acc =  array();
+
+    public function test()
+    {
+        $new = $arr = $acc = array();
         $data = file_get_contents('public/zalo.txt');
-        $arr = explode('<br>',$data);
-        $str = str_replace('<br>','#',$data);
+        $arr = explode('<br>', $data);
+        $str = str_replace('<br>', '#', $data);
         echo $str;
 
     }
