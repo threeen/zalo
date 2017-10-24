@@ -4,7 +4,7 @@ use think\Controller;
 class Operate extends Base{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
-        //print_r($data);exit;
+        var_dump($data);exit;
         if(!empty($data)){
             echo time();
             echo "<br>";
