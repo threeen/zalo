@@ -41,4 +41,8 @@ class Accounts extends Model
     public function regain($id){
         return model('Accounts')->save(['status'=>1],['id'=>$id]);
     }
+    //获取在线帐号
+    public function getLiveAccounts(){
+        return model('Accounts')->where(['status'=>1,'login_status'=>1])->order(['create_time'=>'desc'])->paginate();
+    }
 }

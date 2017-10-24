@@ -3,7 +3,10 @@ namespace app\index\controller;
 use think\Controller;
 class Operate extends Base{
     public function index(){
-        return $this->fetch('admin/operate/index');
+        $data = model('Accounts')->getLiveAccounts();
+        return $this->fetch('admin/operate/index',[
+            'data' => $data
+        ]);
     }
     public function moments(){
         return $this->fetch('admin/operate/moments');
