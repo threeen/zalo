@@ -163,7 +163,7 @@ class Phone extends Controller{
         $new = $arr = $acc =  array();
         $data = file_get_contents('public/zalo.txt');
         echo $data;
-        $arr = explode('#',$data);
+        $arr = explode('<br>',$data);
         print_r($arr);
         foreach($arr as $key=>$value){
             $new []= explode('|',$value);
