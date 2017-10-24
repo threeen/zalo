@@ -9,9 +9,9 @@ class Operate extends Base{
             echo time();
             echo "<br>";
             echo strtotime($data[0]['create_time'])+60;
-            exit();
+            //exit();
             if(time()>(strtotime($data[0]['create_time'])+60)){
-               model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())]);
+               model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>852]);
             }
         }
         return $this->fetch('admin/operate/index',[
