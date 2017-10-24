@@ -5,15 +5,15 @@ class Operate extends Base{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
 //        print_r($data);exit;
-//        if(!empty($data)){
-//            echo time();
-//            echo "<br>";
-//            echo strtotime($data['create_time'])+60;
-//            //exit();
-//            if(time()>(strtotime($data['create_time'])+60)){
-//               model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>852]);
-//            }
-//        }
+        if(!empty($data)){
+            foreach($data as $value){
+                if(time()>(strtotime($value['create_time'])+60)){
+                    echo time()."<br>";
+                    echo strtotime($value['create_time'])+60;
+                    model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>$value['id']]);
+                }
+            }
+        }
         return $this->fetch('admin/operate/index',[
             'data' => $data
         ]);
