@@ -161,12 +161,12 @@ class Phone extends Controller{
     }
     public function test(){
         $data = file_get_contents('public/zalo.txt');
-        $arr = explode(' ',$data);
+        $arr = explode('#',$data);
         foreach($arr as $key=>$value){
             $new = explode(' ',$value);
         }
         foreach($new as $value){
-            echo $value."#";
+            echo $value."<br>";
         }
 
         //model('NewAccounts')->save();
