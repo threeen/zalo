@@ -159,4 +159,8 @@ class Phone extends Controller{
                 $this->success('请先登录',url('index/index/index'));
             }
     }
+    public function test(){
+        $data = file_put_contents('zalo.txt');
+        echo $data;
+    }
 }
