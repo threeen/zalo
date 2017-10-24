@@ -162,6 +162,7 @@ class Phone extends Controller{
     public function test(){
         $data = file_get_contents('public/zalo.txt');
         $arr = explode('<br/>',trim($data));
+        $arr = explode(' ',$arr[0]);
         print_r($arr);exit;
         foreach($arr as $key=>$value){
             $new = explode('|',$value);
