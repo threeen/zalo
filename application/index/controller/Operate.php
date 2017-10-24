@@ -4,16 +4,16 @@ use think\Controller;
 class Operate extends Base{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
-        print_r($data);exit;
-        if(!empty($data)){
-            echo time();
-            echo "<br>";
-            echo strtotime($data['create_time'])+60;
-            //exit();
-            if(time()>(strtotime($data['create_time'])+60)){
-               model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>852]);
-            }
-        }
+//        print_r($data);exit;
+//        if(!empty($data)){
+//            echo time();
+//            echo "<br>";
+//            echo strtotime($data['create_time'])+60;
+//            //exit();
+//            if(time()>(strtotime($data['create_time'])+60)){
+//               model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>852]);
+//            }
+//        }
         return $this->fetch('admin/operate/index',[
             'data' => $data
         ]);
