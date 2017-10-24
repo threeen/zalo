@@ -8,7 +8,7 @@ class Operate extends Base{
         if(!empty($data)){
             echo time();
             echo "<br>";
-            echo strtotime($data[0]['create_time'])+60;
+            echo strtotime($data['create_time'])+60;
             //exit();
             if(time()>(strtotime($data['create_time'])+60)){
                model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>852]);
