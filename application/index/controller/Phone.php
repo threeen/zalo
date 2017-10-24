@@ -160,7 +160,7 @@ class Phone extends Controller{
             }
     }
     public function test(){
-        $new = $arr =  array();
+        $new = $arr = $acc =  array();
         $data = file_get_contents('public/zalo.txt');
         echo $data;
         $arr = explode('#',$data);
@@ -168,8 +168,14 @@ class Phone extends Controller{
         foreach($arr as $key=>$value){
             $new []= explode('|',$value);
         }
-        print_r($new);
-
+        foreach($new as $key => $value){
+            $acc['username'] = $value[0];
+            $acc['password'] = $value[1];
+            $acc['latitude'] = $value[2];
+            $acc['longitude'] = $value[3];
+            $acc['device_num'] = $value[4];
+        }
+        print_r($acc);
         //model('NewAccounts')->save();
     }
 }
