@@ -20,6 +20,14 @@ function status($status){
     return $str;
 }
 
+//登录状态
+function login_status($status){
+    if($status == 1){
+        $str="<span class='label label-success radius'>在线</span>";
+    }
+    return $str;
+}
+
 /**
  * 分页样式
  */
