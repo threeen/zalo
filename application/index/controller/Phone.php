@@ -163,13 +163,8 @@ class Phone extends Controller{
         $new = $arr = $acc =  array();
         $data = file_get_contents('public/zalo.txt');
         $arr = explode('<br>',$data);
-        $str = str_replace(' ','#',$data);
+        $str = str_replace('<br>','#',$data);
         echo $str;
-        print_r($arr);
-        foreach($arr as $key=>$value){
-            $new []= explode('|',$value);
-        }
-        print_r($new);
-        //model('NewAccounts')->save();
+
     }
 }
