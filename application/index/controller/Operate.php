@@ -6,6 +6,10 @@ class Operate extends Base{
         $data = model('Accounts')->getLiveAccounts();
         //print_r($data);exit;
         if(!empty($data)){
+            echo time();
+            echo "<br>";
+            echo strtotime($data[0]['create_time'])+60;
+            exit();
             if(time()>(strtotime($data[0]['create_time'])+60)){
                model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())]);
             }
