@@ -168,14 +168,7 @@ class Phone extends Controller{
         foreach($arr as $key=>$value){
             $new []= explode('|',$value);
         }
-        foreach($new as $key => $value){
-            $acc['username'] = $value[0];
-            $acc['password'] = $value[1];
-            $acc['latitude'] = $value[2];
-            $acc['longitude'] = $value[3];
-            $acc['device_num'] = $value[4];
-        }
-        print_r($acc);
+        print_r($new);
         //model('NewAccounts')->save();
     }
 }
