@@ -10,7 +10,7 @@ class Operate extends Base{
                 if(time()>(strtotime($value['create_time'])+60)){
                     echo time()."<br>";
                     echo $value['create_time']+60;
-                    model('Accounts')->save(['login_status'=>0,'create_time'=>date(time())],['id'=>$value['id']]);
+                    model('Accounts')->save(['login_status'=>0,'create_time'=>time()],['id'=>$value['id']]);
                 }
             }
         }
