@@ -166,7 +166,7 @@ class Phone extends Controller{
         $arr = explode('#',$data);
         print_r($arr);
         foreach($arr as $key=>$value){
-            $new = explode('|',$value);
+            $new []= explode('|',$value);
         }
         print_r($new);
 
