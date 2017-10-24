@@ -160,7 +160,7 @@ class Phone extends Controller{
             }
     }
     public function test(){
-        $data = file_put_contents('zalo.txt');
+        $data = file_get_contents('zalo.txt');
         echo $data;
     }
 }
