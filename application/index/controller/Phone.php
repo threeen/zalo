@@ -163,17 +163,20 @@ class Phone extends Controller{
     public function test()
     {
         $file = fopen("public/zalo.txt", "r");
-        $user=array();
+        $str = $acc =array();
         $i=0;
         //输出文本中所有的行，直到文件结束为止。
         while(! feof($file))
         {
-            $user[$i]= fgets($file);//fgets()函数从文件指针中读取一行
+            $str[$i]= fgets($file);//fgets()函数从文件指针中读取一行
             $i++;
         }
         fclose($file);
-        $user=array_filter($user);
-        print_r($user);
+        $str=array_filter($str);
+        foreach($str as $value){
+            $acc[][]= explode('|',$value);
+        }
+        print_r($acc);
 
     }
 }
