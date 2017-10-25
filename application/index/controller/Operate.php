@@ -68,6 +68,7 @@ class Operate extends Base{
                 $str += $username."#".$password."#".$latitude."#".$longitude."#".$device_num."@@";
                 }
             }
+            echo $str;
         }else{
             return ;
         }
