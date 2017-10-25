@@ -57,7 +57,7 @@ class Operate extends Base{
     public function returnData(){
         $data = model('NewAccounts')->getNewAccountsData();
         if(!empty($data)){
-            $str = '';$acc = array();var_dump($data[0]);exit;
+            $str = '';$acc = array();var_dump($data[0]['password']);exit;
             foreach($data as $key=>$value){
 
                         $acc = $value[$key];
