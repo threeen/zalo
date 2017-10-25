@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-class Operate extends Base{
+class Operate extends Controller{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
         if(!empty($data)){
