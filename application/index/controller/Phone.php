@@ -160,70 +160,46 @@ class Phone extends Controller{
             }
     }
 
-    public function test()
-    {
-        $file = fopen("public/zalo.txt", "r");
-        $str = $acc = $data = array();
-        $username = $password = $latitude = $longitude = $device_num = array();
-        $i=0;
-        //输出文本中所有的行，直到文件结束为止。
-        while(! feof($file))
-        {
-            $str[$i]= fgets($file);//fgets()函数从文件指针中读取一行
-            $i++;
-        }
-        fclose($file);
-        $str=array_filter($str);
-        foreach($str as $value){
-            $acc[][]= explode('|',$value);
-        }
-        foreach($acc as $key=>$value){
-            foreach($value as $key => $val){
-                foreach($val as $key=> $v){
-                    if($key == 0)
-                    $username[] = $val[$key];
-                    elseif($key == 1)
-                    $password[] = $val[$key];
-                    elseif($key == 2)
-                    $latitude[] = $val[$key];
-                    elseif($key == 3)
-                    $longitude[] = $val[$key];
-                    elseif($key == 4)
-                    $device_num[] = $val[$key];
-                }
-            }
-        }
-//        echo count($username);
-//        print_r($username);
-//        print_r($password);
-//        print_r($latitude);
-//        print_r($longitude);exit;
-        for($i=0;$i<count($username)-1;$i++){
-            $data[$i]['username']=$username[$i];
-            $data[$i]['password']=$password[$i];
-            $data[$i]['latitude']=$latitude[$i];
-            $data[$i]['longitude']=$longitude[$i];
-            $data[$i]['device_num']=$device_num[$i];
-        }
-        model('NewAccounts')->allowField(true)->saveAll($data);
+//    public function test()
+//    {
+//        $file = fopen("public/zalo.txt", "r");
+//        $str = $acc = $data = array();
+//        $username = $password = $latitude = $longitude = $device_num = array();
+//        $i=0;
+//        //输出文本中所有的行，直到文件结束为止。
+//        while(! feof($file))
+//        {
+//            $str[$i]= fgets($file);//fgets()函数从文件指针中读取一行
+//            $i++;
+//        }
+//        fclose($file);
+//        $str=array_filter($str);
+//        foreach($str as $value){
+//            $acc[][]= explode('|',$value);
+//        }
 //        foreach($acc as $key=>$value){
-//            foreach($value as $key => $val) {
-//                foreach($val as $key=> $v) {
-//                    if ($key == 0)
-//                        $data['username'] = $v[$key];
-//                    if ($key == 1)
-//                        $data['password'] = $v[$key];
-//                    if ($key == 2)
-//                        $data['latitude'] = $v[$key];
-//                    if ($key == 3)
-//                        $data['longitude'] = $v[$key];
-//                    if ($key == 4) {
-//                        $data['device_num'] = $v[$key];
-//                        model('NewAccounts')->save($data);
-//                        echo "成功";
-//                    }
+//            foreach($value as $key => $val){
+//                foreach($val as $key=> $v){
+//                    if($key == 0)
+//                    $username[] = $val[$key];
+//                    elseif($key == 1)
+//                    $password[] = $val[$key];
+//                    elseif($key == 2)
+//                    $latitude[] = $val[$key];
+//                    elseif($key == 3)
+//                    $longitude[] = $val[$key];
+//                    elseif($key == 4)
+//                    $device_num[] = $val[$key];
 //                }
 //            }
 //        }
-    }
+//        for($i=0;$i<count($username)-1;$i++){
+//            $data[$i]['username']=$username[$i];
+//            $data[$i]['password']=$password[$i];
+//            $data[$i]['latitude']=$latitude[$i];
+//            $data[$i]['longitude']=$longitude[$i];
+//            $data[$i]['device_num']=$device_num[$i];
+//        }
+//        model('NewAccounts')->allowField(true)->saveAll($data);
+//    }
 }
