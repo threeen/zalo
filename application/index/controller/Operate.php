@@ -55,11 +55,12 @@ class Operate extends Base{
     }
     //数据回传到模拟器
     public function returnData(){
+        $id = input('post.id');
         $data = model('NewAccounts')->getNewAccountsData();
         if(!empty($data)){
             $str = '';
             for($i=0;$i<count($data);$i++){
-                $str .= $i."-".$data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "<br />";
+                $str .= $id."-".$data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "<br />";
             }
             echo $str;
         }else{
