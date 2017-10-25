@@ -59,6 +59,7 @@ class Operate extends Base{
         if(!empty($data)){
             $str = '';
             foreach($data as $key=>$value){
+                print_r($value);exit;
                 foreach($value as $key=>$val){
                         $username = $val['username'];
                         $password = $val['password'];
