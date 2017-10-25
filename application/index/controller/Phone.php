@@ -193,21 +193,7 @@ class Phone extends Controller{
 //        }
         foreach($acc as $key=>$value){
             foreach($value as $key => $val) {
-                if ($key == 0){
-                    echo "成功";
-                    $data['username'] = $val[$key];}
-                if ($key == 1){
-                    echo "成功";
-                    $data['password'] = $val[$key];}
-                if ($key == 2)
-                    $data['latitude'] = $val[$key];
-                if ($key == 3)
-                    $data['longitude'] = $val[$key];
-                if ($key == 4) {
-                    $data['device_num'] = $val[$key];echo "成功";
-                    model('NewAccounts')->save($data);
-                    echo "成功";
-                }
+                echo $key;
             }
         }
         //print_r($username);
