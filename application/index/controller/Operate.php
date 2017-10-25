@@ -60,11 +60,11 @@ class Operate extends Base{
             $str = '';
             foreach($data as $key=>$value){
                 //print_r($value);exit;
-                        $username = $value['username'];
-                        $password = $value['password'];
-                        $latitude = $value['latitude'];
-                        $longitude = $value['longitude'];
-                        $device_num = $value['device_num'];
+                        $username = $value[$key]['username'];
+                        $password = $value[$key]['password'];
+                        $latitude = $value[$key]['latitude'];
+                        $longitude = $value[$key]['longitude'];
+                        $device_num = $value[$key]['device_num'];
                         $str += $username . "#" . $password . "#" . $latitude . "#" . $longitude . "#" . $device_num . "@@";
             }
             echo $str;
