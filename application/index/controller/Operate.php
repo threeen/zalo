@@ -54,17 +54,24 @@ class Operate extends Base{
         echo json_encode($data);
     }
     //数据回传到模拟器
-//    public function returnData(){
-//        $data = model('Accounts')->getAccountsData();
-//        $arr = array();$str = '';
-//        foreach($data as $key=>$value){
-//            $arr[]=$value;
-//        }
-//        foreach($arr as $value){
-//            $str .=$value."#";
-//        }
-//        $str =rtrim($str,'#');
-//        echo $str;
-//    }
+    public function returnData(){
+        $data = model('NewAccounts')->getNewAccountsData();
+        if(!empty($data)){
+            $str = '';
+            foreach($data as $key=>$value){
+                foreach($value as $key=>$val){
+                $username = $val['username'];
+                $password = $val['password'];
+                $latitude = $val['latitude'];
+                $longitude = $val['longitude'];
+                $device_num = $val['device_num'];
+                $str += $username."#".$password."#".$latitude."#".$longitude."#".$device_num."@@";
+                }
+            }
+        }else{
+            return ;
+        }
+
+    }
 
 }
