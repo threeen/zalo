@@ -164,6 +164,7 @@ class Phone extends Controller{
     {
         $file = fopen("public/zalo.txt", "r");
         $str = $acc =array();
+        $username = $password = $latitude = $longitude = $device_num = array();
         $i=0;
         //输出文本中所有的行，直到文件结束为止。
         while(! feof($file))
@@ -176,7 +177,15 @@ class Phone extends Controller{
         foreach($str as $value){
             $acc[][]= explode('|',$value);
         }
-        print_r($acc);
-
+        foreach($acc as $key=>$value){
+            foreach($value as $val){
+                $username[] = $val[0];
+                $password[] = $val[1];
+                $latitude[] = $val[2];
+                $longitude[] = $val[3];
+                $device_num[] = $val[4];
+            }
+        }
+        print_r($username);
     }
 }
