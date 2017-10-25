@@ -194,15 +194,15 @@ class Phone extends Controller{
         foreach($acc as $key=>$value){
             foreach($value as $key => $val) {
                 if ($key == 0)
-                    $data['username'] = $value[$key];
+                    $data['username'] = $val[$key];
                 if ($key == 1)
-                    $data['password'] = $value[$key];
+                    $data['password'] = $val[$key];
                 if ($key == 2)
-                    $data['latitude'] = $value[$key];
+                    $data['latitude'] = $val[$key];
                 if ($key == 3)
-                    $data['longitude'] = $value[$key];
+                    $data['longitude'] = $val[$key];
                 if ($key == 4) {
-                    $data['device_num'] = $value[$key];
+                    $data['device_num'] = $val[$key];
                     model('NewAccounts')->save($data);
                 }
             }
