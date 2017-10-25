@@ -70,7 +70,7 @@ class Phone extends Controller{
                         'new_nearby' => $arr[1] - $acc['data2'],
                         'nearby_per' => ($arr[1] - $acc['data2']) / 45,
                         'create_time' => date($arr[3]),
-                        'login_status' => $arr[4],
+                        //'login_status' => $arr[4],
                         'data1' => $arr[1],
                         'data2' => $arr[2]
                     );
@@ -83,7 +83,7 @@ class Phone extends Controller{
                     'new_nearby'=>0,
                     'nearby_per'=>0,
                     'create_time'=>date($arr[3]),
-                    'login_status' => $arr[4],
+                    //'login_status' => $arr[4],
                     'data1'=>$arr[1],
                     'data2'=>$arr[2]
                 );
