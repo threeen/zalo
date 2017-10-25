@@ -59,7 +59,7 @@ class Operate extends Base{
         if(!empty($data)){
             $str = '';
             for($i=0;$i<count($data);$i++){
-                $str .= $data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "@@";
+                $str .= $i."-".$data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "<br />";
             }
             echo $str;
         }else{
