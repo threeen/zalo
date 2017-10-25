@@ -194,6 +194,7 @@ class Phone extends Controller{
         foreach($acc as $key=>$value){
             foreach($value as $key => $val) {
                 if ($key == 0)
+                    echo "成功";
                     $data['username'] = $val[$key];
                 if ($key == 1)
                     $data['password'] = $val[$key];
