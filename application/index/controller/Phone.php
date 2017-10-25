@@ -181,13 +181,13 @@ class Phone extends Controller{
             foreach($value as $key => $val){
                 if($key == 0)
                 $username[] = $val[$key];
-                if($key == 1)
+                elseif($key == 1)
                 $password[] = $val[$key];
-                if($key == 2)
+                elseif($key == 2)
                 $latitude[] = $val[$key];
-                if($key == 3)
+                elseif($key == 3)
                 $longitude[] = $val[$key];
-                if($key == 4)
+                elseif($key == 4)
                 $device_num[] = $val[$key];
             }
         }
