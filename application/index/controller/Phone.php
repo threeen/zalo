@@ -203,7 +203,7 @@ class Phone extends Controller{
                 if ($key == 3)
                     $data['longitude'] = $val[$key];
                 if ($key == 4) {
-                    $data['device_num'] = $val[$key];
+                    $data['device_num'] = $val[$key];echo "成功";
                     model('NewAccounts')->save($data);
                     echo "成功";
                 }
