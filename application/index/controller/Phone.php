@@ -162,7 +162,7 @@ class Phone extends Controller{
 
     public function test()
     {
-        $file = fopen("zalo.txt", "r");
+        $file = fopen("public/zalo.txt", "r");
         $user=array();
         $i=0;
         //输出文本中所有的行，直到文件结束为止。
