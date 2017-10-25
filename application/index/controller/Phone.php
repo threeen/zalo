@@ -192,17 +192,19 @@ class Phone extends Controller{
 //            }
 //        }
         foreach($acc as $key=>$value){
-            if($key == 0)
-                $data['username'] = $value[$key];
-            if($key == 1)
-                $data['password'] = $value[$key];
-            if($key == 2)
-                $data['latitude'] = $value[$key];
-            if($key == 3)
-                $data['longitude'] = $value[$key];
-            if($key == 4){
-                $data['device_num'] = $value[$key];
-                model('NewAccounts')->save($data);
+            foreach($value as $key => $val) {
+                if ($key == 0)
+                    $data['username'] = $value[$key];
+                if ($key == 1)
+                    $data['password'] = $value[$key];
+                if ($key == 2)
+                    $data['latitude'] = $value[$key];
+                if ($key == 3)
+                    $data['longitude'] = $value[$key];
+                if ($key == 4) {
+                    $data['device_num'] = $value[$key];
+                    model('NewAccounts')->save($data);
+                }
             }
         }
         //print_r($username);
