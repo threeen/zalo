@@ -163,7 +163,7 @@ class Phone extends Controller{
     public function test()
     {
         $file = fopen("public/zalo.txt", "r");
-        $str = $acc =array();
+        $str = $acc = $data = array();
         $username = $password = $latitude = $longitude = $device_num = array();
         $i=0;
         //输出文本中所有的行，直到文件结束为止。
@@ -177,20 +177,34 @@ class Phone extends Controller{
         foreach($str as $value){
             $acc[][]= explode('|',$value);
         }
+//        foreach($acc as $key=>$value){
+//            foreach($value as $key => $val){
+//                if($key == 0)
+//                $username[] = $val[$key];
+//                if($key == 1)
+//                $password[] = $val[$key];
+//                if($key == 2)
+//                $latitude[] = $val[$key];
+//                if($key == 3)
+//                $longitude[] = $val[$key];
+//                if($key == 4)
+//                $device_num[] = $val[$key];
+//            }
+//        }
         foreach($acc as $key=>$value){
-            foreach($value as $key => $val){
-                if($key == 0)
-                $username[] = $val[$key];
-                if($key == 1)
-                $password[] = $val[$key];
-                if($key == 2)
-                $latitude[] = $val[$key];
-                if($key == 3)
-                $longitude[] = $val[$key];
-                if($key == 4)
-                $device_num[] = $val[$key];
+            if($key == 0)
+                $data['username'] = $value[$key];
+            if($key == 1)
+                $data['password'] = $value[$key];
+            if($key == 2)
+                $data['latitude'] = $value[$key];
+            if($key == 3)
+                $data['longitude'] = $value[$key];
+            if($key == 4){
+                $data['device_num'] = $value[$key];
+                model('NewAccounts')->save($data);
             }
         }
-        print_r($username);
+        //print_r($username);
     }
 }
