@@ -193,18 +193,18 @@ class Phone extends Controller{
                 }
             }
         }
-        echo count($username);
-        print_r($username);
-        print_r($password);
-        print_r($latitude);
-        print_r($longitude);exit;
-        for($i=0;$i<count($username);$i++){
+//        echo count($username);
+//        print_r($username);
+//        print_r($password);
+//        print_r($latitude);
+//        print_r($longitude);exit;
+        for($i=0;$i<count($username)-1;$i++){
             $data['username']=$username[$i];
             $data['password']=$password[$i];
             $data['latitude']=$latitude[$i];
             $data['longitude']=$longitude[$i];
             $data['device_num']=$device_num[$i];
-            model('NewAccounts')->allowField(true)->save($data);
+            model('NewAccounts')->allowField(true)->saveAll($data);
         }
 //        foreach($acc as $key=>$value){
 //            foreach($value as $key => $val) {
