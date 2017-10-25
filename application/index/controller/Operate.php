@@ -56,6 +56,7 @@ class Operate extends Base{
     //数据回传到模拟器
     public function returnData(){
         $data = model('NewAccounts')->getNewAccountsData();
+        print_r($data);
         if(!empty($data)){
             $str = '';
             foreach($data as $key=>$value){
