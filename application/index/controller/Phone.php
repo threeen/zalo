@@ -193,7 +193,7 @@ class Phone extends Controller{
                 }
             }
         }
-        for($i=0;$i<count($username);$i++){
+        for($i=0;$i<count($username)-1;$i++){
             $data['username']=$username[$i];
             $data['password']=$password[$i];
             $data['latitude']=$latitude[$i];
