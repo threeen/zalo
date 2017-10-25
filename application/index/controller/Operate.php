@@ -57,9 +57,9 @@ class Operate extends Base{
     public function returnData(){
         $data = model('NewAccounts')->getNewAccountsData();
         if(!empty($data)){
-            $str = '';$acc = array();//var_dump($data[0]['password']);exit;
-            for($i=0;$i<count($acc);$i++){
-                $str += $acc[$i]['username'] . "#" . $acc[$i]['password'] . "#" . $acc[$i]['latitude'] . "#" . $acc[$i]['longitude']. "#" . $acc[$i]['device_num'] . "@@";
+            $str = '';
+            for($i=0;$i<count($data);$i++){
+                $str += $data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "@@";
             }
             echo $str;
         }else{
