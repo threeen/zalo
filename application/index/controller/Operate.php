@@ -58,13 +58,8 @@ class Operate extends Base{
         $data = model('NewAccounts')->getNewAccountsData();
         if(!empty($data)){
             $str = '';
-            //echo count($data);
-            echo $data[0]['username']."<br>";
-            echo $data[0]['password']."<br>";
-            echo $data[1]['username']."<br>";
-            echo $data[1]['password']."<br>";
             for($i=0;$i<count($data);$i++){
-                $str += $data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "@@";
+                $str .= $data[$i]['username'] . "#" . $data[$i]['password'] . "#" . $data[$i]['latitude'] . "#" . $data[$i]['longitude']. "#" . $data[$i]['device_num'] . "@@";
             }
             echo $str;
         }else{
