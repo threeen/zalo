@@ -179,10 +179,11 @@ class Phone extends Controller{
         }
         foreach($acc as $key=>$value){
             foreach($value as $key => $val){
+                echo $val;
                 //if($key == 0)
                 $username[] = $val[$key];
                 //elseif($key == 1)
-                $password[] = $val[$key+1];
+                $password[] = $val[$key];
                 //elseif($key == 2)
                 $latitude[] = $val[$key];
                 //elseif($key == 3)
@@ -208,6 +209,6 @@ class Phone extends Controller{
 //                }
 //            }
 //        }
-        print_r($password);
+        //print_r($password);
     }
 }
