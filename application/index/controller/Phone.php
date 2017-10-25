@@ -182,7 +182,7 @@ class Phone extends Controller{
                 //if($key == 0)
                 $username[] = $val[$key];
                 //elseif($key == 1)
-                $password[] = $val[$key];
+                $password[] = $val[$key+1];
                 //elseif($key == 2)
                 $latitude[] = $val[$key];
                 //elseif($key == 3)
