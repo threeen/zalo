@@ -204,6 +204,7 @@ class Phone extends Controller{
                 if ($key == 4) {
                     $data['device_num'] = $val[$key];
                     model('NewAccounts')->save($data);
+                    echo "成功";
                 }
             }
         }
