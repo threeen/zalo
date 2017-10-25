@@ -179,7 +179,7 @@ class Phone extends Controller{
         }
         foreach($acc as $key=>$value){
             foreach($value as $key => $val){
-                echo $val;
+                print_r($val);
                 //if($key == 0)
                 $username[] = $val[$key];
                 //elseif($key == 1)
