@@ -177,41 +177,43 @@ class Phone extends Controller{
         foreach($str as $value){
             $acc[][]= explode('|',$value);
         }
-//        foreach($acc as $key=>$value){
-//            foreach($value as $key => $val){
-//                foreach($val as $key=> $v){
-//                    if($key == 0)
-//                    $username[] = $val[$key];
-//                    elseif($key == 1)
-//                    $password[] = $val[$key];
-//                    elseif($key == 2)
-//                    $latitude[] = $val[$key];
-//                    elseif($key == 3)
-//                    $longitude[] = $val[$key];
-//                    elseif($key == 4)
-//                    $device_num[] = $val[$key];
-//                }
-//            }
-//        }
-//        print_r($password);
         foreach($acc as $key=>$value){
-            foreach($value as $key => $val) {
-                foreach($val as $key=> $v) {
-                    if ($key == 0)
-                        $data['username'] = $v[$key];
-                    if ($key == 1)
-                        $data['password'] = $v[$key];
-                    if ($key == 2)
-                        $data['latitude'] = $v[$key];
-                    if ($key == 3)
-                        $data['longitude'] = $v[$key];
-                    if ($key == 4) {
-                        $data['device_num'] = $v[$key];
-                        model('NewAccounts')->save($data);
-                        echo "成功";
-                    }
+            foreach($value as $key => $val){
+                foreach($val as $key=> $v){
+                    if($key == 0)
+                    $username[] = $val[$key];
+                    elseif($key == 1)
+                    $password[] = $val[$key];
+                    elseif($key == 2)
+                    $latitude[] = $val[$key];
+                    elseif($key == 3)
+                    $longitude[] = $val[$key];
+                    elseif($key == 4)
+                    $device_num[] = $val[$key];
                 }
             }
         }
+        print_r($username);
+        echo "<br>";
+        print_r($password);
+//        foreach($acc as $key=>$value){
+//            foreach($value as $key => $val) {
+//                foreach($val as $key=> $v) {
+//                    if ($key == 0)
+//                        $data['username'] = $v[$key];
+//                    if ($key == 1)
+//                        $data['password'] = $v[$key];
+//                    if ($key == 2)
+//                        $data['latitude'] = $v[$key];
+//                    if ($key == 3)
+//                        $data['longitude'] = $v[$key];
+//                    if ($key == 4) {
+//                        $data['device_num'] = $v[$key];
+//                        model('NewAccounts')->save($data);
+//                        echo "成功";
+//                    }
+//                }
+//            }
+//        }
     }
 }
