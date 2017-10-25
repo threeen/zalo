@@ -59,7 +59,7 @@ class Operate extends Base{
         if(!empty($data)){
             $str = '';$acc = array();
             foreach($data as $key=>$value){
-                //print_r($value);exit;
+                var_dump($value);exit;
                         $acc = $value[$key];
 //                        $password = $value['password'];
 //                        $latitude = $value['latitude'];
