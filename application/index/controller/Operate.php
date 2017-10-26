@@ -4,11 +4,11 @@ use think\Controller;
 class Operate extends Controller{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
-        print_r($data[0]['create_time']);exit();
+        //print_r($data[0]['create_time']);exit();
         $id = array();
         if(!empty($data)){
             for($i=0;$i<count($data);$i++){
-                if(time()>(strtotime($value['create_time'])+30)) {
+                if(time()>(strtotime($data['create_time'])+30)) {
                     $data['login_status'] = 0;
                     $data['create_time'] = date('Y-m-d H:i:s', time());
                     $id[] = $data['id'];
