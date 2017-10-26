@@ -18,7 +18,6 @@ class Operate extends Controller{
     }
     public function moments(){
         $username = input('username');
-        echo $username;exit;
         return $this->fetch('admin/operate/moments',[
             'username' => $username
         ]);
@@ -26,7 +25,7 @@ class Operate extends Controller{
     public function in_moments(){
         $data = array();
         $content = input('post.content');
-        $username = input('get.username');
+        $username = input('username');
         if(empty($content)){
             return "朋友圈内容为空";
         }else{
