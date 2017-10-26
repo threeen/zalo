@@ -8,7 +8,7 @@ class Operate extends Controller{
             $id  = array();
             foreach($data as $value){
                 if(time()>(strtotime($value['create_time'])+30)){
-                    $id['id'] = $value['id'];
+                    $id[]['id'] = $value['id'];
                 }
             }
             print_r($id);
