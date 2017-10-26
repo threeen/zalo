@@ -95,6 +95,6 @@ $str1=<<<AB
         </html>
 AB;
         $str3 = strip_tags($moments['content']);
-        echo $str3;
+        echo strip_tags($str3);
     }
 }
