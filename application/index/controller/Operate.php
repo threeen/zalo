@@ -31,7 +31,7 @@ class Operate extends Controller{
 //        curl_close ($ch );
 //        return $state;
 
-        $data = input('content');
+        $data = input('post.content');
         echo $data;
     }
     public function group(){
