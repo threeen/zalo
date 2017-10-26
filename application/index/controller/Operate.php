@@ -31,11 +31,15 @@ class Operate extends Controller{
 //        curl_close ($ch );
 //        return $state;
         $data = input('post.content');
-        if(!isset($data)){
-            return 0;
-        }else{
-            return $data;
+//        if(!isset($data)){
+//            return 0;
+//        }else{
+//            return $data;
+//        }
+        while(isset($data) && !empty($data)){
+            echo $data;
         }
+        echo "success";
 
 
     }
