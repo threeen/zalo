@@ -11,10 +11,10 @@ class Operate extends Controller{
                 if(time()>(strtotime($data[$i]['create_time'])+30)) {
                     $data[$i]['login_status'] = 0;
                     $data[$i]['create_time'] = date('Y-m-d H:i:s', time());
-                    $id[$i] = $data[$i]['id'];
+                    $id[$i]['id'] = $data[$i]['id'];
                 }
             }
-            model('Accounts')->saveAll($data,['id'=>$id]);
+            model('Accounts')->saveAll($data,$id);
 //            foreach($data as $value){
 //                if(time()>(strtotime($value['create_time'])+3600)){
 //                    model('Accounts')->save(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',time())],['id'=>$value['id']]);
