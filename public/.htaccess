@@ -1,5 +1,5 @@
-location /public/ {
-if(!-e $request_filename){
-rewtite ^/public/(.*) /public/index.php/$1 last;
-}
-}
+#location /public/ {
+#if(!-e $request_filename){
+#rewtite ^/public/(.*) /public/index.php/$1 last;
+#}
+#}
