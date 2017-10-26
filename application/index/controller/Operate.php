@@ -5,13 +5,16 @@ class Operate extends Controller{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
         if(!empty($data)){
-
+            $id  = array();
             foreach($data as $value){
                 if(time()>(strtotime($value['create_time'])+30)){
-                    model('Accounts')->saveAll(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',time())],['id'=>$value['id']]);
+                    $data['login_status'][] = 0;
+                    $data['create_time'][] = date('Y-m-d H:i:s',time());
+                    $data['id'][] = $value['id'];
                 }
             }
         }
+        model('Accounts')->saveAll($data,$id);
         return $this->fetch('admin/operate/index',[
             'data' => $data
         ]);
