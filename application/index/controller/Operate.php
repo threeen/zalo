@@ -117,8 +117,16 @@ AB;
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
-            echo $text['text']."<br>";
-            echo $path;
+            $data =[
+                'content' => $text['content'],
+                'image' => $path,
+            ];
+            $result = model('Friends')->add($data);
+            if($result){
+                $this->success('提交成功');
+            }else{
+                $this->error('提交失败');
+            }
         }
     }
 
