@@ -4,7 +4,6 @@ use think\Controller;
 class Operate extends Controller{
     public function index(){
         $data = model('Accounts')->getLiveAccounts();
-        print_r($data[0]['create_time']);exit();
         if(!empty($data)){
 
             foreach($data as $value){
