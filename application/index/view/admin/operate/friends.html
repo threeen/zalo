@@ -1,0 +1,12 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<textarea name="text" class="text"></textarea>
+<form action="{:url('Operate/upload')}" enctype="multipart/form-data" method="post">
+    <input type="file" name="image[]" /> <br>
+    <input type="file" name="image[]" /> <br>
+    <input type="file" name="image[]" /> <br>
+    <input type="submit" value="上传" />
+</form>
+<!--包含头部文件-->
+{include file="public/footer" /}
