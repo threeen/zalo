@@ -102,7 +102,7 @@ AB;
     }
     public function upload(){
         $text = input('post.');
-        if(empty($text['text']) && empty($text['image'])){
+        if(empty($text['text']) && !isset($text['image'])){
             return "朋友圈内容为空";
         }
         // 获取表单上传文件
