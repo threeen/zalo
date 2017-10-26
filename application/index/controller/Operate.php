@@ -31,7 +31,7 @@ class Operate extends Controller{
         }else{
             $data = [
                 'username' => $username,
-                'content' => base64_encode($content),
+                'content' => $content,
             ];
             $result = model('Moments')->add($data);
             if($result){
@@ -94,7 +94,7 @@ $str1=<<<AB
         </body>
         </html>
 AB;
-        $str3 = base64_decode($moments['content']);
+        $str3 = $moments['content'];
         echo $str3;
     }
 }
