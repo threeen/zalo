@@ -118,7 +118,7 @@ AB;
                 echo $file->getError();
             }
             $data =[
-                'content' => $text['content'],
+                'content' => $text['text'],
                 'image' => $path,
             ];
             $result = model('Friends')->add($data);
