@@ -30,9 +30,14 @@ class Operate extends Controller{
 //        $state=curl_exec ($ch );
 //        curl_close ($ch );
 //        return $state;
-
         $data = input('post.content');
-        echo $data;
+        if(!isset($data)){
+            return 0;
+        }else{
+            return $data;
+        }
+
+
     }
     public function group(){
         $data = model('Accounts')->getAccounts();
