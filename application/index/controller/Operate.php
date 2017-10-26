@@ -101,6 +101,10 @@ AB;
         return $this->fetch('admin/operate/friends');
     }
     public function upload(){
+        $text = input('post.');
+        if(empty(['text']) && empty($text['image'])){
+            return "朋友圈内容为空";
+        }
         // 获取表单上传文件
         $files = request()->file('image');
         foreach($files as $file){
@@ -108,11 +112,6 @@ AB;
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
             $path = ROOT_PATH . 'public' . DS . 'uploads';
             if($info){
-                // 成功上传后 获取上传信息
-                // 输出 jpg
-                //echo $info->getExtension();
-                //echo $path;
-                // 输出 42a79759f284b767dfcb2a0197904287.jpg
                 echo "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName();
             }else{
                 // 上传失败获取错误信息
