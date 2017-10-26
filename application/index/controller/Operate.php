@@ -8,11 +8,11 @@ class Operate extends Controller{
             $id  = array();
             foreach($data as $value){
                 if(time()>(strtotime($value['create_time'])+30)){
-                    $id['id'][] = $value['id'];
+                    $id['id'] = $value['id'];
                 }
             }
+            model('Accounts')->saveAll(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',time())],$id);
         }
-        model('Accounts')->saveAll(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',time())],$id);
         return $this->fetch('admin/operate/index',[
             'data' => $data
         ]);
