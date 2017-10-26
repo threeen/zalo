@@ -9,9 +9,9 @@ class Operate extends Controller{
         if(!empty($data)){
             for($i=0;$i<count($data);$i++){
                 if(time()>(strtotime($data[$i]['create_time'])+30)) {
-                    $data[$i]['login_status'] = 0;
-                    $data[$i]['create_time'] = date('Y-m-d H:i:s', time());
-                    $id[$i]['id'] = $data[$i]['id'];
+                    $data['login_status'] = 0;
+                    $data['create_time'] = date('Y-m-d H:i:s', time());
+                    $id['id'] = $data[$i]['id'];
                 }
             }
             model('Accounts')->saveAll($data,$id);
