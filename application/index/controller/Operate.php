@@ -110,13 +110,14 @@ AB;
         foreach($files as $file){
             // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            $path = ROOT_PATH . 'public' . DS . 'uploads';
+            $path = '';
             if($info){
-                echo "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName();
+                $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
+            echo $path;
         }
     }
 
