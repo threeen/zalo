@@ -17,7 +17,10 @@ class Operate extends Controller{
         ]);
     }
     public function moments(){
-        return $this->fetch('admin/operate/moments');
+        $username = input('get.username');
+        return $this->fetch('admin/operate/moments',[
+            'username' =>$username
+        ]);
     }
     public function in_moments(){
         $content = input('post.content');
