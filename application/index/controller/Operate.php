@@ -22,8 +22,9 @@ class Operate extends Controller{
     }
     public function in_moments(){
         $content = input('post.content');
+        $data = array();
         //$username = input('get.username');
-        if(empty($data)){
+        if(empty($content)){
             return "朋友圈内容为空";
         }else{
             $data = [
