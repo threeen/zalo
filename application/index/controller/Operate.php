@@ -17,19 +17,17 @@ class Operate extends Controller{
         ]);
     }
     public function moments(){
-        $username = input('get.username');
-        return $this->fetch('admin/operate/moments',[
-            'username' =>$username
-        ]);
+        //$username = input('get.username');
+        return $this->fetch('admin/operate/moments');
     }
     public function in_moments(){
         $content = input('post.content');
-        $username = input('get.username');
+        //$username = input('get.username');
         if(empty($data)){
             return "朋友圈内容为空";
         }else{
             $data = [
-                'username' => $username,
+                //'username' => $username,
                 'content' => $content,
             ];
             $result = model('Moments')->add($data);
