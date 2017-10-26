@@ -102,11 +102,11 @@ AB;
     }
     public function upload(){
         $text = input('post.');
-        if(empty($text['text']) && !isset($text['image'])){
-            return "朋友圈内容为空";
-        }
         // 获取表单上传文件
         $files = request()->file('image');
+        if(empty($text['text']) && empty($files)){
+            return "朋友圈内容为空";
+        }
         foreach($files as $file){
             // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
