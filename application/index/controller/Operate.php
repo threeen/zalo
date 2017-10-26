@@ -113,7 +113,7 @@ AB;
                 //echo $info->getExtension();
                 //echo $path;
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                echo $info->getSaveName();
+                echo "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName();
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
