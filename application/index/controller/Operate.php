@@ -128,6 +128,18 @@ AB;
                 $this->error('提交失败');
             }
         }
+        if(empty($files)){
+            $data =[
+                'content' => $text['text'],
+                'image' => $path,
+            ];
+            $result = model('Friends')->add($data);
+            if($result){
+                $this->success('提交成功');
+            }else{
+                $this->error('提交失败');
+            }
+        }
     }
 
 }
