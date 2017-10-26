@@ -11,7 +11,7 @@ class Operate extends Controller{
                 if(time()>(strtotime($data[$i]['create_time'])+30)) {
                     $data[$i]['login_status'] = 0;
                     $data[$i]['create_time'] = date('Y-m-d H:i:s', time());
-                    $id[$i] = $data[$i]['id'];
+                    $id[$i][] = $data[$i]['id'];
                 }
             }
             model('Accounts')->saveAll($data,$id);
