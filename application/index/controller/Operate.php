@@ -31,8 +31,8 @@ class Operate extends Controller{
 //        curl_close ($ch );
 //        return $state;
 
-        $data = input('post.content');
-        echo $data;
+
+        echo "sfd";
     }
     public function group(){
         $data = model('Accounts')->getAccounts();
