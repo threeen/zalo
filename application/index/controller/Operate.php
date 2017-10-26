@@ -110,10 +110,10 @@ AB;
             if($info){
                 // 成功上传后 获取上传信息
                 // 输出 jpg
-                echo $info->getExtension();
-                echo $path;
+                //echo $info->getExtension();
+                //echo $path;
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                echo $info->getFilename();
+                echo $info->getSaveName();
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
