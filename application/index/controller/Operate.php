@@ -11,6 +11,7 @@ class Operate extends Controller{
                     $id['id'] = $value['id'];
                 }
             }
+            print_r($id);
             model('Accounts')->saveAll(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',time())],$id);
         }
         return $this->fetch('admin/operate/index',[
