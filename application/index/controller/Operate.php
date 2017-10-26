@@ -75,7 +75,11 @@ class Operate extends Controller{
         }else{
             return ;
         }
-
     }
-
+    //朋友圈数据回传给模拟器
+    public function returnMoments(){
+        $data = input('username');
+        $moments = model('Moments')->getMomentsData($data);
+        echo $moments['content'];
+    }
 }
