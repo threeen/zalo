@@ -131,7 +131,7 @@ AB;
         if(empty($files)){
             $data =[
                 'content' => $text['text'],
-                'image' => $path,
+                'image' => '',
             ];
             $result = model('Friends')->add($data);
             if($result){
