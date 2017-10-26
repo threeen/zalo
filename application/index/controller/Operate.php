@@ -19,28 +19,23 @@ class Operate extends Controller{
     public function moments(){
         return $this->fetch('admin/operate/moments');
     }
-    public function xianshi(){
-//        $data=array('data'=>'chenwenzheng');
-//        $ch = curl_init ();
-//        curl_setopt ($ch, CURLOPT_URL, 'http://192.168.11.131:8383/test.php');
-//        curl_setopt ($ch, CURLOPT_POST, true );
-//        curl_setopt ($ch, CURLOPT_HEADER, 0 );
-//        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1 );
-//        curl_setopt ($ch, CURLOPT_POSTFIELDS, $data );
-//        $state=curl_exec ($ch );
-//        curl_close ($ch );
-//        return $state;
-        $data = input('post.content');
-//        if(!isset($data)){
-//            return 0;
-//        }else{
-//            return $data;
-//        }
-        while(isset($data) && !empty($data)){
-            echo $data;
+    public function in_moments(){
+        $content = input('post.content');
+        $username = input('get.username');
+        if(empty($data)){
+            return "朋友圈内容为空";
+        }else{
+            $data = [
+                'username' => $username,
+                'content' => $content,
+            ];
+            $result = model('Moments')->add($data);
+            if($result){
+                $this->success('提交成功');
+            }else{
+                $this->error('提交失败');
+            }
         }
-        echo "success";
-
 
     }
     public function group(){
