@@ -94,7 +94,7 @@ $str1=<<<AB
         </body>
         </html>
 AB;
-        $str3 = base64_decode($moments['content']);
+        $str3 = $moments['content'];
         echo $str.$str3.$str1;
     }
 }
