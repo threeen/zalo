@@ -111,7 +111,7 @@ AB;
                 // 成功上传后 获取上传信息
                 // 输出 jpg
                 echo $info->getExtension();
-                
+                echo $path;
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
                 echo $info->getFilename();
             }else{
