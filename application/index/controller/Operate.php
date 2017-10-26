@@ -80,6 +80,21 @@ class Operate extends Controller{
     public function returnMoments(){
         //$data = input('username');
         $moments = model('Moments')->getMomentsData('17073175454');
-        echo base64_decode($moments['content']);
+$str=<<<AA
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Title</title>
+</head>
+<body>
+AA;
+$str1=<<<AB
+        </body>
+        </html>
+AB;
+        $str3 = base64_decode($moments['content']);
+        echo $str.$str3.$str1;
     }
 }
