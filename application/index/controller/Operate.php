@@ -17,7 +17,7 @@ class Operate extends Controller{
         ]);
     }
     public function moments(){
-        $username = input('get.username');
+        $username = input('username');
         echo $username;exit;
         return $this->fetch('admin/operate/moments',[
             'username' => $username
