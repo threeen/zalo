@@ -121,6 +121,7 @@ AB;
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
+            echo $path;exit;
             $data =[
                 'username' => $username,
                 'content' => $text['text'],
