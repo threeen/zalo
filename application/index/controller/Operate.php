@@ -118,6 +118,7 @@ AB;
 
             if($info){
                 $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
+                echo $path;
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
@@ -135,7 +136,6 @@ AB;
                 $this->error('提交失败');
             }
         }
-        echo $path;exit;
         if(empty($files)){
             $data =[
                 'username' => $username,
