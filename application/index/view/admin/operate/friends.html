@@ -1,6 +1,10 @@
 <!--包含头部文件-->
 {include file="public/header" /}
 <body>
+<style type="text/css">
+    .send{ width: 60px; height: 30px; margin-top: 10px; background-color: inherit; border-radius:5px; }
+    .send:hover{ background-color: #ccc;}
+</style>
 <div class="page-container">
 
 <form action="{:url('Operate/upload',['username'=>$username])}" enctype="multipart/form-data" method="post">
@@ -9,7 +13,7 @@
     <input type="file" name="image[]" /> <br>
     <input type="file" name="image[]" /> <br>
     <input type="file" name="image[]" /> <br>
-    <input type="submit" value="上传" />
+    <input type="submit" class="send" value="上传" />
 </form>
 </div>
 <!--包含头部文件-->
