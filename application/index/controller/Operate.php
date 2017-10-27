@@ -109,7 +109,7 @@ AB;
          // 获取表单上传文件
         $files = request()->file('image');
         if(empty($text['text']) && empty($files)){
-            return "朋友圈内容为空";
+            return "不得提交空内容";
         }
         $path = '';
         foreach($files as $file){
