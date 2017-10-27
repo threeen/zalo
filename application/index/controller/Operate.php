@@ -98,11 +98,15 @@ AB;
         echo strip_tags($str3);
     }
     public function friends(){
-        return $this->fetch('admin/operate/friends');
+        $username = input('username');
+        return $this->fetch('admin/operate/friends',[
+            'username' => $username
+        ]);
     }
     public function upload(){
         $text = input('post.');
-        // 获取表单上传文件
+        $username = input('username');
+         // 获取表单上传文件
         $files = request()->file('image');
         if(empty($text['text']) && empty($files)){
             return "朋友圈内容为空";
@@ -118,6 +122,7 @@ AB;
                 echo $file->getError();
             }
             $data =[
+                'username' => $username,
                 'content' => $text['text'],
                 'image' => $path,
             ];
@@ -130,6 +135,7 @@ AB;
         }
         if(empty($files)){
             $data =[
+                'username' => $username,
                 'content' => $text['text'],
                 'image' => '',
             ];
