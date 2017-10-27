@@ -79,7 +79,7 @@ class Operate extends Controller{
     //朋友圈数据回传给模拟器
     public function returnFriends(){
         //$data = input('username');
-        $moments = model('Moments')->getFriendsData('17073175454');
+        $moments = model('Friends')->getFriendsData('17073175454');
         print_r($moments);
 
     }
