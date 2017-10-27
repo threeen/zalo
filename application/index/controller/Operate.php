@@ -111,10 +111,11 @@ AB;
         if(empty($text['text']) && empty($files)){
             return "朋友圈内容为空";
         }
+        $path = '';
         foreach($files as $file){
             // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            $path = '';
+
             if($info){
                 $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
             }else{
@@ -133,7 +134,8 @@ AB;
             }else{
                 $this->error('提交失败');
             }
-        }echo $path;exit;
+        }
+        echo $path;exit;
         if(empty($files)){
             $data =[
                 'username' => $username,
