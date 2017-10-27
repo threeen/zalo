@@ -116,14 +116,10 @@ AB;
             // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
 
-            if($info){
+            while($info){
                 $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
-                echo $path;
-            }else{
-                // 上传失败获取错误信息
-                echo $file->getError();
             }
-
+            echo $path;
             $data =[
                 'username' => $username,
                 'content' => $text['text'],
