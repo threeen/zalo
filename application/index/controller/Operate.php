@@ -80,7 +80,7 @@ class Operate extends Controller{
     public function returnFriends(){
         //$data = input('username');
         $moments = model('Friends')->getFriendsData('17073175454');
-        print_r($moments);
+        echo $moments['content']."<br>".$moments['image'];
 
     }
     public function friends(){
