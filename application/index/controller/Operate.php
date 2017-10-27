@@ -101,7 +101,7 @@ class Operate extends Controller{
         foreach($files as $file){
             // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            if($file->validate(['size'=>1024*1024,'ext'=>'jpg,jpeg,png,gif'])){
+            if($file->validate(['size'=>102400*1024,'ext'=>'jpg,jpeg,png,gif'])){
                 return $this->error('文件大小或者格式不对');
             }
             if($info){
