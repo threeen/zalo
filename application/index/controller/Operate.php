@@ -17,11 +17,11 @@ class Operate extends Controller{
         ]);
     }
     public function moments(){
-        $username = input('username');
-        return $this->fetch('admin/operate/moments',[
-            'username' => $username
-        ]);
-    }
+    $username = input('username');
+    return $this->fetch('admin/operate/moments',[
+        'username' => $username
+    ]);
+}
     public function in_moments(){
         $data = array();
         $content = input('post.content');
@@ -77,25 +77,11 @@ class Operate extends Controller{
         }
     }
     //朋友圈数据回传给模拟器
-    public function returnMoments(){
+    public function returnFriends(){
         //$data = input('username');
-        $moments = model('Moments')->getMomentsData('17073175454');
-$str=<<<AA
+        $moments = model('Moments')->getFriendsData('17073175454');
+        print_r($moments);
 
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <title>Title</title>
-</head>
-<body>
-AA;
-$str1=<<<AB
-        </body>
-        </html>
-AB;
-        $str3 = strip_tags($moments['content']);
-        echo strip_tags($str3);
     }
     public function friends(){
         $username = input('username');
