@@ -150,7 +150,12 @@ class Phone extends Controller{
                 $data = input('post.account',$isset,'');
                 cookie('searchData',$data);
                 $data = trim($data);
-                $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                $send_search = input('send_search');
+                if(isset($send_search)){
+                    $searchData = model('NewAccounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                }else{
+                    $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                }
                 $page = $searchData->render();
                 $count = model('Accounts')->getSearchCounts($data);
                 return $this->fetch('admin/search',[
