@@ -13,4 +13,11 @@ class NewAccounts extends Model
         ];
         return model('NewAccounts')->where($data)->select();
     }
+    public function getDatas(){
+        return model('NewAccounts')->select();
+    }
+    //获取帐号总数
+    public function getCounts(){
+        return model('NewAccounts')->where(['status'=>1])->count('id');
+    }
 }

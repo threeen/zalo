@@ -163,6 +163,15 @@ class Phone extends Controller{
                 $this->success('请先登录',url('index/index/index'));
             }
     }
+    //传送帐号
+    public function sendAccounts(){
+        $data = model('NewAccounts')->getDatas();
+        $count = model('NewAccounts')->getCounts();
+        return $this->fetch('admin/send_list',[
+            'count' => $count,
+            'data' => $data,
+        ]);
+    }
 
 //    public function test()
 //    {
