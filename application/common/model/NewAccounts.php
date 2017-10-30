@@ -24,4 +24,8 @@ class NewAccounts extends Model
     public function editGetData($id){
         return model('NewAccounts')->where(['id'=>$id])->find();
     }
+    //获取搜索帐号数
+    public function getSearchCounts($data){
+        return model('NewAccounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->count();
+    }
 }

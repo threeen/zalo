@@ -153,16 +153,23 @@ class Phone extends Controller{
                 $send_search = input('send_search');
                 if(isset($send_search)){
                     $searchData = model('NewAccounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                    $page = $searchData->render();
+                    $count = model('NewAccounts')->getSearchCounts($data);
+                    return $this->fetch('admin/send_search',[
+                        'searchData'=>$searchData,
+                        'page' => $page,
+                        'count' => $count,
+                    ]);
                 }else{
                     $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                    $page = $searchData->render();
+                    $count = model('Accounts')->getSearchCounts($data);
+                    return $this->fetch('admin/search',[
+                        'searchData'=>$searchData,
+                        'page' => $page,
+                        'count' => $count,
+                    ]);
                 }
-                $page = $searchData->render();
-                $count = model('Accounts')->getSearchCounts($data);
-                return $this->fetch('admin/search',[
-                    'searchData'=>$searchData,
-                    'page' => $page,
-                    'count' => $count,
-                ]);
             }
             else{
                 $this->success('请先登录',url('index/index/index'));
