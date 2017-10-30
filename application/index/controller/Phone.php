@@ -196,6 +196,10 @@ class Phone extends Controller{
                 'latitude'=>$data['latitude'],
                 'longitude'=>$data['longitude'],
             );
+            $validate = validate('NewAccounts');
+            if(!$validate->check($account)){
+                $this->error($validate->getError());
+            }
             $model = model('NewAccounts')->save($account,['id'=>$id]);
             if($model){
                 $this->success('数据更新成功');

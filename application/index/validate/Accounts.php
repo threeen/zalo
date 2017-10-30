@@ -11,5 +11,4 @@ class Accounts extends Validate
         'new_friends' => 'number',
         'create_time' => 'require'
     ];
-
 }
