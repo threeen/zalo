@@ -35,6 +35,10 @@ class Phone extends Controller{
                     'new_friends'=>$data['new_friends'],
                     'create_time'=>date('Y-m-d H:i:s',time())
                 );
+                $validate = validate('Accounts');
+                if(!$validate->check($account)){
+                    $this->error($validate->getError());
+                }
                 $model = model('Accounts')->save($account,['id'=>$id]);
                 if($model){
                     $this->success('数据更新成功');
