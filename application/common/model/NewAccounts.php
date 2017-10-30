@@ -20,4 +20,8 @@ class NewAccounts extends Model
     public function getCounts(){
         return model('NewAccounts')->where(['status'=>1])->count('id');
     }
+    //获取编辑帐号数据
+    public function editGetData($id){
+        return model('NewAccounts')->where(['id'=>$id])->find();
+    }
 }

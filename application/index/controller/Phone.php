@@ -172,7 +172,33 @@ class Phone extends Controller{
             'data' => $data,
         ]);
     }
+    //传送帐号列表编辑
+    public function sendEdit(){
+        $edit = input('edit');
+        if(isset($edit)){
+            //执行修改逻辑
+            $id = input('id');
+            $data = input('post.');
+            $account = array(
+                'latitude'=>$data['latitude'],
+                'longitude'=>$data['longitude'],
+            );
+            $model = model('NewAccounts')->save($account,['id'=>$id]);
+            if($model){
+                $this->success('数据更新成功');
+            }else{
+                return "数据更新失败";
+            }
+        }else{
+            //执行入库（插入）逻辑
+            $id = input('id');
+            $data = model('NewAccounts')->editGetData($id);
+            return $this->fetch('admin/send_edit',[
+                'data' => $data
+            ]);
+        }
 
+    }
 //    public function test()
 //    {
 //        $file = fopen("public/zalo.txt", "r");

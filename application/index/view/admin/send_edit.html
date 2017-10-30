@@ -1,0 +1,42 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<div class="cl pd-5 bg-1 bk-gray mt-20"> <h1>帐号编辑管理</h1></div>
+<article class="page-container">
+    <form class="form form-horizontal"  method="post" action="{:url('phone/send_edit',['edit'=>1,'id'=>$data.id])}">
+        编辑内容：
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"> 纬度:</label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input type="text" class="input-text" value="{$data.latitude}" placeholder="" id="" name="friends">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">经度:</label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input type="text" class="input-text" value="{$data.longitude}" placeholder="" id="" name="new_friends">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"></label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input class="btn btn-default radius ml-10 maptag" type="submit" value="修改">
+                <a href=""  class="btn btn-default radius ml-10 maptag">返回</a>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--包含尾部文件-->
+{include file="public/footer" /}
+<script type="text/javascript" src="__ADMIN__/admin/hui/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__/admin/hui/lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__/admin/hui/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<!--分配编辑器-->
+<script>
+    $(function(){
+        var ue = UE.getEditor('editor');
+        var ue1 = UE.getEditor('editor1');
+    });
+</script>
+</body>
+</html>
