@@ -14,7 +14,7 @@ class NewAccounts extends Model
         return model('NewAccounts')->where($data)->select();
     }
     public function getDatas(){
-        return model('NewAccounts')->select();
+        return model('NewAccounts')->paginate();
     }
     //获取帐号总数
     public function getCounts(){
