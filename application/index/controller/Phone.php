@@ -206,7 +206,7 @@ class Phone extends Controller{
             }
             $model = model('NewAccounts')->save($account,['id'=>$id]);
             if($model){
-                $this->success('数据更新成功');
+                return $this->redirect('phone/sendAccounts');
             }else{
                 return "数据更新失败";
             }
