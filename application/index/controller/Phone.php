@@ -61,7 +61,11 @@ class Phone extends Controller{
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
                 if($arr[2]==$acc['data2']){
-                    return "无好友增加";
+                    $account = array(
+                        'username' => $arr[0],
+                        'create_time' => date($arr[3]),
+                        //'login_status' => $arr[4],
+                    );
                 }else {
                     $account = array(
                         'username' => $arr[0],
