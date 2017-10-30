@@ -7,8 +7,8 @@ class Accounts extends Validate
 {
     protected $rule = [
         'username'  =>  'require|max:25',
-        'friends' =>  'number',
-        'new_friends' => 'number',
+        'friends' =>  'require|number',
+        'new_friends' => 'require|number',
         'create_time' => 'require'
     ];
 }
