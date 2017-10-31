@@ -10,12 +10,21 @@
 
 <form action="{:url('Operate/upload',['username'=>$username])}" enctype="multipart/form-data" method="post">
     <textarea name="text" class="text" cols="50" rows="10"></textarea><br>
-    <input type="file" name="image[]" /> <br>
-    <input type="file" name="image[]" /> <br>
-    <input type="file" name="image[]" /> <br>
-    <input type="file" name="image[]" /> <br>
-    <input type="submit" class="send" value="提交" />
+    <div id="upload"></div>
+    <input type="button" value="添加附件" onclick="createUploader()"><br>
+    <input type="submit" class="send" value="提交" >
 </form>
 </div>
+<script>
+    function createUploader(){
+        var div= document.getElementById("upload");;
+        var uploader = document.createElement("input");
+        uploader.type = "file";
+        uploader.name = "image[]";
+        div.appendChild(uploader);
+        var br = document.createElement("br");
+        div.appendChild(br);
+    }
+</script>
 <!--包含头部文件-->
 {include file="public/footer" /}
