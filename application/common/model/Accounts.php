@@ -24,7 +24,11 @@ class Accounts extends Model
     }
     //获取日新增的好友总数
     public function getDayFriends(){
-        return model('Accounts')->where(['status'=>1])->sum('new_friends');
+        $data = [
+            'status' => 1,
+            'create_time' => ['gt',date('Y-m-d',time())]
+        ];
+        return model('Accounts')->where($data)->sum('new_friends');
     }
     //获取搜索帐号数
     public function getSearchCounts($data){
