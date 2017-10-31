@@ -11,7 +11,7 @@
 <form action="{:url('Operate/upload',['username'=>$username])}" enctype="multipart/form-data" method="post">
     <textarea name="text" class="text" cols="50" rows="10"></textarea><br>
     <div id="upload"></div>
-    <input type="button" value="添加附件" onclick="createUploader()"><br>
+    <input type="button" value="添加附件" class="send" onclick="createUploader()">
     <input type="submit" class="send" value="提交" >
 </form>
 </div>
