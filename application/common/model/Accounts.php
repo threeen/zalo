@@ -18,6 +18,14 @@ class Accounts extends Model
     public function getCounts(){
         return model('Accounts')->where(['status'=>1])->count('id');
     }
+    //获取总好友数
+    public function getFriendsAllCounts(){
+        return model('Accounts')->where(['status'=>1])->sum('friends');
+    }
+    //获取日新增的好友总数
+    public function getDayFriends(){
+        return model('Accounts')->where(['status'=>1])->sum('new_friends');
+    }
     //获取搜索帐号数
     public function getSearchCounts($data){
         return model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->count();
