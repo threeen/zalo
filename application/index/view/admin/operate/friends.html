@@ -9,7 +9,7 @@
 <div class="page-container">
 
 <form action="{:url('Operate/upload',['username'=>$username])}" enctype="multipart/form-data" method="post">
-    <textarea name="text" class="text" cols="50" rows="10"></textarea><br>
+    <textarea id="txta1" name="text" class="text" cols="50" rows="10"></textarea><br>
     <div id="upload"></div>
     <input type="button" value="添加附件" class="send" onclick="createUploader()">
     <input type="submit" class="send" value="提交" >
@@ -25,6 +25,7 @@
         var br = document.createElement("br");
         div.appendChild(br);
     }
+    window.onload = function() { document.getElementById('txta1').onkeydown = function() { if(this.value.length >= 100) event.returnValue = false; } }
 </script>
 <!--包含头部文件-->
 {include file="public/footer" /}
