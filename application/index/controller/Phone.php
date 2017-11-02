@@ -157,7 +157,7 @@ class Phone extends Controller{
                 $isset = isset($_COOKIE['searchData']) ? $_COOKIE['searchData'] : '';
                 $data = input('post.account',$isset,'');
                 if(empty($data)){
-                    return "搜索内容为空";
+                    return "<script>alert('搜索内容为空');</script>";
                 }
                 cookie('searchData',$data);
                 $data = trim($data);
