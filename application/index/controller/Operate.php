@@ -98,17 +98,6 @@ class Operate extends Controller{
             return "不得提交空内容";
         }
         $path = '';
-        foreach($files as $file){
-            // 移动到框架应用根目录/public/uploads/ 目录下
-            $info = $file->validate(['size'=>1024*1024,'ext'=>'jpg,jpeg,png,gif'])->move(ROOT_PATH . 'public' . DS . 'uploads');
-            if($info){
-                $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
-            }else{
-                // 上传失败获取错误信息
-                return $file->getError();
-            }
-
-        }
         if(empty($files)){
             $data =[
                 'username' => $username,
@@ -122,6 +111,17 @@ class Operate extends Controller{
                 $this->error('提交失败');
             }
         }else{
+            foreach($files as $file){
+                // 移动到框架应用根目录/public/uploads/ 目录下
+                $info = $file->validate(['size'=>1024*1024,'ext'=>'jpg,jpeg,png,gif'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+                if($info){
+                    $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
+                }else{
+                    // 上传失败获取错误信息
+                    return $file->getError();
+                }
+
+            }
             $data =[
                 'username' => $username,
                 'content' => $text['text'],
