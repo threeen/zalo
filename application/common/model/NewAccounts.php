@@ -28,4 +28,12 @@ class NewAccounts extends Model
     public function getSearchCounts($data){
         return model('NewAccounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->count();
     }
+    //获取帐号列表数据,通过时间排序
+    public function getAccounts(){
+        return model('NewAccounts')->where(['status'=>1])->order(['id'=>'asc'])->paginate();
+    }
+    //获取某段数据
+    public function getValueArea($start,$end){
+        return model('NewAccounts')->where(['status'=>1])->limit($start, $end)->select();
+    }
 }
