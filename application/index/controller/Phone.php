@@ -158,9 +158,8 @@ class Phone extends Controller{
                 $data = input('post.account',$isset,'');
                 cookie('searchData',$data);
                 $data = trim($data);
-                $send_search = input('send_search');
+                $send_search = input('get.send_search');
                 if(isset($send_search)){
-                    cookie('searchData',$send_search);
                     $searchData = model('NewAccounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
                     $page = $searchData->render();
                     $count = model('NewAccounts')->getSearchCounts($data);
