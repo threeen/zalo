@@ -36,7 +36,7 @@ class Phone extends Controller{
 
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
-            return $this->fetch('admin/list',[
+            return $this->fetch('admin/error_list',[
                 'data'=>$data,
                 'count'=>$count,
 
