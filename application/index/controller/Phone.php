@@ -13,11 +13,13 @@ class Phone extends Controller{
         if(isset($_COOKIE['admin'])) {
             $data = model('Accounts')->getAccountsData();
             $count = model('Accounts')->getCounts();
+            $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
             return $this->fetch('admin/list',[
                 'data'=>$data,
                 'count'=>$count,
+                'realCount'=>$realCounts,
                 'friendsCounts'=>$friendsCounts,
                 'dayFriends'=>$dayFriends
             ]);
@@ -31,13 +33,13 @@ class Phone extends Controller{
         if(isset($_COOKIE['admin'])) {
             $data = model('Accounts')->getErrorAccountsData();
             $count = model('Accounts')->getCounts();
-            $realCounts = model('Accounts')->getRealCounts();
+
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
             return $this->fetch('admin/list',[
                 'data'=>$data,
                 'count'=>$count,
-                'realCount'=>$realCounts,
+
                 'friendsCounts'=>$friendsCounts,
                 'dayFriends'=>$dayFriends,
             ]);
