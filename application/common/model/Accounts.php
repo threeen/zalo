@@ -12,9 +12,9 @@ class Accounts extends Model
     }
     public function getErrorAccountsData(){
         $data = [
-            'friends'=>['lt',0],
-            'near_by'=>['lt',0],
-            'near_by'=>['gt',1],
+            ['friends','new_friends','nearby']=>['lt',0],
+            'nearby_per'=>['lt',0],
+            'nearby_per'=>['gt',1],
             'status'=>['neq',1]
         ];
         return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
