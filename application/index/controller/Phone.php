@@ -200,9 +200,10 @@ class Phone extends Controller{
                         'new_nearby'=>['gt',0],
                         'nearby_per'=>['gt',0],
                         'nearby_per'=>['lt',1],
-                        'status'=>['eq',1]
+                        'status'=>['eq',1],
+                        'username'=>['like','%'.$data.'%']
                     ];
-                    $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where($data)->paginate();
+                    $searchData = model('Accounts')->where($data)->paginate();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
