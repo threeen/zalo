@@ -12,7 +12,7 @@ class Accounts extends Model
     }
     public function getErrorAccountsData(){
         $data = [
-            [['friends','new_friends','nearby'],['lt',0]],
+            [['friends'],['lt',0]],
             [['near_by'],['lt',0]],
             [['near_by'],['gt',1]],
             [['status'],['neq',1]]
