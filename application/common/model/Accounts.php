@@ -54,7 +54,12 @@ class Accounts extends Model
     //获取日新增的好友总数
     public function getDayFriends(){
         $data = [
-            'status' => 1,
+            'friends'=>['gt',0],
+            'new_friends'=>['gt',0],
+            'new_nearby'=>['gt',0],
+            'nearby_per'=>['gt',0],
+            'nearby_per'=>['lt',1],
+            'status'=>['eq',1],
             'create_time' => ['gt',date('Y-m-d',time())]
         ];
         return model('Accounts')->where($data)->sum('new_friends');
