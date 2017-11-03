@@ -194,7 +194,15 @@ class Phone extends Controller{
                         'count' => $count,
                     ]);
                 }else{
-                    $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->paginate();
+                    $data = [
+                        'friends'=>['gt',0],
+                        'new_friends'=>['gt',0],
+                        'new_nearby'=>['gt',0],
+                        'nearby_per'=>['gt',0],
+                        'nearby_per'=>['lt',1],
+                        'status'=>['eq',1]
+                    ];
+                    $searchData = model('Accounts')->where('username','like','%'.$data.'%')->where($data)->paginate();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
