@@ -10,6 +10,15 @@ class Accounts extends Model
     public function getAccountsData(){
         return model('Accounts')->where(['status'=>1])->order(['create_time'=>'desc'])->paginate();
     }
+    public function getErrorAccountsData(){
+        $data = [
+            [['friends','new_friends','nearby'],['lt',0]],
+            [['near_by'],['lt',0]],
+            [['near_by'],['gt',1]],
+            [['status'],['neq',1]]
+        ];
+        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
+    }
     //获取帐号列表数据,通过时间排序
     public function getAccounts(){
         return model('Accounts')->where(['status'=>1])->order(['id'=>'asc'])->paginate();

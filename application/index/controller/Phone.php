@@ -26,6 +26,24 @@ class Phone extends Controller{
             $this->success('请先登录',url('index/index/index'));
         }
     }
+    //有误帐号列表
+    public function error_list(){
+        if(isset($_COOKIE['admin'])) {
+            $data = model('Accounts')->getErrorAccountsData();
+            $count = model('Accounts')->getCounts();
+            $friendsCounts = model('Accounts')->getFriendsAllCounts();
+            $dayFriends = model('Accounts')->getDayFriends();
+            return $this->fetch('admin/list',[
+                'data'=>$data,
+                'count'=>$count,
+                'friendsCounts'=>$friendsCounts,
+                'dayFriends'=>$dayFriends
+            ]);
+        }
+        else{
+            $this->success('请先登录',url('index/index/index'));
+        }
+    }
     public function edit(){
         if(isset($_COOKIE['admin'])){
             $edit = input('edit');
