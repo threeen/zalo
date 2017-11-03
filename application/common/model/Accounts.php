@@ -9,11 +9,11 @@ class Accounts extends Model
     //获取帐号列表数据,通过时间排序
     public function getAccountsData(){
         $data = [
-            'friends'=>['gt',0],
-            'new_friends'=>['gt',0],
-            'new_nearby'=>['gt',0],
-            'nearby_per'=>['gt',0],
-            'nearby_per'=>['lt',1],
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
         return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
@@ -38,11 +38,11 @@ class Accounts extends Model
     //获取有效帐号总数
     public function getRealCounts(){
         $data = [
-            'friends'=>['gt',0],
-            'new_friends'=>['gt',0],
-            'new_nearby'=>['gt',0],
-            'nearby_per'=>['gt',0],
-            'nearby_per'=>['lt',1],
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
         return model('Accounts')->where($data)->count('id');
@@ -54,11 +54,11 @@ class Accounts extends Model
     //获取日新增的好友总数
     public function getDayFriends(){
         $data = [
-            'friends'=>['gt',0],
-            'new_friends'=>['gt',0],
-            'new_nearby'=>['gt',0],
-            'nearby_per'=>['gt',0],
-            'nearby_per'=>['lt',1],
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
             'status'=>['eq',1],
             'create_time' => ['gt',date('Y-m-d',time())]
         ];
