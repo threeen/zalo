@@ -35,6 +35,18 @@ class Accounts extends Model
     public function getCounts(){
         return model('Accounts')->where(['status'=>1])->count('id');
     }
+    //获取有效帐号总数
+    public function getRealCounts(){
+        $data = [
+            'friends'=>['gt',0],
+            'new_friends'=>['gt',0],
+            'new_nearby'=>['gt',0],
+            'nearby_per'=>['gt',0],
+            'nearby_per'=>['lt',1],
+            'status'=>['eq',1]
+        ];
+        return model('Accounts')->where($data)->count('id');
+    }
     //获取总好友数
     public function getFriendsAllCounts(){
         return model('Accounts')->where(['status'=>1])->sum('friends');
