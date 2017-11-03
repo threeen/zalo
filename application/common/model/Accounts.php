@@ -11,15 +11,13 @@ class Accounts extends Model
         return model('Accounts')->where(['status'=>1])->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
-        $data = [
-            'friends'=>['lt',0],
-            'new_friends'=>['lt',0],
-            'new_nearby'=>['lt',0],
-            'nearby_per'=>['lt',0],
-            'nearby_per'=>['gt',1],
-            'status'=>['neq',1]
-        ];
-        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
+        $data = ['friends'=>['lt',0],];
+        $data1 = ['new_friends'=>['lt',0],];
+        $data2 = ['new_nearby'=>['lt',0],];
+        $data3 = [ 'nearby_per'=>['lt',0],];
+        $data4 = ['nearby_per'=>['gt',1],];
+        $data5 = ['status'=>['neq',1]];
+        return model('Accounts')->where($data)->whereOr($data1)->whereOr($data2)->whereOr($data3)->whereOr($data4)->whereOr($data5)->order(['create_time'=>'desc'])->paginate();
     }
     //获取帐号列表数据,通过时间排序
     public function getAccounts(){
