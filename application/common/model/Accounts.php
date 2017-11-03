@@ -8,7 +8,15 @@ class Accounts extends Model
 {
     //获取帐号列表数据,通过时间排序
     public function getAccountsData(){
-        return model('Accounts')->where(['status'=>1])->order(['create_time'=>'desc'])->paginate();
+        $data = [
+            'friends'=>['gt',0],
+            'new_friends'=>['gt',0],
+            'new_nearby'=>['gt',0],
+            'nearby_per'=>['gt',0],
+            'nearby_per'=>['lt',1],
+            'status'=>['eq',1]
+        ];
+        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
         $data = ['friends'=>['lt',0],];
