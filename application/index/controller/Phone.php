@@ -207,7 +207,6 @@ class Phone extends Controller{
 
                     ];
                     $searchData = model('Accounts')->where($datas)->paginate();
-                    echo model('Accounts')->getLastSql();exit();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
