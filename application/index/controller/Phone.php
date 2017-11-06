@@ -178,7 +178,7 @@ class Phone extends Controller{
             if(isset($_COOKIE['admin'])) {
                 $isset = isset($_COOKIE['searchData']) ? $_COOKIE['searchData'] : '';
                 $data = input('post.account',$isset,'');
-                $simulator_num = input('post.simulator',0);
+                $simulator_num = input('post.simulator');
                 if(empty($data) && empty($simulator_num)){
                     return $this->error("搜索内容为空！");
                 }
@@ -196,7 +196,6 @@ class Phone extends Controller{
                     ]);
                 }else{
                     $datas = [
-                        'simulator_num' =>$simulator_num,
                         'friends'=>['egt',0],
                         'new_friends'=>['egt',0],
                         'new_nearby'=>['egt',0],
@@ -206,6 +205,9 @@ class Phone extends Controller{
                         'username'=>['like','%'.$data.'%'],
 
                     ];
+                    if(isset($simulator_num)){
+                        $datas['simulator_num']=$simulator_num;
+                    }
                     $searchData = model('Accounts')->where($datas)->paginate();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
