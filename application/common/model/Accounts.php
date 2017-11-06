@@ -69,7 +69,7 @@ class Accounts extends Model
         return model('Accounts')->where('username','like','%'.$data.'%')->where(['status'=>1])->count();
     }
     public function getSearchSimulatorCounts($data,$simulator){
-        return model('Accounts')->where('username','like','%'.$data.'%')->where(['simulator'=>$simulator])->where(['status'=>1])->count();
+        return model('Accounts')->where('username','like','%'.$data.'%')->where(['simulator_num'=>$simulator])->where(['status'=>1])->count();
     }
     //获取某段数据
     public function getValueArea($start,$end){
