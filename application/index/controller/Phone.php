@@ -178,8 +178,8 @@ class Phone extends Controller{
             if(isset($_COOKIE['admin'])) {
                 $isset = isset($_COOKIE['searchData']) ? $_COOKIE['searchData'] : '';
                 $data = input('post.account',$isset,'');
-                $simulator_num = input('post.simulator',null,'');
-                if(empty($data) && empty($simulator_num)){
+                //$simulator_num = input('post.simulator',null,'');
+                if(empty($data)){
                     return $this->error("搜索内容为空！");
                 }
                 cookie('searchData',$data);
@@ -203,7 +203,7 @@ class Phone extends Controller{
                         'nearby_per'=>['elt',1],
                         'status'=>['eq',1],
                         'username'=>['like','%'.$data.'%'],
-                        'simulator_num' =>$simulator_num,
+                        //'simulator_num' =>$simulator_num,
                     ];
                     $searchData = model('Accounts')->where($datas)->paginate();
                     $page = $searchData->render();
