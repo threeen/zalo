@@ -203,7 +203,7 @@ class Phone extends Controller{
                         'nearby_per'=>['elt',1],
                         'status'=>['eq',1],
                         'username'=>['like','%'.$data.'%'],
-                        'simulator_num' =>$simulator_num,
+                        'simulator_num' =>1,
                     ];
                     $searchData = model('Accounts')->where($datas)->paginate();
                     $page = $searchData->render();
