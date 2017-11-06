@@ -196,7 +196,7 @@ class Phone extends Controller{
                     ]);
                 }else{
                     $datas = [
-                        
+                        'simulator_num' =>1,
                         'friends'=>['egt',0],
                         'new_friends'=>['egt',0],
                         'new_nearby'=>['egt',0],
@@ -207,7 +207,7 @@ class Phone extends Controller{
 
                     ];
                     $searchData = model('Accounts')->where($datas)->paginate();
-                    model('Accounts')->getLastSql();exit();
+                    echo model('Accounts')->getLastSql();exit();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
