@@ -207,10 +207,12 @@ class Phone extends Controller{
                     ];
                     if(isset($simulator_num)){
                         $datas['simulator_num']=$simulator_num;
+                        $count = model('Accounts')->getSearchSimulatorCounts($data,$simulator_num);
+                    }else{
+                        $count = model('Accounts')->getSearchCounts($data);
                     }
                     $searchData = model('Accounts')->where($datas)->paginate();
                     $page = $searchData->render();
-                    $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
                         'searchData'=>$searchData,
                         'page' => $page,
