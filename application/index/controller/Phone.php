@@ -179,6 +179,7 @@ class Phone extends Controller{
                 $isset = isset($_COOKIE['searchData']) ? $_COOKIE['searchData'] : '';
                 $data = input('post.account',$isset,'');
                 $simulator_num = input('post.simulator',null,'');
+                echo $simulator_num;exit;
                 if(empty($data) && empty($simulator_num)){
                     return $this->error("搜索内容为空！");
                 }
