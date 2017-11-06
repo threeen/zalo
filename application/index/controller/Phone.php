@@ -257,46 +257,49 @@ class Phone extends Controller{
         }
 
     }
-//    public function test()
-//    {
-//        $file = fopen("public/zalo.txt", "r");
-//        $str = $acc = $data = array();
-//        $username = $password = $latitude = $longitude = $device_num = array();
-//        $i=0;
-//        //输出文本中所有的行，直到文件结束为止。
-//        while(! feof($file))
-//        {
-//            $str[$i]= fgets($file);//fgets()函数从文件指针中读取一行
-//            $i++;
-//        }
-//        fclose($file);
-//        $str=array_filter($str);
-//        foreach($str as $value){
-//            $acc[][]= explode('|',$value);
-//        }
-//        foreach($acc as $key=>$value){
-//            foreach($value as $key => $val){
-//                foreach($val as $key=> $v){
-//                    if($key == 0)
-//                    $username[] = $val[$key];
-//                    elseif($key == 1)
-//                    $password[] = $val[$key];
-//                    elseif($key == 2)
-//                    $latitude[] = $val[$key];
-//                    elseif($key == 3)
-//                    $longitude[] = $val[$key];
-//                    elseif($key == 4)
-//                    $device_num[] = $val[$key];
-//                }
-//            }
-//        }
-//        for($i=0;$i<count($username)-1;$i++){
-//            $data[$i]['username']=$username[$i];
-//            $data[$i]['password']=$password[$i];
-//            $data[$i]['latitude']=$latitude[$i];
-//            $data[$i]['longitude']=$longitude[$i];
-//            $data[$i]['device_num']=$device_num[$i];
-//        }
-//        model('NewAccounts')->allowField(true)->saveAll($data);
-//    }
+    //读取新账号存入数据库
+    public function test()
+    {
+        $last_simulator_num = model('NewAccounts')->where(['id'=>max('id')])->find();
+        echo $last_simulator_num['id'];exit();
+        $file = fopen("public/zalo.txt", "r");
+        $str = $acc = $data = array();
+        $username = $password = $latitude = $longitude = $device_num = array();
+        $i=0;
+        //输出文本中所有的行，直到文件结束为止。
+        while(! feof($file))
+        {
+            $str[$i]= fgets($file);//fgets()函数从文件指针中读取一行
+            $i++;
+        }
+        fclose($file);
+        $str=array_filter($str);
+        foreach($str as $value){
+            $acc[][]= explode('|',$value);
+        }
+        foreach($acc as $key=>$value){
+            foreach($value as $key => $val){
+                foreach($val as $key=> $v){
+                    if($key == 0)
+                    $username[] = $val[$key];
+                    elseif($key == 1)
+                    $password[] = $val[$key];
+                    elseif($key == 2)
+                    $latitude[] = $val[$key];
+                    elseif($key == 3)
+                    $longitude[] = $val[$key];
+                    elseif($key == 4)
+                    $device_num[] = $val[$key];
+                }
+            }
+        }
+        for($i=0;$i<count($username)-1;$i++){
+            $data[$i]['username']=$username[$i];
+            $data[$i]['password']=$password[$i];
+            $data[$i]['latitude']=$latitude[$i];
+            $data[$i]['longitude']=$longitude[$i];
+            $data[$i]['device_num']=$device_num[$i];
+        }
+        model('NewAccounts')->allowField(true)->saveAll($data);
+    }
 }
