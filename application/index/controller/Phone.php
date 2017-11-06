@@ -196,7 +196,7 @@ class Phone extends Controller{
                     ]);
                 }else{
                     $datas = [
-                        'simulator_num' =>$simulator_num,
+                        'simulator_num' =>1,
                         'friends'=>['egt',0],
                         'new_friends'=>['egt',0],
                         'new_nearby'=>['egt',0],
