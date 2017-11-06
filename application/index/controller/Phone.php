@@ -203,9 +203,10 @@ class Phone extends Controller{
                         'nearby_per'=>['elt',1],
                         'status'=>['eq',1],
                         'username'=>['like','%'.$data.'%'],
-                        'simulator_num' =>1,
+
                     ];
-                    $searchData = model('Accounts')->where($datas)->paginate();
+                    $datasss = ['simulator_num' =>1];
+                    $searchData = model('Accounts')->where($datas)->where($datasss)->paginate();
                     $page = $searchData->render();
                     $count = model('Accounts')->getSearchCounts($data);
                     return $this->fetch('admin/search',[
