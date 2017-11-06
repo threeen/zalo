@@ -16,6 +16,7 @@
             <thead>
             <tr class="text-c">
                 <th width="80">ID</th>
+                <th width="80">模拟器编号</th>
                 <th width="100">用户名</th>
                 <th width="30">好友总数</th>
                 <th width="50">日新增好友数</th>
@@ -30,6 +31,7 @@
             {volist name="data" id="vo"}
             <tr class="text-c">
                 <td>{$vo.id}</td>
+                <th></th>
                 <td>{$vo.username}</td>
                 <td class="text-c">{$vo.friends}</td>
                 <td class="text-c">{$vo.new_friends}</td>
