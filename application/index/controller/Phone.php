@@ -18,7 +18,7 @@ class Phone extends Controller{
             $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
-            $page = $data->render();print_r(input('get.page'));exit();
+            $page = $data->render();print_r(input('get.currentPage'));exit();
             return $this->fetch('admin/list',[
                 'data'=>$data,
                 'count'=>$count,
