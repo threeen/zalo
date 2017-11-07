@@ -30,12 +30,9 @@
             </tr>
             </thead>
             <tbody>
-            {foreach name="$data" item="vo" key="k"}
+            {volist name="data" id="vo" key="k"}
             <tr class="text-c">
-                {for start="1" end="100"}
-                <td>{$i}</td>
-                {break}
-                {/for}
+                <td>{$k}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
@@ -52,7 +49,7 @@
                 </td>
             </tr>
 
-            {/foreach}
+            {/volist}
             </tbody>
         </table>
         {$data->render()}
