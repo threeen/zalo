@@ -31,8 +31,9 @@
             </thead>
             <tbody>
             {volist name="data" id="vo" key="k"}
+            <?php $i=1;?>
             <tr class="text-c">
-                <td>{$k}</td>
+                <td><?php echo $i;$i++ ?></td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
