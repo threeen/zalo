@@ -30,10 +30,9 @@
             </tr>
             </thead>
             <tbody>
-            {foreach from="$data" item="vo" name=foo}
-            {$smarty.foreach.foo.index}|{$smarty.foreach.foo.iteration},
+            {foreach name="$data" item="vo" key="k"}
             <tr class="text-c">
-                <td>{$smarty.foreach.foo.iteration}</td>
+                <td>{$k}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
