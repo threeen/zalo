@@ -30,10 +30,9 @@
             </tr>
             </thead>
             <tbody>
-            {$i=1}
-            {volist name="data" id="vo" key="k" length="$realCount"}
+            {volist name="data" id="vo" key="k" offset="1" length="$realCount"}
             <tr class="text-c">
-                <td>{$i+1}</td>
+                <td>{$k}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
