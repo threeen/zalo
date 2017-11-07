@@ -24,7 +24,7 @@ class Phone extends Controller{
                 'friendsCounts'=>$friendsCounts,
                 'dayFriends'=>$dayFriends,
                 'page'=>$page,
-                'nowPage'=>$data->getCurrentPage
+                'nowPage'=>$data.page
             ]);
         }
         else{
