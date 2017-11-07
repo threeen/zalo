@@ -29,10 +29,11 @@
                 <th width="100">操作</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody>{assign var=i value=0}
             {volist name="data" id="vo" key="k" length="$realCount"}
             <tr class="text-c">
-                <td></td>
+                {assign var=i value=$i+1}
+                <td>{$i}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
