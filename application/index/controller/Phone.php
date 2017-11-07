@@ -12,8 +12,7 @@ class Phone extends Controller{
     public function list_phone(){
         if(isset($_COOKIE['admin'])) {
             $data = model('Accounts')->getAccountsData();
-            echo print_r($data['items']);
-            //print_r($data);exit();
+            print_r($data);exit();
             $count = model('Accounts')->getCounts();
             $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
