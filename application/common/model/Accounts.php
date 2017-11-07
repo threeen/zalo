@@ -16,8 +16,7 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate(15,true,['type'=> 'bootstrap',
-    'var_page' => 'page',]);
+        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
         $data = ['friends'=>['lt',0],];
