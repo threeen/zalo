@@ -13,12 +13,12 @@ class Phone extends Controller{
         if(isset($_COOKIE['admin'])) {
             $data = model('Accounts')->getAccountsData();
 
-            print_r($data);exit();
+
             $count = model('Accounts')->getCounts();
             $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
-            $page = $data->render();
+            $page = $data->render();print_r($page);exit();
             return $this->fetch('admin/list',[
                 'data'=>$data,
                 'count'=>$count,
