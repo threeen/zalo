@@ -32,9 +32,8 @@
             <tbody>
             {$i=1}
             {volist name="data" id="vo" key="k" length="$realCount"}
-            {$i=$i+1}
             <tr class="text-c">
-                <td>{$i}</td>
+                <td>{$i+1}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
