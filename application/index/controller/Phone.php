@@ -13,7 +13,7 @@ class Phone extends Controller{
         if(isset($_COOKIE['admin'])) {
             $data = model('Accounts')->getAccountsData();
 
-            print_r($data);exit();
+            print_r($data['var_page']);exit();
             $count = model('Accounts')->getCounts();
             $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
