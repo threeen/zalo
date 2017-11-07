@@ -30,9 +30,10 @@
             </tr>
             </thead>
             <tbody>
+            <?php $i=1; ?>
             {foreach name="$data" item="vo" key="k"}
             <tr class="text-c">
-                <td>{$iteration}</td>
+                <td><?php echo $i;$i++; ?></td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
