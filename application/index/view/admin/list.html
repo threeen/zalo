@@ -30,10 +30,10 @@
             </tr>
             </thead>
             <tbody>
-            <?php static $i=1; ?>
+            <?php static $i=0; ?>
             {foreach name="$data" item="vo" key="k"}
             <tr class="text-c">
-                <td><?php echo $i;$i++; ?></td>
+                <td><?php echo $i;$i=$i+1; ?></td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
