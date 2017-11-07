@@ -16,12 +16,14 @@ class Phone extends Controller{
             $realCounts = model('Accounts')->getRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
+            $page = $data->render();
             return $this->fetch('admin/list',[
                 'data'=>$data,
                 'count'=>$count,
                 'realCount'=>$realCounts,
                 'friendsCounts'=>$friendsCounts,
-                'dayFriends'=>$dayFriends
+                'dayFriends'=>$dayFriends,
+                'page'=>$page
             ]);
         }
         else{
