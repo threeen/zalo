@@ -16,7 +16,7 @@
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
-                <th width="40">ID</th>
+                <th width="40">序号</th>
                 <th width="40">ID</th>
                 <th width="40">模拟器编号</th>
                 <th width="100">用户名</th>
@@ -30,9 +30,9 @@
             </tr>
             </thead>
             <tbody>
-            {volist name="data" id="vo"}
+            {volist name="data" id="vo" key="k"}
             <tr class="text-c">
-                <td></td>
+                <td>{$k}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
