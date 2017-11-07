@@ -32,7 +32,7 @@
             <tbody>
             {foreach from="$data" name="foo" item="vo" key="k"}
             <tr class="text-c">
-                <td>{$foo.iteration}</td>
+                <td>{$smarty.foreach.foo.iteration}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
