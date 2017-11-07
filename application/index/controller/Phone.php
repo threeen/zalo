@@ -23,7 +23,8 @@ class Phone extends Controller{
                 'realCount'=>$realCounts,
                 'friendsCounts'=>$friendsCounts,
                 'dayFriends'=>$dayFriends,
-                'page'=>$page
+                'page'=>$page,
+                'nowPage'=>$page.currentPage
             ]);
         }
         else{
