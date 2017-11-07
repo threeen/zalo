@@ -32,7 +32,10 @@
             <tbody>
             {foreach name="$data" item="vo" key="k"}
             <tr class="text-c">
-                <td>{$k}</td>
+                {for start=1 end=100}
+                <td>{$i}</td>
+                {break}
+                {/for}
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
