@@ -30,9 +30,11 @@
             </tr>
             </thead>
             <tbody>
+            {for start="1" end="realCount" }
+
             {volist name="data" id="vo" key="k" length="realCount"}
             <tr class="text-c">
-                <td>{$k}</td>
+                <td>{$i}</td>
                 <td>{$vo.id}</td>
                 <th></th>
                 <td>{$vo.username}</td>
@@ -49,7 +51,7 @@
                 </td>
             </tr>
             {/volist}
-
+            {/for}
             </tbody>
         </table>
         {$data->render()}
