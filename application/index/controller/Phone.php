@@ -275,12 +275,12 @@ class Phone extends Controller{
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
         $files=scandir($dir);
-        $username = $password = $latitude = $longitude = $device_num = array();
+
         print_r($files);//exit;
         for($j=2;$j<count($files);$j++){
             $file = fopen("public/zalo帐号/$files[$j]", "r");
             $str = $acc = $data = array();
-
+            $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
             //输出文本中所有的行，直到文件结束为止。
             while(! feof($file))
@@ -326,7 +326,7 @@ class Phone extends Controller{
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
         if($result){
             echo "帐号入库成功";
-            //unlink('public/zalo帐号/'.$files[$i])
+            unlink('public/zalo帐号/'.$files[$j]);
         }
     }
 }
