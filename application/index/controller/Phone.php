@@ -308,7 +308,7 @@ class Phone extends Controller{
             $data[$i]['username']=$username[$i];
             $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
             if($exist_user){
-                echo "该帐号".$exist_user."已经存在";
+                echo "该帐号".$exist_user['username']."已经存在";
             }
             $data[$i]['password']=$password[$i];
             $data[$i]['latitude']=$latitude[$i];
