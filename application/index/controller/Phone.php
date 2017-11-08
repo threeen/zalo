@@ -305,17 +305,21 @@ class Phone extends Controller{
             }
         }
         for($i=0;$i<count($username)-1;$i++){
-            $data[$i]['username']=$username[$i];
             $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
             if($exist_user){
-                echo "该帐号".$exist_user['username']."已经存在";
+                echo "该帐号".$exist_user['username']."已经存在"."<br>";
+            }else{
+                $data[$i]['username']=$username[$i];
+                $data[$i]['password']=$password[$i];
+                $data[$i]['latitude']=$latitude[$i];
+                $data[$i]['longitude']=$longitude[$i];
+                $data[$i]['device_num']=$device_num[$i];
             }
-            $data[$i]['password']=$password[$i];
-            $data[$i]['latitude']=$latitude[$i];
-            $data[$i]['longitude']=$longitude[$i];
-            $data[$i]['device_num']=$device_num[$i];
             //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
         }
-        model('NewAccounts')->allowField(true)->saveAll($data);
+        $result = model('NewAccounts')->allowField(true)->saveAll($data);
+        if($result){
+            echo "帐号入库成功";
+        }
     }
 }
