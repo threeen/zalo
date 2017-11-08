@@ -278,7 +278,7 @@ class Phone extends Controller{
         for($i=2;$i<count($files);$i++){
             $start = file_get_contents('public/zalo帐号/'.$files[$i]);
             $txt = file_get_contents('public/index.txt');
-            $end = file_put_contents('public/index.txt',$txt.$start);
+            $end = file_put_contents('public/index.txt',$txt."<br>".$start);
         }
         $txt = file_get_contents('public/index.txt');
         echo $txt;
