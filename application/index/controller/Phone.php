@@ -272,7 +272,9 @@ class Phone extends Controller{
     public function fileInsert(){
         $dir="public/zalo帐号/";
         $files=scandir($dir);
-        print_r($files);//exit;
+        if(empty($files)){
+            echo "没有可上传帐号";
+        }
         $j = 2;
         for($j=2;$j<count($files);$j++){
             $this->test($files[$j]);
