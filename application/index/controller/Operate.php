@@ -141,26 +141,17 @@ class Operate extends Controller{
         if($isset){
              //执行新账号上传逻辑
             $files = request()->file('image');
-//            foreach($files as $file){
-//                // 移动到框架应用根目录/public/uploads/ 目录下
-//                $info = $file->validate(['size'=>1024*1024,'ext'=>'txt'])->move(ROOT_PATH . 'public' . DS . 'zalo帐号');
-//                if($info){
-//                    echo "上传成功";
-//                }else{
-//                    // 上传失败获取错误信息
-//                    return $file->getError();
-//                }
-//
-//            }
-//            print_r($files);exit;
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/public/zalo帐号/");
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $files);
-            $result = curl_exec($curl);
-            curl_close($curl);
-            echo json_decode($result);
+            foreach($files as $file){
+                // 移动到框架应用根目录/public/uploads/ 目录下
+                $info = $file->validate(['size'=>1024*1024,'ext'=>'txt'])->move(ROOT_PATH . 'public' . DS . 'zalo帐号');
+                if($info){
+                    echo "上传成功";
+                }else{
+                    // 上传失败获取错误信息
+                    return $file->getError();
+                }
+
+            }
         }else{
             return $this->fetch('admin/operate/send_new_accounts');
         }
