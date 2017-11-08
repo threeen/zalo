@@ -14,6 +14,7 @@ class Phone extends Controller{
             $data = model('Accounts')->getAccountsData();
             $count = model('Accounts')->getCounts();
             $realCounts = model('Accounts')->getRealCounts();
+            $realDayCounts = model('Accounts')->getDayRealCounts();
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
             $page = $data->render();
@@ -21,6 +22,7 @@ class Phone extends Controller{
                 'data'=>$data,
                 'count'=>$count,
                 'realCount'=>$realCounts,
+                'realDayCount'=>$realDayCounts,
                 'friendsCounts'=>$friendsCounts,
                 'dayFriends'=>$dayFriends,
                 'page'=>$page,

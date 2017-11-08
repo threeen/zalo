@@ -47,6 +47,20 @@ class Accounts extends Model
         ];
         return model('Accounts')->where($data)->count('id');
     }
+    //获取当天有效帐号总数
+    public function getDayRealCounts(){
+        $today = date("Y-m-d");
+        $data = [
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
+            'status'=>['eq',1],
+            'create_time'=>['gt',$today]
+        ];
+        return model('Accounts')->where($data)->count('id');
+    }
     //获取总好友数
     public function getFriendsAllCounts(){
         return model('Accounts')->where(['status'=>1])->sum('friends');
