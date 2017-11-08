@@ -269,8 +269,8 @@ class Phone extends Controller{
     //读取新账号存入数据库
     public function test()
     {
-        $last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
-        echo $last_simulator_num['simulator_num'];exit();
+//        $last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
+//        echo $last_simulator_num['simulator_num'];exit();
         $file = fopen("public/zalo.txt", "r");
         $str = $acc = $data = array();
         $username = $password = $latitude = $longitude = $device_num = array();
@@ -308,7 +308,7 @@ class Phone extends Controller{
             $data[$i]['latitude']=$latitude[$i];
             $data[$i]['longitude']=$longitude[$i];
             $data[$i]['device_num']=$device_num[$i];
-            $data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
+            //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
         }
         model('NewAccounts')->allowField(true)->saveAll($data);
     }
