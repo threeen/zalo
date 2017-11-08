@@ -272,16 +272,16 @@ class Phone extends Controller{
     public function test()
     {
         //$last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
-//        //echo $last_simulator_num['simulator_num'];exit();
-//        $dir="public/zalo帐号/";
-//        $files=scandir($dir);
-//        for($i=2;$i<count($files);$i++){
-//            $start = file_get_contents('public/zalo帐号/'.$files[$i]);
-//            $txt = file_get_contents('public/index.txt');
-//            $end = file_put_contents('public/index.txt',$txt."<br>".$start);
-//        }
+        //echo $last_simulator_num['simulator_num'];exit();
+        $dir="public/zalo帐号/";
+        $files=scandir($dir);
+        for($i=2;$i<count($files);$i++){
+            $start = file_get_contents('public/zalo帐号/'.$files[$i]);
+            $txt = file_get_contents('public/index.txt');
+            $end = file_put_contents('public/index.txt',$txt."<br>".$start);
+        }
+        $txt = file_get_contents('public/index.txt');
             $file = fopen("public/index.txt", "r");
-        echo $file;exit;
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
