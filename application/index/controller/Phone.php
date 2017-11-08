@@ -273,9 +273,8 @@ class Phone extends Controller{
         $files=scandir($dir);
         print_r($files);//exit;
         $j = 2;
-        while($files){
+        for($j=2;$j<count($files);$j++){
             $this->test($files[$j]);
-            $j++;
         }
     }
     //读取新账号存入数据库
