@@ -140,8 +140,18 @@ class Operate extends Controller{
         $isset = input('send');
         if($isset){
              //执行新账号上传逻辑
+            $files = request()->file('image');
+            foreach($files as $file){
+                // 移动到框架应用根目录/public/uploads/ 目录下
+                $info = $file->validate(['size'=>1024*1024,'ext'=>'txt'])->move(ROOT_PATH . 'public' . DS . 'zalo帐号');
+                if($info){
+                    echo "上传成功";
+                }else{
+                    // 上传失败获取错误信息
+                    return $file->getError();
+                }
 
-            $files = request()->file('image');echo "sfds";
+            }
             print_r($files);exit;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/index/public/zalo帐号");
