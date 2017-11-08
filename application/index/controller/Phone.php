@@ -268,6 +268,7 @@ class Phone extends Controller{
         }
 
     }
+    //调用test方法
     public function fileInsert(){
         $dir="public/zalo帐号/";
         $files=scandir($dir);
