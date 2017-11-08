@@ -321,10 +321,10 @@ class Phone extends Controller{
                 }
                 //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
             }
-            $result = model('NewAccounts')->allowField(true)->saveAll($data);
-            if($result){
-                echo "帐号入库成功";
-            }
+        }
+        $result = model('NewAccounts')->allowField(true)->saveAll($data);
+        if($result){
+            echo "帐号入库成功";
         }
     }
 }
