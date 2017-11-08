@@ -49,7 +49,6 @@ class Accounts extends Model
     }
     //获取当天有效帐号总数
     public function getDayRealCounts(){
-        $today = date("Y-m-d");
         $data = [
             'friends'=>['egt',0],
             'new_friends'=>['egt',0],
@@ -57,7 +56,7 @@ class Accounts extends Model
             'nearby_per'=>['egt',0],
             'nearby_per'=>['elt',1],
             'status'=>['eq',1],
-            'create_time'=>['gt',$today]
+            'create_time'=>['gt',date('Y-m-d',time())]
         ];
         return model('Accounts')->where($data)->count('id');
     }
