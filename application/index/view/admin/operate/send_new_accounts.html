@@ -7,9 +7,11 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 新账号上传 </nav>
 <div class="page-container">
-    <div id="upload"></div>
-    <input type="button" value="添加附件" class="send" onclick="createUploader()">
-    <a href="" ><input type="submit" class="send" value="上传" ></a>
+    <form action="{:url('Operate/sendNewAccounts',['send'=>1])}" enctype="multipart/form-data" method="post">
+        <div id="upload"></div>
+        <input type="button" value="添加附件" class="send" onclick="createUploader()">
+        <a href="" ><input type="submit" class="send" value="上传" ></a>
+    </form>
 </div>
 <script>
     function createUploader(){

@@ -137,7 +137,22 @@ class Operate extends Controller{
     }
     //新账号上传
     public function sendNewAccounts(){
-        return $this->fetch('admin/operate/send_new_accounts');
+        $isset = input('get.send');
+        if($isset){
+             //执行新账号上传逻辑
+            $curl = curl_init();
+            $files = request()->file('image');
+            print_r($files);exit;
+            curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/index/public/zalo帐号");
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $files);
+            $result = curl_exec($curl);
+            curl_close($curl);
+            echo json_decode($result);
+        }else{
+            return $this->fetch('admin/operate/send_new_accounts');
+        }
     }
 
 }
