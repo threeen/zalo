@@ -154,7 +154,7 @@ class Operate extends Controller{
 //            }
 //            print_r($files);exit;
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/index/public/zalo帐号/");
+            curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/public/zalo帐号/");
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $files);
