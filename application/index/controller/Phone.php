@@ -270,7 +270,7 @@ class Phone extends Controller{
     public function test()
     {
         $last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
-        echo $last_simulator_num['simulator_num'];exit();
+        //echo $last_simulator_num['simulator_num'];exit();
         $file = fopen("public/zalo.txt", "r");
         $str = $acc = $data = array();
         $username = $password = $latitude = $longitude = $device_num = array();
