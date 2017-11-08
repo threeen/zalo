@@ -277,8 +277,8 @@ class Phone extends Controller{
         $files=scandir($dir);
 
         print_r($files);//exit;
-        for($i=2;$i<count($files);$i++){
-            $file = fopen("public/zalo帐号/$files[$i]", "r");
+        for($j=2;$j<count($files);$j++){
+            $file = fopen("public/zalo帐号/$files[$j]", "r");
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
@@ -326,6 +326,7 @@ class Phone extends Controller{
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
         if($result){
             echo "帐号入库成功";
+            //unlink('public/zalo帐号/'.$files[$i])
         }
     }
 }
