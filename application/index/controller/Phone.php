@@ -295,7 +295,7 @@ class Phone extends Controller{
             fclose($file);
             $str=array_filter($str);
             foreach($str as $value){
-                $acc[][]= explode('|',$value);
+                $acc[][]= explode('|',trim($value));
             }
             foreach($acc as $key=>$value){
                 foreach($value as $key => $val){
