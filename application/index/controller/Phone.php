@@ -294,7 +294,7 @@ class Phone extends Controller{
             }
             fclose($file);
             $str=array_filter($str);
-            $str = trim($str,'');
+            $str = trim($str);
             //$str = preg_replace("/(\r\n|\n|\r|\t)/i", '', $str);
             foreach($str as $value){
                 $acc[][]= explode('|',$value);
