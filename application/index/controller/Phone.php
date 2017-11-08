@@ -323,7 +323,7 @@ class Phone extends Controller{
                 $result = model('NewAccounts')->allowField(true)->saveAll($data);
                 if ($result) {
                     echo "帐号入库成功";
-                    unlink('public/zalo帐号/'.$file[$j]);
+                    unlink('public/zalo帐号/'.$files[$j]);
                 }
             }
     }
