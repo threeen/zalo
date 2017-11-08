@@ -140,9 +140,10 @@ class Operate extends Controller{
         $isset = input('get.send');
         if($isset){
              //执行新账号上传逻辑
-            $curl = curl_init();
-            $files = request()->file('image');
+
+            $files = request()->file('image');echo "sfds";
             print_r($files);exit;
+            $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, "http://zalo.dayugame.cn/index/public/zalo帐号");
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_POST, true);
