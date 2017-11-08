@@ -36,4 +36,8 @@ class NewAccounts extends Model
     public function getValueArea($start,$end){
         return model('NewAccounts')->where(['status'=>1])->limit($start, $end)->select();
     }
+    //根据帐号名获取当个帐号数据
+    public function getOneAccounts($username){
+        return model('NewAccounts')->where(['username'=>$username])->find();
+    }
 }
