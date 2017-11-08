@@ -143,7 +143,7 @@ class Operate extends Controller{
             $files = request()->file('image');
             foreach($files as $file){
                 // 移动到框架应用根目录/public/uploads/ 目录下
-                $info = $file->validate(['size'=>1024*1024,'ext'=>'txt'])->move(ROOT_PATH . 'public' . DS . 'zalo帐号');
+                $info = $file->validate(['size'=>1024*1024,'ext'=>'jpg,png'])->move(ROOT_PATH . 'public' . DS . 'zalo帐号');
                 if($info){
                     echo "上传成功";
                 }else{
