@@ -275,53 +275,49 @@ class Phone extends Controller{
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
         $files=scandir($dir);
-        $username = $password = $latitude = $longitude = $device_num = array();
-        print_r($files);
-        foreach($files as $key=>$value){
-            if($key>=2) {
-                $file = fopen("public/zalo帐号/$files[$key]", "r");
-                $str = $acc = $data = array();
-
-                $i = 0;
-                //输出文本中所有的行，直到文件结束为止。
-                while (!feof($file)) {
-                    $str[$i] = fgets($file);//fgets()函数从文件指针中读取一行
-                    $i++;
-                }
-                fclose($file);
-                $str = array_filter($str);
-                foreach ($str as $value) {
-                    $acc[][] = explode('|', $value);
-                }
-                foreach ($acc as $key => $value) {
-                    foreach ($value as $key => $val) {
-                        foreach ($val as $key => $v) {
-                            if ($key == 0)
-                                $username[] = $val[$key];
-                            elseif ($key == 1)
-                                $password[] = $val[$key];
-                            elseif ($key == 2)
-                                $latitude[] = $val[$key];
-                            elseif ($key == 3)
-                                $longitude[] = $val[$key];
-                            elseif ($key == 4)
-                                $device_num[] = $val[$key];
-                        }
+        while($files) {
+            $file = fopen("public/zalo帐号/$files", "r");
+            $str = $acc = $data = array();
+            $username = $password = $latitude = $longitude = $device_num = array();
+            $i = 0;
+            //输出文本中所有的行，直到文件结束为止。
+            while (!feof($file)) {
+                $str[$i] = fgets($file);//fgets()函数从文件指针中读取一行
+                $i++;
+            }
+            fclose($file);
+            $str = array_filter($str);
+            foreach ($str as $value) {
+                $acc[][] = explode('|', $value);
+            }
+            foreach ($acc as $key => $value) {
+                foreach ($value as $key => $val) {
+                    foreach ($val as $key => $v) {
+                        if ($key == 0)
+                            $username[] = $val[$key];
+                        elseif ($key == 1)
+                            $password[] = $val[$key];
+                        elseif ($key == 2)
+                            $latitude[] = $val[$key];
+                        elseif ($key == 3)
+                            $longitude[] = $val[$key];
+                        elseif ($key == 4)
+                            $device_num[] = $val[$key];
                     }
                 }
-                for ($i = 0; $i < count($username) - 1; $i++) {
-                    $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
-                    if ($exist_user) {
-                        echo "该帐号" . $exist_user['username'] . "已经存在" . "<br>";
-                    } else {
-                        $data[$i]['username'] = $username[$i];
-                        $data[$i]['password'] = $password[$i];
-                        $data[$i]['latitude'] = $latitude[$i];
-                        $data[$i]['longitude'] = $longitude[$i];
-                        $data[$i]['device_num'] = $device_num[$i];
-                    }
-                    //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
+            }
+            for ($i = 0; $i < count($username) - 1; $i++) {
+                $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
+                if ($exist_user) {
+                    echo "该帐号" . $exist_user['username'] . "已经存在" . "<br>";
+                } else {
+                    $data[$i]['username'] = $username[$i];
+                    $data[$i]['password'] = $password[$i];
+                    $data[$i]['latitude'] = $latitude[$i];
+                    $data[$i]['longitude'] = $longitude[$i];
+                    $data[$i]['device_num'] = $device_num[$i];
                 }
+                //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
             }
         }
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
