@@ -275,13 +275,14 @@ class Phone extends Controller{
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
         $files=scandir($dir);
-        print_r($files);
-        $str = $acc = $data = array();
         $username = $password = $latitude = $longitude = $device_num = array();
-        $i = 0;
+        print_r($files);
         foreach($files as $key=>$value){
             if($key>=2) {
                 $file = fopen("public/zalo帐号/$files[$key]", "r");
+                $str = $acc = $data = array();
+
+                $i = 0;
                 //输出文本中所有的行，直到文件结束为止。
                 while (!feof($file)) {
                     $str[$i] = fgets($file);//fgets()函数从文件指针中读取一行
@@ -321,9 +322,6 @@ class Phone extends Controller{
                     }
                     //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
                 }
-            }
-            if($key>=5){
-                break;
             }
         }
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
