@@ -137,7 +137,7 @@ class Operate extends Controller{
     }
     //新账号上传
     public function sendNewAccounts(){
-        return $this->fetch('operate/send_new_accounts');
+        return $this->fetch('admin/operate/send_new_accounts');
     }
 
 }
