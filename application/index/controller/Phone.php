@@ -268,7 +268,7 @@ class Phone extends Controller{
         }
 
     }
-    public function file_insert(){
+    public function fileInsert(){
         $dir="public/zalo帐号/";
         $files=scandir($dir);
         print_r($files);//exit;
