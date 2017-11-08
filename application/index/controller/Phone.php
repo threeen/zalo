@@ -275,8 +275,9 @@ class Phone extends Controller{
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
         $files=scandir($dir);
+        $i=2;
         while($files) {
-            $file = fopen("public/zalo帐号/$files", "r");
+            $file = fopen("public/zalo帐号/$files[$i]", "r");
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i = 0;
@@ -319,6 +320,7 @@ class Phone extends Controller{
                 }
                 //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
             }
+            $i++;
         }
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
         if($result){
