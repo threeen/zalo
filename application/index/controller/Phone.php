@@ -300,6 +300,10 @@ class Phone extends Controller{
                 $acc[][]= explode('|',$value);
             }
             foreach($acc as $key=>$value){
+                if( !$value )
+                    unset( $acc[$key] );
+                    continue;
+                }
                 foreach($value as $key => $val){
                     foreach($val as $key=> $v){
                         if($key == 0)
