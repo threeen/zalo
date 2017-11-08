@@ -274,10 +274,10 @@ class Phone extends Controller{
         //$last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
-        $file=scandir($dir);
-        print_r($file);//exit;
-        for($i=2;$i<count($file);$i++){
-            $file = fopen("public/zalo帐号/$file[$i]", "r");
+        $files=scandir($dir);
+        print_r($files);//exit;
+        for($i=2;$i<count($files);$i++){
+            $file = fopen("public/zalo帐号/$files[$i]", "r");
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
