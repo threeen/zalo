@@ -281,6 +281,7 @@ class Phone extends Controller{
 //            $end = file_put_contents('public/index.txt',$txt."<br>".$start);
 //        }
             $file = fopen("public/index.txt", "r");
+        echo $file;exit;
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
