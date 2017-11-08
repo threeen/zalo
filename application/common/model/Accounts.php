@@ -62,7 +62,15 @@ class Accounts extends Model
     }
     //获取总好友数
     public function getFriendsAllCounts(){
-        return model('Accounts')->where(['status'=>1])->sum('friends');
+        $data = [
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
+            'status'=>['eq',1],
+        ];
+        return model('Accounts')->where($data)->sum('friends');
     }
     //获取日新增的好友总数
     public function getDayFriends(){
