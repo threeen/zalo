@@ -268,15 +268,22 @@ class Phone extends Controller{
         }
 
     }
-    //读取新账号存入数据库
-    public function test()
-    {
-        //$last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
-        //echo $last_simulator_num['simulator_num'];exit();
+    public function file_insert(){
         $dir="public/zalo帐号/";
         $files=scandir($dir);
         print_r($files);//exit;
-            $file = fopen("public/zalo帐号/zalo.txt", "r");
+        $j = 2;
+        while($files){
+            $this->test($files[$j]);
+            $j++;
+        }
+    }
+    //读取新账号存入数据库
+    public function test($filename)
+    {
+        //$last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
+        //echo $last_simulator_num['simulator_num'];exit();
+            $file = fopen("public/zalo帐号/".$filename, "r");
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
