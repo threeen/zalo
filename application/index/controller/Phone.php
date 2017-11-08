@@ -271,7 +271,7 @@ class Phone extends Controller{
     //读取新账号存入数据库
     public function test()
     {
-        $last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
+        //$last_simulator_num = model('NewAccounts')->where(['status'=>1])->order(['id'=>'desc'])->find();
         //echo $last_simulator_num['simulator_num'];exit();
         $file = fopen("public/zalo.txt", "r");
         $str = $acc = $data = array();
@@ -306,6 +306,10 @@ class Phone extends Controller{
         }
         for($i=0;$i<count($username)-1;$i++){
             $data[$i]['username']=$username[$i];
+            $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
+            if($exist_user){
+                echo "该帐号".$exist_user."已经存在";
+            }
             $data[$i]['password']=$password[$i];
             $data[$i]['latitude']=$latitude[$i];
             $data[$i]['longitude']=$longitude[$i];
