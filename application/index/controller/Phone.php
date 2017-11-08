@@ -307,7 +307,7 @@ class Phone extends Controller{
                         }
                     }
                 }
-                for ($i = 0; $i < count($username) - 1; $i++) {
+                for ($i = 0; $i < count($username) ; $i++) {
                     $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
                     if ($exist_user) {
                         echo "该帐号" . $exist_user['username'] . "已经存在" . "<br>";
