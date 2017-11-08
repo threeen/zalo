@@ -308,7 +308,7 @@ class Phone extends Controller{
             $data[$i]['latitude']=$latitude[$i];
             $data[$i]['longitude']=$longitude[$i];
             $data[$i]['device_num']=$device_num[$i];
-            $data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
+            //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
         }
         model('NewAccounts')->allowField(true)->saveAll($data);
     }
