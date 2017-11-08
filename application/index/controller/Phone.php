@@ -275,7 +275,7 @@ class Phone extends Controller{
         //echo $last_simulator_num['simulator_num'];exit();
         $dir="public/zalo帐号/";
         $files=scandir($dir);
-        print_r($files);exit;
+        print_r($files);
         for($i=2;$i<count($files);$i++){
             $file = fopen("public/zalo帐号/$files[$i]", "r");
             $str = $acc = $data = array();
