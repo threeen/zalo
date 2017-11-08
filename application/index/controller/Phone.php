@@ -276,7 +276,7 @@ class Phone extends Controller{
 //        $dir="public/zalo帐号/";
 //        $files=scandir($dir);
 //        print_r($files);//exit;
-            $file = fopen("public/zalo帐号/1-1.txt", "r");
+            $file = fopen("public/zalo帐号/".$_GET['name'].".txt", "r");
             $str = $acc = $data = array();
             $username = $password = $latitude = $longitude = $device_num = array();
             $i=0;
