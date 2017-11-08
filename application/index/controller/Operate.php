@@ -137,7 +137,7 @@ class Operate extends Controller{
     }
     //新账号上传
     public function sendNewAccounts(){
-        $isset = input('get.send');
+        $isset = input('send');
         if($isset){
              //执行新账号上传逻辑
 
