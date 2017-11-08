@@ -280,7 +280,7 @@ class Phone extends Controller{
             $txt = file_get_contents('public/index.txt');
             //$end = file_put_contents('public/index.txt',$txt.$start);
         }
-        $txt = file_get_contents('index.txt');
+        $txt = file_get_contents('public/index.txt');
         echo $txt;
         exit;
         print_r($files);//exit;
