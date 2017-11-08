@@ -322,6 +322,9 @@ class Phone extends Controller{
                     //$data[$i]['simulator_num']=$last_simulator_num['simulator_num']+1;
                 }
             }
+            if($key>=5){
+                break;
+            }
         }
         $result = model('NewAccounts')->allowField(true)->saveAll($data);
         if($result){
