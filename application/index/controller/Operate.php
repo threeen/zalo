@@ -73,7 +73,7 @@ class Operate extends Controller{
 //        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
 //        print_r($data);
 //        exit();
-        $new = array_merge($accounts,$data);
+        $new = array_unique(array_merge($accounts,$data));
         echo json_encode($new);
     }
     //数据回传到模拟器
