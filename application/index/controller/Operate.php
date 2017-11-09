@@ -68,7 +68,7 @@ class Operate extends Controller{
 //            $accounts[]=model('Accounts')->where(['username'=>$value])->select();
 //        }
         //print_r($accounts);
-        echo json_encode($accounts);
+        echo json_encode($data);
     }
     //数据回传到模拟器
     public function returnData(){
