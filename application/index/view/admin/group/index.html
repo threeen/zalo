@@ -26,9 +26,10 @@
             <thead>
             <tr class="text-c">
                 <th width="40">ID</th>
-                <th width="100">用户名</th>
+                <th width="40">用户名</th>
                 <th width="30">好友总数</th>
                 <th width="50">日新增好友数</th>
+                <th width="50">更新日期</th>
             </tr>
             </thead>
             <tbody class="accounts">
@@ -47,7 +48,7 @@ $('.simulator').change(function(){
         accounts_html="";
         $(data).each(function(i){
             //accounts_html+="<option value="+this.id+">"+this.username+"</option>";
-            accounts_html += "<tr class='text-c'><th>"+this.id+"</th><td>"+this.username+"</th><td></th><th></th></tr>";
+            accounts_html += "<tr class='text-c'><th>"+this.id+"</th><td>"+this.username+"</th><td></th><th></th><th></th></tr>";
 
 
         });
