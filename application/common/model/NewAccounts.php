@@ -14,7 +14,8 @@ class NewAccounts extends Model
             'id' => ['elt',$end],
             'id' => ['gt',$start]
         ];
-        return model('NewAccounts')->where($data)->select();
+       model('NewAccounts')->where($data)->select();
+        echo model('NewAccounts')->getLastSql();exit;
     }
     public function getDatas(){
         return model('NewAccounts')->paginate(80);
