@@ -63,7 +63,7 @@ class Operate extends Controller{
         $end = 80;
         $sql = "select acc.id,new.friends,acc.username from zl_new_accounts new,zl_accounts acc where new.username=acc.username
                 and id>=$start and id<$end";
-        $data = Db::query($sql);
+        $data = Db::execute($sql);
         print_r($data);exit();
         $data = model('NewAccounts')->getValueArea($start,$end);
         $username = $accounts = $new = array();
