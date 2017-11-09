@@ -60,7 +60,7 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $data = model('NewAccounts')->getValueArea($start,$end);
-        $username  = array();
+        $username = $accounts = array();
         foreach($data as $value){
             $username [] = $value['username'];
         }
