@@ -60,11 +60,11 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $data = model('NewAccounts')->getValueArea($start,$end);
-        $username = array();
+        $username = $accounts = array();
         foreach($data as $value){
             $username [] = $value['username'];
         }
-        print_r($username);exit;
+        $accounts = model('Accounts')->where(['username'=>$username])->select();
         echo json_encode($data);
     }
     //数据回传到模拟器
