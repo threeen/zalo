@@ -60,7 +60,7 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $data = model('NewAccounts')->getValueArea($start,$end);
-        $username = $accounts = array();
+        $username = $accounts = $new = array();
         foreach($data as $value){
             $username [] = $value['username'];
         }
@@ -71,7 +71,8 @@ class Operate extends Controller{
 //        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
 //        print_r($data);
 //        exit();
-        echo json_encode($accounts);
+        $new = array_merge($accounts,$data);
+        echo json_encode($new);
     }
     //数据回传到模拟器
     public function returnData(){
