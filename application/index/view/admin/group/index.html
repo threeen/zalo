@@ -37,7 +37,14 @@
             </tr>
             </thead>
             <tbody class="accounts">
-
+            {volist name="acc" id="vo" }
+            <tr class="text-c">
+                <td>{$vo.id}</td>
+                <td>{$vo.username}</td>
+                <th></th>
+                <td></td>
+            </tr>
+            {/volist}
             </tbody>
         </table>
     </div>
