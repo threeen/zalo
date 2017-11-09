@@ -8,7 +8,7 @@ class NewAccounts extends Model
 {
     public function getNewAccountsData($id){
         $start = ($id-1)*80;
-        $end = 80;
+        $end = 80*$id;
         $data = [
             'status' => 1,
             'id' => ['elt',$end],
