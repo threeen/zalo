@@ -61,7 +61,7 @@ class Operate extends Controller{
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = 80;
-        $sql = "select acc.id,new.friends,acc.username from zl_new_accounts new,zl_accounts acc where new.username=acc.username
+        $sql = "select acc.id,acc.friends,acc.username from zl_new_accounts new,zl_accounts acc where new.username=acc.username
                 and id>=$start and id<$end";
         $data = Db::execute($sql);
         print_r($data);exit();
