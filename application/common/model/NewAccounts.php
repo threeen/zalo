@@ -11,7 +11,8 @@ class NewAccounts extends Model
         $end = 80*$id;
         $data = [
             'status' => 1,
-            'id' => ['between',$start,$end],
+            'id' => ['elt',$end],
+            'id' => ['gt',$start]
         ];
        model('NewAccounts')->where($data)->select();
         echo model('NewAccounts')->getLastSql();exit;
