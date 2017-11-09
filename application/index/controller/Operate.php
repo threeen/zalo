@@ -64,9 +64,9 @@ class Operate extends Controller{
         foreach($data as $value){
             $username [] = $value['username'];
         }
-        foreach($username as $value){
-            $accounts[]=model('Accounts')->where(['username'=>$value])->select();
-        }
+//        foreach($username as $value){
+//            $accounts[]=model('Accounts')->where(['username'=>$value])->select();
+//        }
         //print_r($accounts);
         echo json_encode($accounts);
     }
