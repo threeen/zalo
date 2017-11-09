@@ -61,6 +61,10 @@ class Operate extends Controller{
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = 80;
+        $sql = "select acc.id,new.friends,acc.username from zl_new_accounts new,zl_accounts acc where new.username=acc.username
+                and id>=$start and id<$end";
+        $data = Db::query($sql);
+        print_r($data);exit();
         $data = model('NewAccounts')->getValueArea($start,$end);
         $username = $accounts = $new = array();
         foreach($data as $value){
