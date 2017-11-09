@@ -65,7 +65,7 @@ class Operate extends Controller{
             $username [] = $value['username'];
         }
 
-        $accounts = model('Accounts')->whereOr(['username'=>$username])->select();
+        
         echo json_encode($data);
     }
     //数据回传到模拟器
