@@ -12,7 +12,6 @@ class NewAccounts extends Model
         $data = [
             'status' => 1,
             'id' => ['elt',$end],
-
         ];
         $data1 = [
             'id' => ['gt',$start]
