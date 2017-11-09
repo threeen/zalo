@@ -59,12 +59,14 @@ $('.simulator').change(function(){
     $.post(url,{'data':value},function(data){
         accounts_html="";
         $(data).each(function(index){
-        $(index).each(function(i){
+            $(index).each(function(ind){
+                $(ind).each(function(i){
+
             //accounts_html+="<option value="+this.id+">"+this.username+"</option>";
             accounts_html += "<tr class='text-c'><th>"+this.id+"</th><td>"+this.username+"</th><td>"+this.friends+"</th><th></th><th></th></tr>";
 
-        });
-        });
+
+                });});});
         $('.accounts').html(accounts_html);
     },'json');
 });
