@@ -1,25 +1,7 @@
 <!--包含头部文件-->
 {include file="public/header" /}
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器分组 </nav>
-<div class="page-container">
-
-  模拟器&nbsp;:&nbsp;
-
-    <select name="simulator" class="simulator">
-         {for start="1" end="$simulator"}
-         <option class="simulator" value="{$i}">模拟器-{$i}</option>
-         {/for}
-    </select>
-
-    &nbsp;&nbsp;
-
-  帐号&nbsp;:&nbsp;<select name="accounts" class="accounts">
-                      {volist name="acc" id="vo"}
-                      <option>{$vo.username}</option>
-                      {/volist}
-                    </select>
-</div>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 帐号列表 </nav>
 <div class="page-container">
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
@@ -58,16 +40,3 @@
 </div>
 <!--包含头部文件-->
 {include file="public/footer" /}
-<script type="text/javascript">
-$('.simulator').change(function(){
-    value = $(this).val();
-    var url = "{:url('Operate/groupAccounts')}";
-    $.post(url,{'data':value},function(data){
-        accounts_html="";
-        $(data).each(function(i){
-            accounts_html+="<option value="+this.id+">"+this.username+"</option>";
-        });
-        $('.accounts').html(accounts_html);
-    },'json');
-});
-</script>
