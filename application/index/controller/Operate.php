@@ -67,11 +67,11 @@ class Operate extends Controller{
         foreach($username as $value){
             $accounts=model('Accounts')->where(['username'=>$value])->select();
         }
-        print_r($accounts);
-        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-        print_r($data);
-        exit();
-        echo json_encode($data);
+//        print_r($accounts);
+//        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+//        print_r($data);
+//        exit();
+        echo json_encode($accounts);
     }
     //数据回传到模拟器
     public function returnData(){
