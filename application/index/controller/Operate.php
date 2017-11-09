@@ -60,12 +60,12 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $data = model('NewAccounts')->getValueArea($start,$end);
-        $username = $accounts = array();
+        $username  = array();
         foreach($data as $value){
             $username [] = $value['username'];
         }
         foreach($username as $value){
-            $accounts[]=model('Accounts')->where(['username'=>$value])->select();
+            $accounts=model('Accounts')->where(['username'=>$value])->select();
         }
         print_r($accounts);
         echo "<br>";echo "<br>";echo "<br>";echo "<br>";
