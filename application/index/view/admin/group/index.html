@@ -29,29 +29,10 @@
                 <th width="100">用户名</th>
                 <th width="30">好友总数</th>
                 <th width="50">日新增好友数</th>
-                <th width="50">新增附近的人</th>
-                <th width="50">附近的人通过率</th>
-                <th width="60">时间</th>
-                <th width="60">状态</th>
-                <th width="100">操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="text-c">
-                <th></th>
-                <td></td>
-                <td class="text-c"></td>
-                <td class="text-c"></td>
-                <td class="text-c"></td>
-                <td class="text-c"></td>
-                <td></td>
-                <td class="td-status"><a href="" title="点击修改状态"></a></td>
-                <td class="td-manage">
-                    <a style="text-decoration:none" class="ml-5" onClick="zalo_edit('帐号编辑','{:url('phone/edit')}')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <a style="text-decoration:none" class="ml-5" onClick="zalo_del('{:url('phone/accDel')}')" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                    <a style="text-decoration:none" class="ml-5" onClick="" href="javascript:;" title="删除"><i class="Hui-iconfont">不通过</i></a>
-                </td>
-            </tr>
+            <div class="accounts"></div>
             </tbody>
         </table>
     </div>
@@ -65,7 +46,10 @@ $('.simulator').change(function(){
     $.post(url,{'data':value},function(data){
         accounts_html="";
         $(data).each(function(i){
-            accounts_html+="<option value="+this.id+">"+this.username+"</option>";
+            //accounts_html+="<option value="+this.id+">"+this.username+"</option>";
+            accounts_html = "<tr class='text-c'><th>"+this.id+"</th><td>"+this.username+"</th><td></th><th></th></tr>";
+
+
         });
         $('.accounts').html(accounts_html);
     },'json');
