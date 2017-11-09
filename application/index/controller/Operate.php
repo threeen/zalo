@@ -62,7 +62,7 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $data = model('NewAccounts')->getValueArea($start,$end);
-        $data = Db::table(['zl_new_accounts'=>'new','zl_accounts'=>'acc'])->field('id','username','friends')->where(['new.username'=>'acc.username'])->select();
+        $data = Db::field('id','username','friends')->table(['zl_new_accounts'=>'new','zl_accounts'=>'acc'])->where(['new.username'=>'acc.username'])->select();
         print_r($data);
         exit;
         $username = $accounts = $new = array();
