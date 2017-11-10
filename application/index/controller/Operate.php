@@ -74,7 +74,13 @@ class Operate extends Controller{
         $data_err = Db::query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
-        echo json_encode($dataAll);
+        $sql_sum = "select sum(acc.friends) from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
+                new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                acc.nearby_per<=1  ORDER BY new.id  ";
+        $all_friends = Db::query($sql);
+        $valid_accounts = count($data);
+
+        echo json_encode($dataAll).$all_friends."  ".$valid_accounts;
     }
     //数据回传到模拟器
     public function returnData(){
