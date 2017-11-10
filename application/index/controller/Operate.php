@@ -74,13 +74,13 @@ class Operate extends Controller{
         $data_err = Db::query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
-        $sql_all = "select count(*) from zl_new_accounts where id>$start AND id<=$end";
-        $data_all = Db::query($sql_all);print_r($data_all);exit();
+        $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
+        $data_all = Db::query($sql_all);
         $sql_count = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
-        $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];
+        $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count = $data_all[0]['count'];
         $count_all = $data_all."#".$friends."#".$new_fri."#".$valid_acc;
         echo json_encode($count_all);
     }
