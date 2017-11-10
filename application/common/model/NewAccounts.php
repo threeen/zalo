@@ -48,7 +48,8 @@ class NewAccounts extends Model
             $id .= $value['id'].",";
         }
         $id = trim($id,',');
-        $sql_err = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
+        $sql_err = "select new.id,new.username,acc.friends,acc.new_friends,acc.create_time from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
+                new.id>$start and new.id <= $end and new.id NOT IN ($id)  ORDER BY new.id ";
         $data_err = $this->query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
