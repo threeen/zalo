@@ -62,7 +62,7 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80;
         $sql = "select new.id,acc.friends,new.username from zl_new_accounts new,zl_accounts acc where
-               new.id>=1 and new.id<80";
+               new.id>=".$start." and new.id<".$end;
         $data = Db::execute($sql);
         return $data;exit();
         $data = model('NewAccounts')->getValueArea($start,$end);
