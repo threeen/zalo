@@ -69,7 +69,9 @@ class Operate extends Controller{
         foreach($data as $value){
             $id [] = $value['id'];
         }
-        print_r($id);exit;
+        $sql1 = "select * from zl_new_accounts where id NOT IN $id AND id>$start AND id<=end";
+        $data1 = Db::query($sql1);
+        print_r($data1);exit;
         echo json_encode($data);
     }
     //数据回传到模拟器
