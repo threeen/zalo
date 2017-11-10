@@ -79,7 +79,6 @@ class Operate extends Controller{
     //数据回传到模拟器
     public function returnData(){
         $id = input('id',null,'intval');
-        echo $_POST['id'];exit;
         if(empty($id)){
             return "没有传模拟器号";
         }
