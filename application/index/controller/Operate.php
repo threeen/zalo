@@ -66,7 +66,7 @@ class Operate extends Controller{
             'friends' => $friends,
             'new_fri' => $new_fri,
             'valid_acc'=> $valid_acc,
-            'counts' => $count_all
+            'count_all' => $count_all
         ]);
     }
     //模拟器数据分组
