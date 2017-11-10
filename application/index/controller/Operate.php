@@ -61,25 +61,10 @@ class Operate extends Controller{
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = 80*$value;
-        $sql = "select * from zl_new_accounts where id<10";
         $sql = "select new.id,new.username,acc.friends,acc.new_friends,acc.create_time from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  ORDER BY new.id  ";
         $data = Db::query($sql);
-        //print_r($data);//exit();
-//        $data = model('NewAccounts')->getValueArea($start,$end);
-//        $username = $accounts = $new = array();
-//        foreach($data as $value){
-//            $username [] = $value['username'];
-//        }
-//        foreach($username as $value){
-//            $accounts=model('Accounts')->where(['username'=>$value])->select();
-//        }
-//        print_r($accounts);
-//        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-//        print_r($data);
-//        exit();
-        //$new = array_unique(array_merge($accounts,$data));
         echo json_encode($data);
     }
     //数据回传到模拟器

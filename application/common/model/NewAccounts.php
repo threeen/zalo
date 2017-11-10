@@ -39,7 +39,11 @@ class NewAccounts extends Model
     }
     //获取某段数据
     public function getValueArea($start,$end){
-        return model('NewAccounts')->where(['status'=>1])->limit($start, $end)->select();
+        $sql = "select new.id,new.username,acc.friends,acc.new_friends,acc.create_time from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
+                new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                acc.nearby_per<=1  ORDER BY new.id  ";
+        $data = Db::query($sql);
+        return $data;
     }
     //根据帐号名获取当个帐号数据
     public function getOneAccounts($username){
