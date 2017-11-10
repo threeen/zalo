@@ -49,7 +49,7 @@ class NewAccounts extends Model
         }
         $id = trim($id,',');
         $sql_err = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
-        $data_err = Db::query($sql_err);
+        $data_err = $this->query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
         return $dataAll;
