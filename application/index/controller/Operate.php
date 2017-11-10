@@ -76,12 +76,13 @@ class Operate extends Controller{
         $dataAll = array_merge($data,$data_err);
         $sql_all = "select count(*) from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
-        $sql = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+        $sql_count = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
-        $data = Db::query($sql);
-        print_r($data);exit;
-        echo json_encode($data);
+        $data_count = Db::query($sql);
+        $friends = $data_count['friends'];$new_fri = $data_count['new_fri']; $valid_acc = $data_count['valid_acc'];
+        $count_all = $data_all."#".$friends."#".$new_fri."#".$valid_acc;
+        echo json_encode($count_all);
     }
     //数据回传到模拟器
     public function returnData(){
