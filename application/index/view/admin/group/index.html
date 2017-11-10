@@ -65,6 +65,7 @@ $('.simulator').change(function(){
     },'json');
     var url = "{:url('Operate/tongji')}";
     $.post(url,{'data':value},function(data){
+        alert(data);
         $('.all_accounts').val(data);
     },'json');
 });
