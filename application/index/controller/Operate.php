@@ -74,12 +74,13 @@ class Operate extends Controller{
         $data_err = Db::query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
-//        $sql_all = "select count(*) from zl_new_accounts where id>$start AND id<=$end";
-//        $data_all = Db::query($sql_all);
+        $sql_all = "select count(*) from zl_new_accounts where id>$start AND id<=$end";
+        $data_all = Db::query($sql_all);
         $sql = "select sum(acc.friends),sum(acc.new_friends),COUNT(new.username) from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data = Db::query($sql);
+        print_r($data);exit;
         echo json_encode($data);
     }
     //数据回传到模拟器
