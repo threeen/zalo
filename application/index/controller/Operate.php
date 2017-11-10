@@ -80,7 +80,7 @@ class Operate extends Controller{
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql);
-        $friends = $data_count['friends'];$new_fri = $data_count['new_fri']; $valid_acc = $data_count['valid_acc'];
+        $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];
         $count_all = $data_all."#".$friends."#".$new_fri."#".$valid_acc;
         echo json_encode($count_all);
     }
