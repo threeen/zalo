@@ -56,8 +56,12 @@ class Operate extends Controller{
                 new.id>0 and new.id <= 80 and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
+        $sql_day_count = "select COUNT(new.username) as day_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+                new.id>0 and new.id <= 80 and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                acc.nearby_per<=1 and create_time>date('Y-m-d',time())";
+        $data_day_count = Db::query($sql_day_count);
+        $day_count = $data_day_count[0]['day_acc'];
         $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count_all = $data_all[0]['count'];
-
         return $this->fetch('admin/group/index',[
             'data' => $data,
             'count' => $count,
@@ -66,7 +70,8 @@ class Operate extends Controller{
             'friends' => $friends,
             'new_fri' => $new_fri,
             'valid_acc'=> $valid_acc,
-            'count_all' => $count_all
+            'count_all' => $count_all,
+            'day_run_count' => $day_count
         ]);
     }
     //模拟器数据分组
