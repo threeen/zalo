@@ -73,6 +73,7 @@ class Operate extends Controller{
         $sql_err = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
         $data_err = Db::query($sql_err);
         $dataAll = array_merge($data,$data_err);
+        print_r($dataAll);exit();
         $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
         $sql_count = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
