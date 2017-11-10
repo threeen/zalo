@@ -74,7 +74,8 @@ class Operate extends Controller{
         $data_err = Db::query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
-        echo json_encode($dataAll);
+        $sql_all = "select count(*) from zl_new_accounts where id>$start AND id<=$end";
+        echo json_encode($sql_all);
     }
     //数据回传到模拟器
     public function returnData(){
