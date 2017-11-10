@@ -61,8 +61,6 @@ $('.simulator').change(function(){
         $(data).each(function(i){
             //accounts_html+="<option value="+this.id+">"+this.username+"</option>";
             accounts_html += "<tr class='text-c'><td>"+this.id+"</td><td>"+this.username+"</td><th>"+this.friends+"</th><td>"+this.new_friends+"</td><td>"+this.create_time+"</td></tr>";
-
-
         });
         $('.accounts').html(accounts_html);
     },'json');

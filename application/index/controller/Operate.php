@@ -65,6 +65,11 @@ class Operate extends Controller{
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  ORDER BY new.id  ";
         $data = Db::query($sql);
+        $id = array();
+        foreach($data as $value){
+            $id [] = $value['id'];
+        }
+        print_r($id);exit;
         echo json_encode($data);
     }
     //数据回传到模拟器
