@@ -70,10 +70,11 @@ class Operate extends Controller{
             $id .= $value['id'].",";
         }
         $id = trim($id,',');
-        $sql1 = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
-        $data1 = Db::query($sql1);
-        print_r($data1);exit;
-        echo json_encode($data);
+        $sql_err = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
+        $data_err = Db::query($sql_err);
+        print_r($data_err);exit;
+        $dataAll = array_merge($data,$data_err);
+        echo json_encode($dataAll);
     }
     //数据回传到模拟器
     public function returnData(){
