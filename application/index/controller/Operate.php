@@ -56,7 +56,7 @@ class Operate extends Controller{
                 new.id>0 and new.id <= 80 and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
-        $time=date('Y-m-d',time());
+        $time=date('Y-m-d');
         $sql_day_count = "select COUNT(new.username) as day_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>0 and new.id <= 80 and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1 and acc.create_time>$time";
