@@ -273,7 +273,6 @@ class Phone extends Controller{
         $dir="public/zalo帐号/";
         $files=scandir($dir);
         sort($files);
-        print_r($files);exit;
         if(empty($files)){
             echo "没有可上传帐号";
         }
