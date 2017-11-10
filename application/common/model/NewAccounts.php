@@ -43,17 +43,7 @@ class NewAccounts extends Model
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  ORDER BY new.id  ";
         $data = $this->query($sql);
-        $id = '';
-        foreach($data as $value){
-            $id .= $value['id'].",";
-        }
-        $id = trim($id,',');
-        $sql_err = "select new.id,new.username,acc.friends,acc.new_friends,acc.create_time from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
-                new.id>$start and new.id <= $end and new.id NOT IN ($id)  ORDER BY new.id ";
-        $data_err = $this->query($sql_err);
-        //print_r($data_err);exit;
-        $dataAll = array_merge($data,$data_err);
-        return $dataAll;
+        return $data;
     }
     //根据帐号名获取当个帐号数据
     public function getOneAccounts($username){
