@@ -59,6 +59,7 @@ class Operate extends Controller{
     //模拟器数据分组
     public function groupAccounts(){
         $value = input('post.data',1,'intval');
+        echo $value;exit;
         $start = ($value-1)*80;
         $end = 80;
         $sql = "select new.id,acc.friends,new.username from zl_new_accounts new,zl_accounts acc where
