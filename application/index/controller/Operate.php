@@ -65,21 +65,21 @@ class Operate extends Controller{
                new.id>=".$start." and new.id<".$end;
         $sql = "select * from zl_new_accounts new LEFT JOIN zl_accounts acc on new.username=acc.username where new.id>=1 and new.id <= 80";
         $data = Db::execute($sql);
-        print_r($data);exit();
-        $data = model('NewAccounts')->getValueArea($start,$end);
-        $username = $accounts = $new = array();
-        foreach($data as $value){
-            $username [] = $value['username'];
-        }
-        foreach($username as $value){
-            $accounts=model('Accounts')->where(['username'=>$value])->select();
-        }
+        //print_r($data);exit();
+//        $data = model('NewAccounts')->getValueArea($start,$end);
+//        $username = $accounts = $new = array();
+//        foreach($data as $value){
+//            $username [] = $value['username'];
+//        }
+//        foreach($username as $value){
+//            $accounts=model('Accounts')->where(['username'=>$value])->select();
+//        }
 //        print_r($accounts);
 //        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
 //        print_r($data);
 //        exit();
-        $new = array_unique(array_merge($accounts,$data));
-        echo json_encode($new);
+        //$new = array_unique(array_merge($accounts,$data));
+        echo json_encode($data);
     }
     //数据回传到模拟器
     public function returnData(){
