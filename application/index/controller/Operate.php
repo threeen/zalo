@@ -173,5 +173,9 @@ class Operate extends Controller{
             return $this->fetch('admin/operate/send_new_accounts');
         }
     }
+    //
+    public function tongji(){
+        echo "统计";
+    }
 
 }
