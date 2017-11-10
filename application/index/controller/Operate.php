@@ -78,8 +78,8 @@ class Operate extends Controller{
     }
     //数据回传到模拟器
     public function returnData(){
-        $id = input('id',null,'intval');
-        if(empty($id)){
+        $id = input('post.',null,'intval');
+        if(empty($id['id'])){
             return "没有传模拟器号";
         }
         $data = model('NewAccounts')->getNewAccountsData($id);
