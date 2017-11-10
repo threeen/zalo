@@ -58,16 +58,6 @@ class Operate extends Controller{
     }
     //模拟器数据分组
     public function groupAccounts(){
-        $datas = [
-            'friends'=>['egt',0],
-            'new_friends'=>['egt',0],
-            'new_nearby'=>['egt',0],
-            'nearby_per'=>['egt',0],
-            'nearby_per'=>['elt',1],
-            'status'=>['eq',1],
-            'username'=>['like','%'.$data.'%'],
-
-        ];
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = 80*$value;
