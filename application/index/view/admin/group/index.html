@@ -62,11 +62,7 @@ $('.simulator').change(function(){
             accounts_html += "<tr class='text-c'><td>"+this.id+"</td><td>"+this.username+"</td><th>"+this.friends+"</th><td>"+this.new_friends+"</td><td>"+this.create_time+"</td></tr>";
         });
         $('.accounts').html(accounts_html);
-    },'json');
-    var url1 = "{:url('Operate/tongji')}";
-    $.post(url1,{'data1':value},function(data1){
-        alert(data1);
-        $('.all_accounts').val(data1);
+        $('.all_accounts').html('sdf');
     },'json');
 });
 </script>
