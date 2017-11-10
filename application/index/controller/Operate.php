@@ -67,7 +67,7 @@ class Operate extends Controller{
         $data = Db::query($sql);
         $id = '';
         foreach($data as $value){
-            $id += $value['id'].",";
+            $id .= $value['id'].",";
         }
         $id = trim($id,',');
         echo $id;exit;
