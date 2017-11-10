@@ -64,7 +64,7 @@ class Operate extends Controller{
         $sql = "select new.id,acc.friends,new.username from zl_new_accounts new,zl_accounts acc where
                new.id>=".$start." and new.id<".$end;
         $data = Db::execute($sql);
-        return $data;exit();
+        echo $data;exit();
         $data = model('NewAccounts')->getValueArea($start,$end);
         $username = $accounts = $new = array();
         foreach($data as $value){
