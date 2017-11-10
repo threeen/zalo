@@ -74,7 +74,7 @@ class Operate extends Controller{
         $data_err = Db::query($sql_err);
         //print_r($data_err);exit;
         $dataAll = array_merge($data,$data_err);
-        echo json_encode($dataAll);
+        echo json_encode($dataAll.'sfsdf');
     }
     //数据回传到模拟器
     public function returnData(){
