@@ -80,7 +80,7 @@ class Operate extends Controller{
         $all_friends = Db::query($sql);
         $valid_accounts = count($data);
 
-        echo json_encode($dataAll).$all_friends."  ".$valid_accounts;
+        echo json_encode($dataAll).json_encode($all_friends).json_decode($valid_accounts);
     }
     //数据回传到模拟器
     public function returnData(){
