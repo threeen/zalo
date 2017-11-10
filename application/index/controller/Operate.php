@@ -62,7 +62,7 @@ class Operate extends Controller{
         $start = ($value-1)*80;
         $end = 80*$value;
         $sql = "select * from zl_new_accounts where id<10";
-        $sql = "select * from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where new.id>$start and new.id <= $end";
+        $sql = "select * from zl_new_accounts new  where new.id>$start and new.id <= $end";
         $data = Db::query($sql);
         print_r($data);//exit();
 //        $data = model('NewAccounts')->getValueArea($start,$end);
