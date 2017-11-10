@@ -73,7 +73,7 @@ class Operate extends Controller{
         $sql_err = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
         $data_err = Db::query($sql_err);
         $dataAll = array_merge($data,$data_err);
-        print_r($dataAll);exit();
+        //print_r($dataAll);exit();
         $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
         $sql_count = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
@@ -82,6 +82,7 @@ class Operate extends Controller{
         $data_count = Db::query($sql_count);
         $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count = $data_all[0]['count'];
         $count_all = $count."#".$friends."#".$new_fri."#".$valid_acc;
+        $dataAll['all']=$count_all;
         echo json_encode($dataAll);
     }
     //数据回传到模拟器
