@@ -70,6 +70,7 @@ class Operate extends Controller{
             $id += $value['id'].",";
         }
         $id = trim($id,',');
+        echo $id;exit;
         $sql1 = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=$end";
         $data1 = Db::query($sql1);
         print_r($data1);exit;
