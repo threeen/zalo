@@ -65,11 +65,12 @@ class Operate extends Controller{
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  ORDER BY new.id  ";
         $data = Db::query($sql);
-        $id = array();
+        $id = '';
         foreach($data as $value){
-            $id [] = $value['id'];
+            $id += $value['id'].",";
         }
-        $sql1 = "select * from zl_new_accounts where id NOT IN $id AND id>$start AND id<=end";
+        $id = trim($id,',');
+        $sql1 = "select * from zl_new_accounts where id NOT IN ($id) AND id>$start AND id<=end";
         $data1 = Db::query($sql1);
         print_r($data1);exit;
         echo json_encode($data);
