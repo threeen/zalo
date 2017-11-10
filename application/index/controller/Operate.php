@@ -81,7 +81,7 @@ class Operate extends Controller{
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
         $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count = $data_all[0]['count'];
-        $new = array('data'=>$dataAll,'friends'=>$friends,'new_fri'=>$new_fri,'valid_acc'=>$valid_acc,'count'=>$count);
+        $new = array('data'=>$dataAll,'friends'=>$friends,'new_fri'=>$new_fri,'valid_acc'=>$valid_acc,'counts'=>$count);
         echo json_encode($new);
     }
     //数据回传到模拟器
