@@ -63,10 +63,10 @@ $('.simulator').change(function(){
         });
         $('.accounts').html(accounts_html);
     },'json');
-    var url = "{:url('Operate/tongji')}";
-    $.post(url,{'data':value},function(data){
-        alert(data);
-        $('.all_accounts').val(data);
+    var url1 = "{:url('Operate/tongji')}";
+    $.post(url1,{'data1':value},function(data1){
+        alert(data1);
+        $('.all_accounts').val(data1);
     },'json');
 });
 </script>
