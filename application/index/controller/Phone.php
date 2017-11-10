@@ -200,7 +200,11 @@ class Phone extends Controller{
                     ]);
                 }else{
                     $datas = [
-                        
+                        'friends'=>['egt',0],
+                        'new_friends'=>['egt',0],
+                        'new_nearby'=>['egt',0],
+                        'nearby_per'=>['egt',0],
+                        'nearby_per'=>['elt',1],
                         'status'=>['eq',1],
                         'username'=>['like','%'.$data.'%'],
 

@@ -58,11 +58,23 @@ class Operate extends Controller{
     }
     //模拟器数据分组
     public function groupAccounts(){
+        $datas = [
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
+            'status'=>['eq',1],
+            'username'=>['like','%'.$data.'%'],
+
+        ];
         $value = input('post.data',1,'intval');
         $start = ($value-1)*80;
         $end = 80*$value;
         $sql = "select * from zl_new_accounts where id<10";
-        $sql = "select new.id,new.username,acc.friends from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where new.id>$start and new.id <= $end ORDER BY new.id DESC ";
+        $sql = "select new.id,new.username,acc.friends from zl_accounts acc LEFT JOIN zl_new_accounts new on new.username=acc.username where
+                new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                acc.nearby_per<=1  ORDER BY new.id  ";
         $data = Db::query($sql);
         //print_r($data);//exit();
 //        $data = model('NewAccounts')->getValueArea($start,$end);
