@@ -38,3 +38,9 @@ function pageStyle($obj){
     $params = request()->param();
     return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render().'</div>';
 }
+/**
+ * 模拟器号
+ */
+function simulator($id){
+    return ($id-1)/80+1;
+}
