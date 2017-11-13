@@ -66,7 +66,7 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1],
             'create_time'=>['gt',date('Y-m-d',time())],
-            'id' => ['not',$id['id']]
+            'id' => ['not in',$id['id']]
         ];
         return model('Accounts')->where($data)->count('id');
     }
