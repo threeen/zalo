@@ -16,26 +16,7 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        $db = model( "Accounts" );
-        $fix = "zl_";
-        $table = $fix."accounts";
-        $table2 = $fix."new_accounts";
-        $page_size = 15; //每页显示记录数
-        return $data = $db -> field("$table.id aid,$table.friends,$table.new_friends,$table.new_nearby,$table.nearby_per,$table.status,$table.create_time,$table.username,$table2.id nid") ->
-        join( "$table2 on $table.username=$table2.username" ) ->
-        where( "$table.friends>=0 and $table.new_friends>=0 and $table.nearby_per>=0 and $table.new_nearby>=0 and $table.nearby_per<=1 and $table.status=1" ) ->
-        order( "$table.create_time" ) ->
-        paginate();
-
-//        $list = $db -> field( "$table.art_id,$table.art_title,$table.art_content,$table.art_description,$table2.cate_id,$table2.cate_name" ) ->
-//        join( "$table2 on $table.cate_id=$table2.cate_id" ) ->
-//        where( "$table.art_public='1'" ) ->
-//        order( "$table.art_create_time desc,$table.art_id desc" ) ->
-//        limit($Page->firstRow.",".$Page->listRows) ->
-//        select();
-       //return $this->table('zl_accounts as acc')->field("acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid")
-          //  ->join("zl_new_accounts as new on acc.username = new.username")->where($data)->order(['status'=>'desc'])->paginate();
-
+        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
         $data = ['friends'=>['lt',0],];
