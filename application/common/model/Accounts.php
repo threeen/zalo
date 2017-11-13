@@ -57,9 +57,10 @@ class Accounts extends Model
             'nearby_per'=>['egt',0],
             'nearby_per'=>['elt',1],
             'status'=>['eq',1],
-           //'create_time'=>['gt',date('Y-m-d',time())]
+            //'create_time'=>['gt',date('Y-m-d',time())]
         ];
-        return model('Accounts')->where($data)->where(unix_timestamp($data['create_time'])>$time)->count('id');
+        //unix_timestamp($data['create_time'])>$time;
+        return model('Accounts')->where($data)->count('id');
     }
     //获取总好友数
     public function getFriendsAllCounts(){
