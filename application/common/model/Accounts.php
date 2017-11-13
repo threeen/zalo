@@ -22,18 +22,6 @@ class Accounts extends Model
             ->join('zl_new_accounts new','acc.username = new.username')
             ->where("acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1")
             ->paginate();
-
-//        $db = model( "Accounts" );
-//        $fix = "zl_";
-//        $table = $fix."accounts";
-//        $table2 = $fix."new_accounts";
-//        $page_size = 15; //每页显示记录数
-//        return $data = $db -> field("$table.id aid,$table.friends,$table.new_friends,$table.new_nearby,$table.nearby_per,$table.status,$table.create_time,$table.username,$table2.id nid") ->
-//        join( "$table2 on $table.username=$table2.username" ) ->
-//        where( "$table.friends>=0 and $table.new_friends>=0 and $table.nearby_per>=0 and $table.new_nearby>=0 and $table.nearby_per<=1 and $table.status=1" ) ->
-//        order( "$table.create_time" ) ->
-//        paginate();
-        return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
         $data = ['friends'=>['lt',0],];
