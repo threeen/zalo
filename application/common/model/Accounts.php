@@ -16,7 +16,7 @@ class Accounts extends Model
 //            'nearby_per'=>['elt',1],
 //            'status'=>['eq',1]
 //        ];
-        $sql_data = "select acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.simulator
+        $sql_data = "select acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid  
                       from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                  acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1 ORDER BY create_time DESC ";
         return $this->query($sql_data)->paginate();
