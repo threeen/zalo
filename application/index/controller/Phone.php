@@ -18,7 +18,7 @@ class Phone extends Controller{
             $friendsCounts = model('Accounts')->getFriendsAllCounts();
             $dayFriends = model('Accounts')->getDayFriends();
             //获取模拟器号
-            $simulator = model('Accounts')->getSimulator();
+            //$simulator = model('Accounts')->getSimulator();
             $page = $data->render();
             return $this->fetch('admin/list',[
                 'data'=>$data,
