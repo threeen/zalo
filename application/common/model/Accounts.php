@@ -16,7 +16,7 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        $data = Db::table('zl_accounts')
+        $data = model('zl_accounts')
             ->alias('acc')
             ->join('zl_new_accounts new','acc.username = new.username')
             ->select();
