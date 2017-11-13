@@ -14,7 +14,7 @@ class Phone extends Controller{
     }
     public function list_phone(){
         if(isset($_COOKIE['admin'])) {
-            //$data = model('Accounts')->getAccountsData();
+            $data = model('Accounts')->getAccountsData();
             $count = model('Accounts')->getCounts();
             $realCounts = model('Accounts')->getRealCounts();
             $realDayCounts = model('Accounts')->getDayRealCounts();
@@ -22,11 +22,11 @@ class Phone extends Controller{
             $dayFriends = model('Accounts')->getDayFriends();
             //获取模拟器号
             //$simulator = model('Accounts')->getSimulator();
-            
-            $sql_data = "select acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid
-                      from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                 acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1 ORDER BY create_time DESC ";
-            $data = Db::query($sql_data);
+
+//            $sql_data = "select acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid
+//                      from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+//                 acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1 ORDER BY create_time DESC ";
+//            $data = Db::query($sql_data);
             $page = $data->render();
             return $this->fetch('admin/list',[
                 'data'=>$data,
