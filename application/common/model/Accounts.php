@@ -16,15 +16,13 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        $data = model('Accounts')
+        return model('Accounts')
             ->alias('acc')
             ->field("acc.id aid,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid")
             ->join('zl_new_accounts new','acc.username = new.username')
             ->where("acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1")
             ->paginate();
-        echo model('Accounts')->getLastSql();
-        //print_r($data);
-        exit();
+
 //        $db = model( "Accounts" );
 //        $fix = "zl_";
 //        $table = $fix."accounts";
