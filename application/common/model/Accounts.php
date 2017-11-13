@@ -56,18 +56,7 @@ class Accounts extends Model
             'nearby_per'=>['egt',0],
             'nearby_per'=>['elt',1],
             'status'=>['eq',1],
-            'create_time'=>['lt',date('Y-m-d',time())],
-        ];
-        $id = model('Accounts')->where($data)->count('id');
-        $data = [
-            'friends'=>['egt',0],
-            'new_friends'=>['egt',0],
-            'new_nearby'=>['egt',0],
-            'nearby_per'=>['egt',0],
-            'nearby_per'=>['elt',1],
-            'status'=>['eq',1],
-            'create_time'=>['gt',date('Y-m-d',time())],
-            'id' => ['not in',$id['id']]
+            'create_time'=>['gt',date('Y-m-d',time())]
         ];
         return model('Accounts')->where($data)->count('id');
     }
