@@ -95,17 +95,17 @@ class Operate extends Controller{
         //print_r($dataAll);exit();
         $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
-        $sql_count = "select sum(acc.friends) as friends,sum(acc.new_friends) as new_fri,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+        $sql_count = "select sum(acc.friends) as friends COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
         $time=strtotime(date('Y-m-d',time()));
-        $sql_day_count = "select COUNT(new.username) as day_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+        $sql_day_count = "select COUNT(new.username) as day_acc,sum(acc.new_friends) as new_fri from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
         $data_day_count = Db::query($sql_day_count);
         $day_count = $data_day_count[0]['day_acc'];
-        $friends = $data_count[0]['friends'];$new_fri = $data_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count = $data_all[0]['count'];
+        $friends = $data_count[0]['friends'];$new_fri = $data_day_count[0]['new_fri']; $valid_acc = $data_count[0]['valid_acc'];$count = $data_all[0]['count'];
         $new = array('data'=>$dataAll,'friends'=>$friends,'new_fri'=>$new_fri,'valid_acc'=>$valid_acc,'counts'=>$count,'day_acc'=>$day_count);
         echo json_encode($new);
     }
