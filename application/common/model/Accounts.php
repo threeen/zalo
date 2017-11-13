@@ -16,17 +16,16 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        $db = model( "Accounts" );
-        $fix = "zl_";
-        $table = $fix."accounts";
-        $table2 = $fix."new_accounts";
-        $page_size = 15; //每页显示记录数
-        $data = $db -> field("$table.id aid,$table.friends,$table.new_friends,$table.new_nearby,$table.nearby_per,$table.status,$table.create_time,$table.username,$table2.id nid") ->
-        join( "$table2 on $table.username=$table2.username" ) ->
-        where( "$table.friends>=0 and $table.new_friends>=0 and $table.nearby_per>=0 and $table.new_nearby>=0 and $table.nearby_per<=1 and $table.status=1" ) ->
-        order( "$table.create_time" ) ->
-        paginate();
-        echo model('Accounts')->getLastSql();exit;
+//        $db = model( "Accounts" );
+//        $fix = "zl_";
+//        $table = $fix."accounts";
+//        $table2 = $fix."new_accounts";
+//        $page_size = 15; //每页显示记录数
+//        return $data = $db -> field("$table.id aid,$table.friends,$table.new_friends,$table.new_nearby,$table.nearby_per,$table.status,$table.create_time,$table.username,$table2.id nid") ->
+//        join( "$table2 on $table.username=$table2.username" ) ->
+//        where( "$table.friends>=0 and $table.new_friends>=0 and $table.nearby_per>=0 and $table.new_nearby>=0 and $table.nearby_per<=1 and $table.status=1" ) ->
+//        order( "$table.create_time" ) ->
+//        paginate();
         return model('Accounts')->where($data)->order(['create_time'=>'desc'])->paginate();
     }
     public function getErrorAccountsData(){
