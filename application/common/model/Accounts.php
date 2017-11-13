@@ -16,10 +16,11 @@ class Accounts extends Model
             'nearby_per'=>['elt',1],
             'status'=>['eq',1]
         ];
-        $data = model('zl_accounts')
+        $data = model('Accounts')
             ->alias('acc')
             ->join('zl_new_accounts new','acc.username = new.username')
             ->select();
+        echo model('Accounts')->getLastSql();
         print_r($data);exit();
 //        $db = model( "Accounts" );
 //        $fix = "zl_";
