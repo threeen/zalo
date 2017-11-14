@@ -104,7 +104,17 @@ class Accounts extends Model
         return model('Accounts')->where($data)->where(['status'=>1])->count();
     }
     public function getSearchSimulatorCounts($data,$simulator){
-        return model('Accounts')->where('username','like','%'.$data.'%')->where(['simulator_num'=>$simulator])->where(['status'=>1])->count();
+        $datas = [
+            'friends'=>['egt',0],
+            'new_friends'=>['egt',0],
+            'new_nearby'=>['egt',0],
+            'nearby_per'=>['egt',0],
+            'nearby_per'=>['elt',1],
+            'status'=>['eq',1],
+            'username'=>['like','%'.$data.'%'],
+
+        ];
+        return model('Accounts')->where($datas)->where(['simulator_num'=>$simulator])->where(['status'=>1])->count();
     }
     //获取某段数据
     public function getValueArea($start,$end){
