@@ -37,11 +37,11 @@ class Moments extends Controller
             }else {
                 $circle = model('Circle')->getOneAccounts($username[$i]);
                 if($circle){
-                    $name[] = $username[$i];
+                    $name[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = $circle['times']+1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }else{
-                    $name[]='';
+                    $name[$i]['username']='';
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = 1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
