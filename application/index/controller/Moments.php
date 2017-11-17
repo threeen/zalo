@@ -21,7 +21,7 @@ class Moments extends Controller
     }
     //对已经发过朋友圈的帐号进行存储记录
     public function acc_insert(){
-        $data = input('username');
+        $data = input('name');
         print_r($data);exit;
         if(empty($data)){
             return "获取不到已发发朋友圈的帐号";
