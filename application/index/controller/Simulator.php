@@ -6,7 +6,7 @@ use think\Db;
 class Simulator extends Controller{
     public function index(){
         $sql = "select count(*) from zl_new_accounts";
-        $count = Db::query($sql);echo $count;exit;
+        $count = Db::query($sql);echo print_r($count);exit;
         $time=strtotime(date('Y-m-d',time()));
         $data = array();
         for($i=0;$i<$count;$i=$i+80){
