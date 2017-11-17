@@ -140,7 +140,7 @@ class Accounts extends Model
         return model('Accounts')->where(['status'=>1,'login_status'=>1])->order(['create_time'=>'desc'])->paginate();
     }
     //获取需要发朋友圈的帐号
-    public function getPengyouquanAccounts($num){
+    public function getPengyouquanAccounts($num=0){
         return model('Accounts')->where(['status'=>1,'login_status'=>1,'times'=>0])->limit(0,$num)->select();
     }
 }
