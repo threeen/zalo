@@ -46,12 +46,12 @@ class Operate extends Controller{
     }
     public function group(){
         $id = input('id',0,'intval');
-        echo $id;exit;
         if(isset($id)){
             $id = $id*80;
         }
         $start = (0+$id);
         $end = (80+$id);
+        echo $start;
         //echo $start;exit;
         $data = model('NewAccounts')->getAccounts();
         $count = model('NewAccounts')->getCounts();
