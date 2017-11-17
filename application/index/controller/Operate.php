@@ -47,7 +47,7 @@ class Operate extends Controller{
     public function group(){
         $id = input('id',0,'intval');
         if(isset($id)){
-            $id = $id*80;
+            $id = ($id-1)*80;
         }
         $start = (0+$id);
         $end = (80+$id);
@@ -56,7 +56,7 @@ class Operate extends Controller{
         $data = model('NewAccounts')->getAccounts();
         $count = model('NewAccounts')->getCounts();
         $simulator = ceil($count/80)+1;
-        $acc = model('NewAccounts')->getValueArea(0,80);
+        $acc = model('NewAccounts')->getValueArea($start,$end);
 
         $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
