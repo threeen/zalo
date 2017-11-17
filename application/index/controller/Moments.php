@@ -13,6 +13,10 @@ class Moments extends Controller
             return "请求发朋友圈的数量为空";
         }
         $data = model('Accounts')->getPengyouquanAccounts($num);
-        print_r($data);
+        $username  =  '';
+        foreach($data as $value){
+            $username .=$value['username']."#";
+        }
+        echo $username;
     }
 }
