@@ -47,7 +47,6 @@ class Moments extends Controller
                 }
             }
         }
-         model('Circle')->allowField(true)->saveAll($acc);
-        
+        $result = model('Circle')->allowField(true)->saveAll($acc);
     }
 }
