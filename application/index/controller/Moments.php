@@ -41,6 +41,7 @@ class Moments extends Controller
                     $acc[$i]['times'] = $circle['times']+1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }else{
+                    $name[]='';
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = 1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
