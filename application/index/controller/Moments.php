@@ -39,11 +39,11 @@ class Moments extends Controller
                 if($circle){
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = $circle['times']+1;
-                    $acc[$i]['create_time'] = date(time());
+                    $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }else{
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = 1;
-                    $acc[$i]['create_time'] = date(time());
+                    $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }
             }
         }
