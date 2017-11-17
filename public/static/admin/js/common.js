@@ -16,3 +16,6 @@ function zalo_edit(title,url){
     });
     layer.full(index);
 }
+function zalo_xiangqing(url){
+        window.location.href=url;
+}
