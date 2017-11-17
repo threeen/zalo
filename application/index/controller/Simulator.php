@@ -18,7 +18,8 @@ class Simulator extends Controller{
         $data[$j]['new_fri'] = $data_day_count[0]['new_fri']; $data[$j]['day_acc'] = $data_day_count[0]['day_acc'];
             $j++;
         }
-        print_r($data);exit;
-        return $this->fetch('admin/simulator/simulator');
+        return $this->fetch('admin/simulator/simulator',[
+            'data' => $data,
+        ]);
     }
 }

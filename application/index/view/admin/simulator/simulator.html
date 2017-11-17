@@ -6,10 +6,11 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器总汇表 </nav>
 <div class="page-container">
+    {volist name="data" id="vo" key="k"}
     <table width="200"  class="table table-border table-bordered table-bg table-hover table-sort table-style">
         <tr class="text-c">
-            <td rowspan="3" width="10">ds</td>
-            <td colspan="6" width="50">dds</td>
+            <td rowspan="3" width="10">{$k}</td>
+            <td colspan="6" width="50">{$vo.day_cc}-{$vo.new_fri}</td>
         </tr>
         <tr class="text-c">
             <td width="50">dds</td>
@@ -18,7 +19,7 @@
             <td width="50">dds</td>
         </tr>
     </table>
-
+    {/volist}
 
 
 </div>
