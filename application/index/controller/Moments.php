@@ -30,7 +30,6 @@ class Moments extends Controller
         $username = explode('@',$data);
         //print_r($username);exit;
         $exist_user = model('Pengyouquan')->getOneAccounts('123');
-        print_r($exist_user);exit;
         for($i=0;$i<count($username);$i++){
             $exist_user = model('Pengyouquan')->getOneAccounts($username[$i]);
             print_r($exist_user);exit;
