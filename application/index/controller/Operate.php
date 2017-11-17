@@ -51,6 +51,7 @@ class Operate extends Controller{
         }
         $start = (0+$id);
         $end = (80+$id);
+        echo $start;exit;
         $data = model('NewAccounts')->getAccounts();
         $count = model('NewAccounts')->getCounts();
         $simulator = ceil($count/80)+1;
