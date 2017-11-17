@@ -51,13 +51,13 @@ class Operate extends Controller{
         }
         $start = (0+$id);
         $end = (80+$id);
-        echo $start;exit;
+        //echo $start;exit;
         $data = model('NewAccounts')->getAccounts();
         $count = model('NewAccounts')->getCounts();
         $simulator = ceil($count/80)+1;
         $acc = model('NewAccounts')->getValueArea(0,80);
 
-        $sql_all = "select count(*) as count from zl_new_accounts where id>0 AND id<=80";
+        $sql_all = "select count(*) as count from zl_new_accounts where id>$start AND id<=$end";
         $data_all = Db::query($sql_all);
         $sql_count = "select sum(acc.friends) as friends,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
