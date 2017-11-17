@@ -28,7 +28,7 @@ class Moments extends Controller
 
         $username = $acc = array();
         $username = explode('@',$data);
-        print_r($username);exit;
+        //print_r($username);exit;
         for($i=0;$i<count($username);$i++){
             $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
             if(!$exist_user){
@@ -48,10 +48,10 @@ class Moments extends Controller
             }
         }
         $result = model('Circle')->allowField(true)->saveAll($acc);
-        if($result){
-            echo " 发朋友圈帐号入库成功";
-        }else{
-            echo "发朋友圈帐号入库失败";
-        }
+//        if($result){
+//            echo " 发朋友圈帐号入库成功";
+//        }else{
+//            echo "发朋友圈帐号入库失败";
+//        }
     }
 }
