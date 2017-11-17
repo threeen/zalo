@@ -38,10 +38,9 @@ class Moments extends Controller
                 $circle = model('Circle')->getOneAccounts($username[$i]);
                 if($circle){
                     $name[$i]['username'] = $username[$i];
-                    $acc[$i]['times'] = $circle['times']+1;
-                    $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
+                    $name[$i]['times'] = $circle['times']+1;
+                    $name[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }else{
-                    $name[$i]['username']='';
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = 1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
@@ -49,9 +48,10 @@ class Moments extends Controller
             }
         }
 
-        $result = model('Circle')->allowField(true)->saveAll($acc,$name);
+        $result = model('Circle')->allowField(true)->saveAll($acc);
+        $res = model('Circle')->allowField(true)->saveAll($name);
         print_r($name);exit;
-        if($result){
+        if($res){
             echo " 发朋友圈帐号入库成功";
         }else{
             echo "发朋友圈帐号入库失败";
