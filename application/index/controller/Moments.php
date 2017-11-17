@@ -28,7 +28,7 @@ class Moments extends Controller
 
         $username = $acc = array();
         $username = explode('@',$data);
-        print_r($username);exit;
+        //print_r($username);exit;
         for($i=0;$i<count($username);$i++){
             $exist_user = model('Pengyouquan')->getOneAccounts($username[$i]);
             if(!$exist_user){
