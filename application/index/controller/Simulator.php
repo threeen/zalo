@@ -14,7 +14,7 @@ class Simulator extends Controller{
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
         $data_day_count = Db::query($sql_day_count);
-        $data[]['new_fri'] = $data_day_count[0]['new_fri']; $data[]['day_acc'] = $data_day_count[0]['day_acc'];
+        $data['new_fri'] = $data_day_count[0]['new_fri']; $data['day_acc'] = $data_day_count[0]['day_acc'];
         }
         print_r($data);exit;
         return $this->fetch('admin/simulator/simulator');
