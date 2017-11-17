@@ -45,7 +45,7 @@ class Operate extends Controller{
 
     }
     public function group(){
-        $id = input('id',0,'intval');
+        $id = input('id',2,'intval');
         if(isset($id)){
             $id = $id*80;
         }
