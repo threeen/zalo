@@ -49,6 +49,8 @@ class Operate extends Controller{
         if(isset($id)){
             $id = $id*80;
         }
+        $start = (0+$id);
+        $end = (80+$id);
         $data = model('NewAccounts')->getAccounts();
         $count = model('NewAccounts')->getCounts();
         $simulator = ceil($count/80)+1;
@@ -57,12 +59,12 @@ class Operate extends Controller{
         $sql_all = "select count(*) as count from zl_new_accounts where id>0 AND id<=80";
         $data_all = Db::query($sql_all);
         $sql_count = "select sum(acc.friends) as friends,COUNT(new.username) as valid_acc from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                new.id>(0+$id) and new.id <= (80+$id) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                new.id>$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1";
         $data_count = Db::query($sql_count);
         $time=strtotime(date('Y-m-d',time()));
         $sql_day_count = "select COUNT(new.username) as day_acc,sum(acc.new_friends) as new_fri from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                new.(0+$id) and new.id <= (80+$id) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                new.$start and new.id <= $end and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
         $data_day_count = Db::query($sql_day_count);
         $day_count = $data_day_count[0]['day_acc'];
