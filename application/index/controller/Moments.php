@@ -31,6 +31,7 @@ class Moments extends Controller
         //print_r($username);exit;
         for($i=0;$i<count($username);$i++){
             $exist_user = model('Pengyouquan')->getOneAccounts($username[$i]);
+            print_r($exist_user);exit;
             if(!$exist_user){
                 echo "该帐号".$exist_user['username']."不存在"."<br>";
                 continue;
