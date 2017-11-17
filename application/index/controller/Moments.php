@@ -48,7 +48,9 @@ class Moments extends Controller
                 }
             }
         }
+        print_r($name);exit;
         $result = model('Circle')->allowField(true)->saveAll($acc,$name);
+
         if($result){
             echo " 发朋友圈帐号入库成功";
         }else{
