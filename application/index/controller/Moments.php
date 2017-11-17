@@ -30,7 +30,7 @@ class Moments extends Controller
         $username = explode('@',$data);
 
         for($i=0;$i<count($username);$i++){
-            $exist_user = model('Circle')->getOneAccounts($username[$i]);
+            $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
             if(!$exist_user){
                 echo "该帐号".$exist_user['username']."不存在"."<br>";
                 continue;
