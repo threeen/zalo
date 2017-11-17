@@ -1104,179 +1104,6 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
         return $result;
     }
 
-    public function saveOne($data = [], $where = [], $sequence = null)
-    {
-        if (is_string($data)) {
-            $sequence = $data;
-            $data     = [];
-        }
-
-        if (!empty($data)) {
-            // 数据自动验证
-            if (!$this->validateData($data)) {
-                return false;
-            }
-            // 数据对象赋值
-            foreach ($data as $key => $value) {
-                $this->setAttr($key, $value, $data);
-            }
-            if (!empty($where)) {
-                $this->isUpdate    = true;
-                $this->updateWhere = $where;
-            }
-        }
-
-        // 自动关联写入
-        if (!empty($this->relationWrite)) {
-            $relation = [];
-            foreach ($this->relationWrite as $key => $name) {
-                if (is_array($name)) {
-                    if (key($name) === 0) {
-                        $relation[$key] = [];
-                        foreach ($name as $val) {
-                            if (isset($this->data[$val])) {
-                                $relation[$key][$val] = $this->data[$val];
-                                unset($this->data[$val]);
-                            }
-                        }
-                    } else {
-                        $relation[$key] = $name;
-                    }
-                } elseif (isset($this->relation[$name])) {
-                    $relation[$name] = $this->relation[$name];
-                } elseif (isset($this->data[$name])) {
-                    $relation[$name] = $this->data[$name];
-                    unset($this->data[$name]);
-                }
-            }
-        }
-
-        // 数据自动完成
-        $this->autoCompleteData($this->auto);
-
-        // 事件回调
-        if (false === $this->trigger('before_write', $this)) {
-            return false;
-        }
-        $pk = $this->getPk();
-        if ($this->isUpdate) {
-            // 自动更新
-            $this->autoCompleteData($this->update);
-
-            // 事件回调
-            if (false === $this->trigger('before_update', $this)) {
-                return false;
-            }
-
-            // 获取有更新的数据
-            $data = $this->getChangedData();
-
-            if (empty($data) || (count($data) == 1 && is_string($pk) && isset($data[$pk]))) {
-                // 关联更新
-                if (isset($relation)) {
-                    $this->autoRelationUpdate($relation);
-                }
-                return 0;
-            } elseif ($this->autoWriteTimestamp && $this->updateTime && !isset($data[$this->updateTime])) {
-                // 自动写入更新时间
-                $data[$this->updateTime]       = $this->autoWriteTimestamp($this->updateTime);
-                $this->data[$this->updateTime] = $data[$this->updateTime];
-            }
-
-            if (empty($where) && !empty($this->updateWhere)) {
-                $where = $this->updateWhere;
-            }
-
-            // 保留主键数据
-            foreach ($this->data as $key => $val) {
-                if ($this->isPk($key)) {
-                    $data[$key] = $val;
-                }
-            }
-
-            if (is_string($pk) && isset($data[$pk])) {
-                if (!isset($where[$pk])) {
-                    unset($where);
-                    $where[$pk] = $data[$pk];
-                }
-                unset($data[$pk]);
-            }
-
-            // 检测字段
-            $allowFields = $this->checkAllowField(array_merge($this->auto, $this->update));
-
-            // 模型更新
-            if (!empty($allowFields)) {
-                $result = $this->getQuery()->where($where)->strict(false)->field($allowFields)->update($data);
-            } else {
-                $result = $this->getQuery()->where($where)->update($data);
-            }
-
-            // 关联更新
-            if (isset($relation)) {
-                $this->autoRelationUpdate($relation);
-            }
-
-            // 更新回调
-            $this->trigger('after_update', $this);
-
-        } else {
-            // 自动写入
-            $this->autoCompleteData($this->insert);
-
-            // 自动写入创建时间和更新时间
-            if ($this->autoWriteTimestamp) {
-                if ($this->createTime && !isset($this->data[$this->createTime])) {
-                    $this->data[$this->createTime] = $this->autoWriteTimestamp($this->createTime);
-                }
-                if ($this->updateTime && !isset($this->data[$this->updateTime])) {
-                    $this->data[$this->updateTime] = $this->autoWriteTimestamp($this->updateTime);
-                }
-            }
-
-            if (false === $this->trigger('before_insert', $this)) {
-                return false;
-            }
-
-            // 检测字段
-            $allowFields = $this->checkAllowField(array_merge($this->auto, $this->insert));
-            if (!empty($allowFields)) {
-                $result = $this->getQuery()->strict(false)->field($allowFields)->insert($this->data);
-            } else {
-                $result = $this->getQuery()->insert($this->data);
-            }
-
-            // 获取自动增长主键
-            if ($result && is_string($pk) && (!isset($this->data[$pk]) || '' == $this->data[$pk])) {
-                $insertId = $this->getQuery()->getLastInsID($sequence);
-                if ($insertId) {
-                    $this->data[$pk] = $insertId;
-                }
-            }
-
-            // 关联写入
-            if (isset($relation)) {
-                foreach ($relation as $name => $val) {
-                    $method = Loader::parseName($name, 1, false);
-                    $this->$method()->save($val);
-                }
-            }
-
-            // 标记为更新
-            $this->isUpdate = true;
-
-            // 新增回调
-            $this->trigger('after_insert', $this);
-        }
-        // 写入回调
-        $this->trigger('after_write', $this);
-
-        // 重新记录原始数据
-        $this->origin = $this->data;
-
-        //return $result;
-    }
-
     protected function checkAllowField($auto = [])
     {
         if (true === $this->field) {
@@ -1708,6 +1535,7 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
      * @param array|true $field 允许字段
      * @return $this
      */
+
     public static function update($data = [], $where = [], $field = null)
     {
         $model = new static();
@@ -1716,6 +1544,15 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
         }
         $result = $model->isUpdate(true)->save($data, $where);
         return $model;
+    }
+    public static function updateOne($data = [], $where = [], $field = null)
+    {
+        $model = new static();
+        if (!empty($field)) {
+            $model->allowField($field);
+        }
+        $result = $model->isUpdate(true)->save($data, $where);
+        //return $model;
     }
 
     /**
