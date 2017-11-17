@@ -29,7 +29,7 @@ class Moments extends Controller
         $username = $acc = array();
         $username = explode('@',$data);
         //print_r($username);exit;
-        $exist_user = model('Circle')->where(['username'=>'23'])->find();
+        $exist_user = model('NewAccounts')->where(['username'=>'23'])->find();
         print_r($exist_user);exit();
         for($i=0;$i<count($username);$i++){
             $exist_user = model('Circle')->getOneAccounts($username[$i]);
