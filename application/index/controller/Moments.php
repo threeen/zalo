@@ -35,9 +35,16 @@ class Moments extends Controller
                 echo "该帐号".$exist_user['username']."不存在"."<br>";
                 continue;
             }else {
-                $acc[$i]['username'] = $username[$i];
-                $acc[$i]['times'] = $exist_user['times']+1;
-                $acc[$i]['create_time'] = date(time());
+                $circle = model('Circle')->getOneAccounts($username[$i]);
+                if($circle){
+                    $acc[$i]['username'] = $username[$i];
+                    $acc[$i]['times'] = $circle['times']+1;
+                    $acc[$i]['create_time'] = date(time());
+                }else{
+                    $acc[$i]['username'] = $username[$i];
+                    $acc[$i]['times'] = 1;
+                    $acc[$i]['create_time'] = date(time());
+                }
             }
         }
         $result = model('Circle')->allowField(true)->saveAll($acc);
