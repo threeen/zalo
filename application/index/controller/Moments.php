@@ -29,10 +29,10 @@ class Moments extends Controller
         $username = $acc = array();
         $username = explode('@',$data);
         //print_r($username);exit;
-        $exist_user = model('NewAccounts')->getOneAccounts('17070023549');
+        $exist_user = model('Circle')->getOneAccounts('17070023549');
         print_r($exist_user);exit();
         for($i=0;$i<count($username);$i++){
-            $exist_user = model('Pengyouquan')->getOneAccounts($username[$i]);
+            $exist_user = model('Circle')->getOneAccounts($username[$i]);
             print_r($exist_user);exit;
             if(!$exist_user){
                 echo "该帐号".$exist_user['username']."不存在"."<br>";
