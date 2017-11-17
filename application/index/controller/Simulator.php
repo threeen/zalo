@@ -25,5 +25,6 @@ class Simulator extends Controller{
     public function simulator(){
         $id = input('id');
             echo $id;
+
     }
 }
