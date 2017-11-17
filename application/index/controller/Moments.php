@@ -21,14 +21,14 @@ class Moments extends Controller
     }
     //对已经发过朋友圈的帐号进行存储记录
     public function acc_insert(){
-        $data = input('name');
+        $data = input('username');
         print_r($data);exit;
         if(empty($data)){
             return "获取不到已发发朋友圈的帐号";
         }
 
         $username = $acc = array();
-        $username = explode('#',$data);
+        $username = explode('@',$data);
         print_r($username);exit;
         for($i=0;$i<count($username);$i++){
             $exist_user = model('Pengyouquan')->getOneAccounts($username[$i]);
