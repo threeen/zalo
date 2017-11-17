@@ -28,20 +28,17 @@ class Moments extends Controller
 
         $username = $acc = array();
         $username = explode('@',$data);
-        //print_r($username);exit;
-        $exist_user = model('NewAccounts')->where(['username'=>'23'])->find();
-        print_r($exist_user);exit();
+
         for($i=0;$i<count($username);$i++){
-            $exist_user = model('Circle')->getOneAccounts($username[$i]);
-            print_r($exist_user);exit;
-            if(!$exist_user){
-                echo "该帐号".$exist_user['username']."不存在"."<br>";
-                continue;
-            }else {
+//            $exist_user = model('Circle')->getOneAccounts($username[$i]);
+//            if(!$exist_user){
+//                echo "该帐号".$exist_user['username']."不存在"."<br>";
+//                continue;
+//            }else {
                 $acc[$i]['username'] = $username[$i];
-                $acc[$i]['times'] = $exist_user['times']+1;
+                $acc[$i]['times'] = 1;
                 $acc[$i]['create_time'] = date(time());
-            }
+
         }
         $result = model('Pengyouquan')->allowField(true)->saveAll($data);
         if($result){
