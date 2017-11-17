@@ -87,7 +87,7 @@ class Phone extends Controller{
         }
     }
     public function getPostData(){
-        $data = input('post.userName');
+        $data = input('userName');
         echo $data;exit;
         if(empty($data)){
             return "抛送数据为空";
