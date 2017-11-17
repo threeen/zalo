@@ -24,7 +24,7 @@ class Simulator extends Controller{
     }
     public function simulator(){
         $id = input('id');
-            echo $id;
+        $this->redirect(url('Operate/group',['id'=>$id]));
 
     }
 }
