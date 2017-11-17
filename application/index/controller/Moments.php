@@ -40,7 +40,7 @@ class Moments extends Controller
                 $acc[$i]['create_time'] = date(time());
 
         }
-        $result = model('Pengyouquan')->allowField(true)->saveAll($data);
+        $result = model('Circle')->allowField(true)->saveAll($data);
         if($result){
             echo " 发朋友圈帐号入库成功";
         }
