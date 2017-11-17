@@ -26,7 +26,7 @@ class Moments extends Controller
             return "获取不到已发发朋友圈的帐号";
         }
 
-        $username = $acc = array();
+        $username = $name = $acc = array();
         $username = explode('@',$data);
         //print_r($username);exit;
         for($i=0;$i<count($username);$i++){
@@ -37,7 +37,7 @@ class Moments extends Controller
             }else {
                 $circle = model('Circle')->getOneAccounts($username[$i]);
                 if($circle){
-                    $acc[$i]['username'] = $username[$i];
+                    $name[] = $username[$i];
                     $acc[$i]['times'] = $circle['times']+1;
                     $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
                 }else{
@@ -47,7 +47,7 @@ class Moments extends Controller
                 }
             }
         }
-        $result = model('Circle')->allowField(true)->saveAll($acc);
+        $result = model('Circle')->allowField(true)->saveAll($acc,$name);
         if($result){
             echo " 发朋友圈帐号入库成功";
         }else{
