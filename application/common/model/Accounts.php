@@ -139,4 +139,8 @@ class Accounts extends Model
     public function getLiveAccounts(){
         return model('Accounts')->where(['status'=>1,'login_status'=>1])->order(['create_time'=>'desc'])->paginate();
     }
+    //获取需要发朋友圈的帐号
+    public function getPengyouquanAccounts($num){
+        return model('Accounts')->where(['status'=>1,'login_status'=>1,'times'=>0])->limit(0,$num)->select();
+    }
 }
