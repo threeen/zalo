@@ -22,4 +22,8 @@ class Simulator extends Controller{
             'data' => $data,
         ]);
     }
+    public function simulator(){
+        $id = input('id');
+            echo $id;
+    }
 }
