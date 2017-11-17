@@ -1535,7 +1535,6 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
      * @param array|true $field 允许字段
      * @return $this
      */
-
     public static function update($data = [], $where = [], $field = null)
     {
         $model = new static();
@@ -1544,15 +1543,6 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
         }
         $result = $model->isUpdate(true)->save($data, $where);
         return $model;
-    }
-    public static function updateOne($data = [], $where = [], $field = null)
-    {
-        $model = new static();
-        if (!empty($field)) {
-            $model->allowField($field);
-        }
-        $result = $model->isUpdate(true)->save($data, $where);
-        //return $model;
     }
 
     /**
