@@ -41,7 +41,7 @@ class Moments extends Controller
                     $name = $username[$i];
                     $times = $circle['times']+1;
                     $time = date('Y-m-d H:i:s',time());
-                    $sql = "update zl_circle set times = $times and create_time = $time where username = $name";
+                    $sql = "update zl_circle set times = '{$times}' and create_time = '{$time}' where username = '{$name}'";
                     Db::execute($sql);
                 }else{
                     $acc[$i]['username'] = $username[$i];
