@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use think\Db;
 use think\Model;
 
 class Moments extends Controller
@@ -37,9 +38,11 @@ class Moments extends Controller
             }else {
                 $circle = model('Circle')->getOneAccounts($username[$i]);
                 if($circle){
-                    $acc[$i]['username'] = $username[$i];
-                    $acc[$i]['times'] = $circle['times']+1;
-                    $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
+                    $name = $username[$i];
+                    $times = $circle['times']+1;
+                    $time = date('Y-m-d H:i:s',time());
+                    $sql = "update zl_circle set times = $times and create_time = $time where username = $name";
+                    Db::execute($sql);
                 }else{
                     $acc[$i]['username'] = $username[$i];
                     $acc[$i]['times'] = 1;
