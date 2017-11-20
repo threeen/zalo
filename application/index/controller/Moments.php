@@ -40,7 +40,8 @@ class Moments extends Controller
                     $name = $value;
                     $times = $circle['times']+1;
                     $time = date('Y-m-d H:i:s',time());
-                    model('Accounts')->update(['times'=>$times,'create_time'=>$time],['username'=>$name]);
+                    model('Circle')->update(['times'=>$times,'create_time'=>$time],['username'=>$name]);
+                    continue;
                 }else{
                     $acc[$key]['username'] = $value;
                     $acc[$key]['times'] = 1;
