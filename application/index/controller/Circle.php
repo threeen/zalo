@@ -13,4 +13,7 @@ class Circle extends Controller
             'counts'=> $counts
         ]);
     }
+    public function friends(){
+        return $this->fetch('admin/circle/friends');
+    }
 }
