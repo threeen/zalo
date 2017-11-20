@@ -22,8 +22,21 @@ class Circle extends Controller
     //存储朋友圈素材
     public function circle(){
         $text = input('post.');
-        print_r($text);exit();
-        $username = input('username');
+        if(empty($text['start']) && empty($text['end'])){
+           $acc = model('NewAccounts')->getAllFriendsAccounts();
+
+        }elseif(empty($text['start']) && !empty($text['end'])){
+           $acc = model('NewAccounts')->where(['id'=>['egt',$text['start']]])->select();
+        }elseif(!empty($text['start']) && empty($text['end'])){
+            $acc = model('NewAccounts')->where(['id'=>['elt',$text['end']]])->select();
+        }else{
+            $acc = model('NewAccounts')->where(['id'=>['egt',$text['start']]])->where(['id'=>['elt',$text['end']]])->select();
+        }
+        foreach($acc as $value){
+            $username = implode('@',$value['username']);
+        }
+        echo $username;exit;
+        //$username = input('username');
         // 获取表单上传文件
         $files = request()->file('image');
         if(empty($text['text']) && empty($files)){
