@@ -29,22 +29,22 @@ class Moments extends Controller
         $username = $acc = array();
         $username = explode('@',$data);
         //print_r($username);exit;
-        for($i=0;$i<count($username);$i++){
-            $exist_user = model('NewAccounts')->getOneAccounts($username[$i]);
+        foreach($username as $key=>$value){
+            $exist_user = model('NewAccounts')->getOneAccounts($value);
             if(!$exist_user){
                 echo "该帐号".$exist_user['username']."不存在"."<br>";
                 continue;
             }else {
-                $circle = model('Circle')->getOneAccounts($username[$i]);
+                $circle = model('Circle')->getOneAccounts($value);
                 if($circle){
-                    $name = $username[$i];
+                    $name = $value;
                     $times = $circle['times']+1;
                     $time = date('Y-m-d H:i:s',time());
                     model('Accounts')->update(['times'=>$times,'create_time'=>$time],['username'=>$name]);
                 }else{
-                    $acc[$i]['username'] = $username[$i];
-                    $acc[$i]['times'] = 1;
-                    $acc[$i]['create_time'] = date('Y-m-d H:i:s',time());
+                    $acc[$key]['username'] = $value;
+                    $acc[$key]['times'] = 1;
+                    $acc[$key]['create_time'] = date('Y-m-d H:i:s',time());
                 }
             }
         }
