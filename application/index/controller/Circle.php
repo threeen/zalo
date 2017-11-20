@@ -7,8 +7,10 @@ class Circle extends Controller
 {
     public function index(){
         $data = model('Circle')->getAlreadyData();
+        $counts = model('Circle')->getAlreadyCounts();
         return $this->fetch('admin/circle/index',[
-            'data' => $data
+            'data' => $data,
+            'counts'=> $counts
         ]);
     }
 }

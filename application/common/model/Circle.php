@@ -12,6 +12,10 @@ class Circle extends Model
     }
     //获取已经发过朋友圈的帐号
     public function getAlreadyData(){
-        return model('Circle')->paginate();
+        return model('Circle')->order(['create_time'=>'desc'])->paginate();
+    }
+    //获取已经发过朋友圈的个数
+    public function getAlreadyCounts(){
+        return model('Circle')->count('id');
     }
 }
