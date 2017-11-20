@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '107.150.99.66',
+    'hostname'        => '10.13.99.14',
     // 数据库名
     'database'        => 'zalo',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'zalo',
     // 密码
-    'password'        => '',
+    'password'        => 'dayugameZalo',
     // 端口
     'hostport'        => '',
     // 连接dsn
