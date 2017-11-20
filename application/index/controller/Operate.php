@@ -11,6 +11,7 @@ class Operate extends Controller{
                 if(time()>(strtotime($value['create_time'])+3600)){
                     $time = $value['create_time']+3600;
                     model('Accounts')->update(['login_status'=>0,'create_time'=>date('Y-m-d H:i:s',$time)],['id'=>$value['id']]);
+                    continue;
                 }
             }
         }
