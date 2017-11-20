@@ -6,10 +6,9 @@ use think\Model;
 class Circle extends Controller
 {
     public function index(){
-        //$data = model('Circle')->getData();
-        //model('Circle')->getLastSql();exit;
+        $data = model('Circle')->getAlreadyData();
         return $this->fetch('admin/circle/index',[
-          //  'data' => $data
+            'data' => $data
         ]);
     }
 }

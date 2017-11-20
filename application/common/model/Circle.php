@@ -11,7 +11,7 @@ class Circle extends Model
         return model('Circle')->where(['username'=>$username])->find();
     }
     //获取已经发过朋友圈的帐号
-    public function getData(){
+    public function getAlreadyData(){
         return model('Circle')->paginate();
     }
 }
