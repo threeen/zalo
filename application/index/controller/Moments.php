@@ -25,10 +25,8 @@ class Moments extends Controller
         if(empty($data)){
             return "获取不到已发发朋友圈的帐号";
         }
-
         $username = $acc = array();
         $username = explode('@',$data);
-        //print_r($username);exit;
         foreach($username as $key=>$value){
             $exist_user = model('NewAccounts')->getOneAccounts($value);
             if(!$exist_user){
@@ -50,10 +48,6 @@ class Moments extends Controller
             }
         }
         $result = model('Circle')->allowField(true)->saveAll($acc);
-//        if($result){
-//            echo " 发朋友圈帐号入库成功";
-//        }else{
-//            echo "发朋友圈帐号更新成功";
-//        }
+        echo "更新成功";
     }
 }
