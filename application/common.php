@@ -20,6 +20,17 @@ function status($status){
     return $str;
 }
 
+//模拟器状态
+function simulator_status($status){
+    if($status == 1){
+        $str="<span class='label label-success radius'>正常</span>";
+    }
+    elseif($status == -1){
+        $str="<span class='label label-danger radius'>异常</span>";
+    }
+    return $str;
+}
+
 //登录状态
 function login_status($status){
     if($status == 1){
