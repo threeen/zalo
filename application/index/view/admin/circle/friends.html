@@ -12,7 +12,7 @@
     <textarea id="txta1" name="text" class="text" cols="50" rows="10" placeholder="不得超过100个字"></textarea>
     <select>
     {volist name="data" id="vo" key="k"}
-        <option>{$k-$vo.username}</option>
+        <option>{$k}-{$vo.username}</option>
     {/volist}
     </select>
     <br>
