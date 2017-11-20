@@ -15,6 +15,7 @@ class Operate extends Controller{
                 }
             }
         }
+        $data = model('Accounts')->getLiveAccounts();
         return $this->fetch('admin/operate/index',[
             'data' => $data
         ]);
