@@ -50,10 +50,10 @@ class Moments extends Controller
             }
         }
         $result = model('Circle')->allowField(true)->saveAll($acc);
-        if($result){
-            echo " 发朋友圈帐号入库成功";
-        }else{
-            echo "发朋友圈帐号更新成功";
-        }
+//        if($result){
+//            echo " 发朋友圈帐号入库成功";
+//        }else{
+//            echo "发朋友圈帐号更新成功";
+//        }
     }
 }
