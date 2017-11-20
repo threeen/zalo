@@ -14,7 +14,7 @@
             <td colspan="6" width="50">运行帐号:<i class="acc">{$vo.day_acc}</i>--新增好友:<i class="acc">{$vo.new_fri|default=0}</i></td>
         </tr>
         <tr class="text-c">
-            <td width="50">异常</td>
+            <td width="50">{$vo.status}</td>
         </tr>
         <tr class="text-c">
             <td width="50"><a style="text-decoration:none" class="ml-5" href="{:url('Simulator/simulator',['id'=>$k])}" href="javascript:;" title="详情"><i class="Hui-iconfont">详情</i></a></td>
