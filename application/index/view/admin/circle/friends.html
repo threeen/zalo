@@ -11,8 +11,9 @@
 <form action="" enctype="multipart/form-data" method="post">
     <textarea id="txta1" name="text" class="text" cols="50" rows="10" placeholder="不得超过100个字"></textarea>
     <select>
-    <option>sfs</option>
-    <option>sfs</option>
+    {volist name="data" id="vo"}
+        <option>{$k-$vo.username}</option>
+    {/volist}
     </select>
     <br>
     <div id="upload"></div>

@@ -14,6 +14,9 @@ class Circle extends Controller
         ]);
     }
     public function friends(){
-        return $this->fetch('admin/circle/friends');
+        $data = model('NewAccounts')->getAllFriendsAccounts();
+        return $this->fetch('admin/circle/friends',[
+            'data' =>  $data
+        ]);
     }
 }

@@ -49,4 +49,8 @@ class NewAccounts extends Model
     public function getOneAccounts($username){
         return model('NewAccounts')->where(['username'=>$username])->find();
     }
+    //获取需要发朋友圈的帐号列表
+    public function getAllFriendsAccounts(){
+        return model('NewAccounts')->select();
+    }
 }
