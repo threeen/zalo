@@ -35,7 +35,7 @@ class Circle extends Controller
         foreach($acc as $value){
             $username .= $value['username']."@";
         }
-        echo $username;exit;
+        $username = trim($username,'@');
         //$username = input('username');
         // 获取表单上传文件
         $files = request()->file('image');
