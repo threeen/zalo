@@ -2,6 +2,7 @@
 {include file="public/header" /}
 <style>
     .table-style{ width: 300px; float: left; margin-right: 20px; margin-bottom: 20px;}
+    .acc{ color: red}
 </style>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器总汇表 </nav>
@@ -10,7 +11,7 @@
     <table width="200"  class="table table-border table-bordered table-bg table-hover table-sort table-style">
         <tr class="text-c">
             <td rowspan="3" width="10">{$k}</td>
-            <td colspan="6" width="50">运行帐号:{$vo.day_acc}-新增好友{$vo.new_fri|default=0}</td>
+            <td colspan="6" width="50">运行帐号:<i class="acc">{$vo.day_acc}</i>-新增好友:<i class="acc">{$vo.new_fri|default=0}</i></td>
         </tr>
         <tr class="text-c">
             <td width="50">dds</td>
