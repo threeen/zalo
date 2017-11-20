@@ -4,13 +4,14 @@
 <style type="text/css">
     .send{ width: 60px; height: 30px; margin-top: 10px; background-color: inherit; border-radius:5px; }
     .send:hover{ background-color: #ccc;}
+    .select { height: 30px;}
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 发朋友圈 </nav>
 <div class="page-container">
 
 <form action="" enctype="multipart/form-data" method="post">
     <textarea id="txta1" name="text" class="text" cols="50" rows="10" placeholder="不得超过100个字"></textarea>
-    <select>
+    <select class="select">
     {volist name="data" id="vo" key="k"}
         <option>{$k}-{$vo.username}</option>
     {/volist}
