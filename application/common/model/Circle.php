@@ -10,4 +10,8 @@ class Circle extends Model
     public function getOneAccounts($username){
         return model('Circle')->where(['username'=>$username])->find();
     }
+    //获取已经发过朋友圈的帐号
+    public function getData(){
+        return model('Circle')->paginate();
+    }
 }
