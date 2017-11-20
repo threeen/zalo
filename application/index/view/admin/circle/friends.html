@@ -11,14 +11,16 @@
 
 <form action="" enctype="multipart/form-data" method="post">
     <textarea id="txta1" name="text" class="text" cols="50" rows="10" placeholder="不得超过100个字"></textarea><br>
+    帐号列表:<br>
     <select class="select">
     {volist name="data" id="vo" key="k"}
         <option>{$k}-{$vo.username}</option>
     {/volist}
     </select>
     <br>
-    <input style="width:145px; height: 26px;  margin-bottom: 3px; margin-top: 5px;" type="text" value="" class="start">---
-    <input style="width:145px; height: 26px;  margin-bottom: 3px; margin-top: 5px;" type="text" value="" class="end">
+      输入选择序号:<br>
+    <input style="width:145px; height: 26px;  margin-bottom: 3px; margin-top: 5px;" type="text" value="开始序号" class="start">---
+    <input style="width:145px; height: 26px;  margin-bottom: 3px; margin-top: 5px;" type="text" value="结束序号" class="end">
     <br>
     <div id="upload"></div>
     <input type="button" value="添加附件" class="send" onclick="createUploader()">
