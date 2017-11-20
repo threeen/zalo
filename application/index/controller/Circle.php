@@ -22,9 +22,9 @@ class Circle extends Controller
     //存储朋友圈素材
     public function circle(){
         $text = input('post.');
+        $acc = array();
         if(empty($text['start']) && empty($text['end'])){
            $acc = model('NewAccounts')->getAllFriendsAccounts();
-
         }elseif(empty($text['start']) && !empty($text['end'])){
            $acc = model('NewAccounts')->where(['id'=>['egt',$text['start']]])->select();
         }elseif(!empty($text['start']) && empty($text['end'])){
