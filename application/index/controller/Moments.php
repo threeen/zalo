@@ -15,7 +15,7 @@ class Moments extends Controller
         $data = model('Accounts')->getPengyouquanAccounts($num);
         $username  =  '';
         foreach($data as $value){
-            $username .=$value['username']."#";
+            $username .=$value['username']."@";
         }
         return $username;
     }
