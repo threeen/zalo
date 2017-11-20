@@ -33,7 +33,7 @@ class Circle extends Controller
             $acc = model('NewAccounts')->where(['id'=>['egt',$text['start']]])->where(['id'=>['elt',$text['end']]])->select();
         }
         foreach($acc as $value){
-            $username = implode('@',$value['username']);
+            $username = implode('#',$value['username']);
         }
         echo $username;exit;
         //$username = input('username');
