@@ -53,7 +53,7 @@ class Moments extends Controller
         if($result){
             echo " 发朋友圈帐号入库成功";
         }else{
-            echo "发朋友圈帐号入库失败";
+            echo "发朋友圈帐号更新成功";
         }
     }
 }
