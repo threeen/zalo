@@ -22,7 +22,7 @@ class Simulator extends Controller{
                 acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
             $data_status = Db::query($sql);
             foreach($data_status as $key => $value){
-                if($data_status['login_status']==1 && time()>(strtotime($data_status['cr_time'])+3600)){
+                if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     break;
                 }
