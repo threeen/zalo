@@ -193,6 +193,8 @@ class Operate extends Controller{
             }
         }
     }
+
+
     //新账号上传
     public function sendNewAccounts(){
         $isset = input('send');
