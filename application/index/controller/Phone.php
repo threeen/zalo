@@ -92,8 +92,7 @@ class Phone extends Controller{
         if(empty($data)){
             return "抛送数据为空";
         }else{
-            $arr = explode('@',$data);
-            print_r($arr);
+            $arr = explode('#',$data);
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
                     if($arr[2]==$acc['data2']){
