@@ -25,8 +25,8 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                    $live_acc []['username']= $value['username'];
-                    $live_acc []['cr_time']=$value['cr_time'];
+                    $live_acc [$j]['username']= $value['username'];
+                    $live_acc [$j]['cr_time']=$value['cr_time'];
                     print_r($live_acc);
                 }
             }
