@@ -29,7 +29,7 @@ class Simulator extends Controller{
                 }
             }
             if($data[$j]['status']==-1){
-                $sql = "select * from zl_accounts where login_status = 1";
+                $sql = "select * from zl_accounts where login_status = 1 AND id>$i AND id<=($i+80)";
                 $dd = Db::query($sql);
                 print_r($dd);exit();
             }
