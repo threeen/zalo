@@ -25,21 +25,21 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                    break;
+                    model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
                 }
             }
-            $dd = $username = array();
-            if($data[$j]['status']==-1){
-                $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time desc limit 1";
-                $dd = Db::query($sql);
-                $username []= $dd[0]['username'];
-            }
+//            $dd = $username = array();
+//            if($data[$j]['status']==-1){
+//                $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+//                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time desc limit 1";
+//                $dd = Db::query($sql);
+//                $username []= $dd[0]['username'];
+//            }
             $j++;
         }
-        foreach($username as $value){
-            model('Accounts')->update(['login_status'=>1],['username'=>$value]);
-        }
+//        foreach($username as $value){
+//            model('Accounts')->update(['login_status'=>1],['username'=>$value]);
+//        }
         return $this->fetch('admin/simulator/simulator',[
             'data' => $data,
         ]);
