@@ -38,6 +38,7 @@ class Simulator extends Controller{
             $j++;
         }
         $username = "(".trim($username,',').")";
+        echo $username;exit;
         $sql_update = "update zl_accounts set login_status = 0 where username NOT in $username";
         Db::execute($sql_update);
         return $this->fetch('admin/simulator/simulator',[
