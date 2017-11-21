@@ -27,15 +27,10 @@ class Simulator extends Controller{
                     $data[$j]['status'] = -1;
                     $live_acc []['username']= $value['username'];
                     $live_acc []['cr_time']=$value['cr_time'];
+                    print_r($live_acc);
                 }
             }
-            //print_r($live_acc);exit();
-            $times = array();
-            if(count($live_acc)>1){
-                    foreach($live_acc as $key => $value){
-                        $times []= strtotime($value['cr_time']);
-                    }
-            }
+
             $j++;
         }
 
