@@ -18,7 +18,6 @@ class Circle extends Model
             ->join('zl_accounts acc','cir.username = acc.username')
             ->order(['create_time'=>'desc'])
             ->paginate();
-        return model('Circle')->order(['create_time'=>'desc'])->paginate();
     }
     //获取已经发过朋友圈的个数
     public function getAlreadyCounts(){
