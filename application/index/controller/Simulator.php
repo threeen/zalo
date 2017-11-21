@@ -33,7 +33,7 @@ class Simulator extends Controller{
                 $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time limit 1";
                 $dd = Db::query($sql);
-                $username []= $dd[0]['username'];
+                $username []= $dd['username'];
             }
             $j++;
         }
