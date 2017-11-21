@@ -7,7 +7,7 @@ class Simulator extends Controller{
     public function index(){
         $sql = "select count(*) from zl_new_accounts";
         $count = Db::query($sql);
-        $live_acc = array();//统一
+        $live_acc = array();//单个模拟器同时在线帐号（异常）
         $time=strtotime(date('Y-m-d',time()));
         $data = array();
         $j=0;
@@ -25,12 +25,15 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                    $live_acc []['username']= $value['username'];
-                    $live_acc []['create_time']=$value['create_time'];
+                    $live_acc [$j]['username']= $value['username'];
+                    $live_acc [$j]['create_time']=$value['create_time'];
                 }
             }
+            $times = array();
             if(count($live_acc)>1){
-
+                    foreach($live_acc as $key => $value){
+                        $times []= strtotime($value['create_time']);
+                    }
             }
             $j++;
         }
