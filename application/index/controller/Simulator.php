@@ -5,8 +5,20 @@ use think\Db;
 
 class Simulator extends Controller{
     public function index(){
+        $a = array(
+            '0'=>array(
+                'a'=>1,
+                'n'=>2,
+            ),
+            '1'=>array(
+                'a'=>1,
+                'n'=>2,
+            )
+        );
+        echo count($a);exit;
         $sql = "select count(*) from zl_new_accounts";
         $count = Db::query($sql);
+        $live_acc = array();//统一
         $time=strtotime(date('Y-m-d',time()));
         $data = array();
         $j=0;
@@ -24,10 +36,13 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                    break;
+                    $live_acc []['username']= $value['username'];
+                    $live_acc []['create_time']=$value['create_time'];
                 }
             }
+            if(count($live_acc)>1){
 
+            }
             $j++;
         }
 
