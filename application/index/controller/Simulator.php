@@ -28,10 +28,12 @@ class Simulator extends Controller{
                     break;
                 }
             }
+            $dd = array();
             if($data[$j]['status']==-1){
-                $sql = "select * from zl_accounts where login_status = 1 AND id>$i AND id<=($i+80) ORDER BY create_time DESC limit 1";
+                $sql = "select username from zl_accounts where login_status = 1 AND id>$i AND id<=($i+80) ORDER BY create_time DESC limit 1";
                 $dd = Db::query($sql);
-                $sql_update = "update zl_accounts set login_status = 0 where login_status = 1 AND id>$i AND id<=($i+80) AND username <> '{$dd['username']}'";
+                $username  = $dd['username'];
+                $sql_update = "update zl_accounts set login_status = 0 where login_status = 1 AND id>$i AND id<=($i+80) AND username <> $username";
                 Db::execute($sql_update);
             }
             $j++;
