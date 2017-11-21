@@ -60,7 +60,8 @@ class Circle extends Controller
                 // 移动到框架应用根目录/public/uploads/ 目录下
                 $info = $file->validate(['size'=>1024*1024,'ext'=>'jpg,jpeg,png,gif'])->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if($info){
-                    $path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
+                    //$path .= "http://zalo.dayugame.cn/public/uploads/".$info->getSaveName()."#";
+                    $path .= "http://107.150.99.66/public/uploads/".$info->getSaveName()."#";
                 }else{
                     // 上传失败获取错误信息
                     return $file->getError();
