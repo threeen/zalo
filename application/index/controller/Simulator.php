@@ -31,7 +31,7 @@ class Simulator extends Controller{
             $dd = $username = array();
             if($data[$j]['status']==-1){
                 $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time limit 1";
+                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time desc limit 1";
                 $dd = Db::query($sql);
                 print_r($dd);
                 $username []= $dd['username'];
