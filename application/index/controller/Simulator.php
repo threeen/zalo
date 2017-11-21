@@ -33,14 +33,10 @@ class Simulator extends Controller{
                 $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time desc limit 1";
                 $dd = Db::query($sql);
-                print_r($dd);
-                $username []= $dd['username'];
+                $username []= $dd[0]['username'];
             }
             $j++;
         }
-        $sql_update = "update zl_accounts set login_status = 0 ";
-        Db::execute($sql_update);
-        print_r($username);
         foreach($username as $value){
             model('Accounts')->update(['login_status'=>1],['username'=>$value]);
         }
