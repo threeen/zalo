@@ -34,6 +34,7 @@ class Simulator extends Controller{
                 new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time limit 1";
                 $dd = Db::query($sql);
                 $username .= $dd[0]['username'].",";
+                echo $username;
             }
             $j++;
         }
