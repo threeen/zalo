@@ -94,11 +94,11 @@ class Phone extends Controller{
             $arr = explode('#',$data);
             $acc = model('Accounts')->getOneAccounts($arr[0]);
             if($acc){
-                if($arr[2]==$acc['data2']){
+                    if($arr[2]==$acc['data2']){
                     $account = array(
                         'username' => $arr[0],
                         'create_time' => date($arr[3]),
-                       'login_status' => ($acc['login_status']==1)?0:1,
+                       'login_status' => $arr[4],
                     );
                 }else {
                     $account = array(
@@ -108,7 +108,7 @@ class Phone extends Controller{
                         'new_nearby' => $arr[1] - $acc['data2'],
                         'nearby_per' => ($arr[1] - $acc['data2']) / 45,
                         'create_time' => date($arr[3]),
-                        'login_status' => ($acc['login_status']==1)?0:1,
+                        'login_status' => $arr[4],
                         'data1' => $arr[1],
                         'data2' => $arr[2]
                     );
