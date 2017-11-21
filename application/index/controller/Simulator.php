@@ -39,6 +39,7 @@ class Simulator extends Controller{
         }
         $sql_update = "update zl_accounts set login_status = 0 ";
         Db::execute($sql_update);
+        print_r($username);
         foreach($username as $value){
             model('Accounts')->update(['login_status'=>1],['username'=>$value]);
         }
