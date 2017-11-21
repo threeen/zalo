@@ -26,7 +26,7 @@ class Simulator extends Controller{
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     $live_acc []['username']= $value['username'];
-                    $live_acc []['create_time']=$value['create_time'];
+                    $live_acc []['create_time']=$value['cr_time'];
                 }
             }
             $times = array();
