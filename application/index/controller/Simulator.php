@@ -5,17 +5,6 @@ use think\Db;
 
 class Simulator extends Controller{
     public function index(){
-        $a = array(
-            '0'=>array(
-                'a'=>1,
-                'n'=>2,
-            ),
-            '1'=>array(
-                'a'=>1,
-                'n'=>2,
-            )
-        );
-        echo count($a);exit;
         $sql = "select count(*) from zl_new_accounts";
         $count = Db::query($sql);
         $live_acc = array();//统一
