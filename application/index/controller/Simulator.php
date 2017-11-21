@@ -28,20 +28,20 @@ class Simulator extends Controller{
                     break;
                 }
             }
-            $dd = array();$username="";
+            $dd = $username = array();
             if($data[$j]['status']==-1){
                 $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time limit 1";
                 $dd = Db::query($sql);
-                $username .= $dd[0]['username'].",";
-                echo $username;
+                $username []= $dd[0]['username'];
             }
             $j++;
         }
-        $username = "(".trim($username,',').")";
-        echo $username;exit;
-        $sql_update = "update zl_accounts set login_status = 0 where username NOT in $username";
+        $sql_update = "update zl_accounts set login_status = 0 ";
         Db::execute($sql_update);
+        foreach($username as $value){
+            model('Accounts')->update(['login_status'=>1],['username'=>$value]);
+        }
         return $this->fetch('admin/simulator/simulator',[
             'data' => $data,
         ]);
