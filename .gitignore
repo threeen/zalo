@@ -5,4 +5,4 @@ composer.lock
 *.log
 thinkphp
 runtime
-application/database.php
+/application/database.php
