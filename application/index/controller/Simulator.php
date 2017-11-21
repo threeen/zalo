@@ -29,6 +29,7 @@ class Simulator extends Controller{
                     $live_acc []['create_time']=$value['cr_time'];
                 }
             }
+            print_r($live_acc);exit();
             $times = array();
             if(count($live_acc)>1){
                     foreach($live_acc as $key => $value){
