@@ -99,8 +99,14 @@ class Phone extends Controller{
                     if($arr[2]==$acc['data2']){
                     $account = array(
                         'username' => $arr[0],
+                        'friends' => $acc['friends'],
+                        'new_friends' => $acc['new_friends'],
+                        'new_nearby' => $acc['new_nearby'],
+                        'nearby_per' => $acc['nearby_per'],
                         'create_time' => date($arr[3]),
                        'login_status' => $arr[4],
+                        'data1' => $arr[1],
+                        'data2' => $arr[2]
                     );
                 }else {
                     $account = array(
