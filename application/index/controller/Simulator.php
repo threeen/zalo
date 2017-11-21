@@ -25,11 +25,13 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
+                    break;
                 }
             }
             $dd = array();
             if($data[$j]['status']==-1){
-                $sql = "select username from zl_accounts where login_status = 1 AND id>$i AND id<=($i+80) ORDER BY create_time DESC limit 1";
+                $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time limit 1";
                 $dd = Db::query($sql);
                 print_r($dd);
 //                $username  = $dd['username'];
