@@ -26,14 +26,14 @@ class Simulator extends Controller{
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     $live_acc []['username']= $value['username'];
-                    $live_acc []['create_time']=$value['cr_time'];
+                    $live_acc []['cr_time']=$value['cr_time'];
                 }
             }
-            print_r($live_acc);exit();
+            //print_r($live_acc);exit();
             $times = array();
             if(count($live_acc)>1){
                     foreach($live_acc as $key => $value){
-                        $times []= strtotime($value['create_time']);
+                        $times []= strtotime($value['cr_time']);
                     }
             }
             $j++;
