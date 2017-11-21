@@ -158,6 +158,7 @@ class Phone extends Controller{
     }
     //删除帐号
     public function accDel(){
+        echo date('2017-11-21 11:25:22');exit;
         $id = input('id');
         $res = model('Accounts')->accDel($id);
         if($res){
