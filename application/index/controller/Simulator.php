@@ -25,9 +25,14 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
+                    break;
                 }
             }
-            
+            if($data[$j]['status']==-1){
+                $sql = "select * from zl_accounts where login_status = 1";
+                $dd = Db::query($sql);
+                print_r($dd);exit();
+            }
             $j++;
         }
 
