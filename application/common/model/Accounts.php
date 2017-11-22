@@ -121,7 +121,7 @@ class Accounts extends Model
             ->field("acc.id,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid")
             ->join('zl_new_accounts new','acc.username = new.username')
             ->where("acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1 and new.id>$start and new.id<=$end and acc.username like '%$data%'")
-            ->paginate();
+            ->select();
     }
     //获取某段数据
     public function getValueArea($start,$end){
