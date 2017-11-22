@@ -17,7 +17,7 @@ return [
     // 数据库名
     'database'        => 'zalo',
     // 用户名
-    'username'        => 'zalo',
+    'username'        => 'root',
     // 密码
     'password'        => '',
     // 端口
