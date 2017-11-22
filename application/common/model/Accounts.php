@@ -104,17 +104,24 @@ class Accounts extends Model
         return model('Accounts')->where($data)->where(['status'=>1])->count();
     }
     public function getSearchSimulatorCounts($data,$simulator){
-        $datas = [
-            'friends'=>['egt',0],
-            'new_friends'=>['egt',0],
-            'new_nearby'=>['egt',0],
-            'nearby_per'=>['egt',0],
-            'nearby_per'=>['elt',1],
-            'status'=>['eq',1],
-            'username'=>['like','%'.$data.'%'],
-
-        ];
-        return model('Accounts')->where($datas)->where(['simulator_num'=>$simulator])->where(['status'=>1])->count();
+//        $datas = [
+//            'friends'=>['egt',0],
+//            'new_friends'=>['egt',0],
+//            'new_nearby'=>['egt',0],
+//            'nearby_per'=>['egt',0],
+//            'nearby_per'=>['elt',1],
+//            'status'=>['eq',1],
+//            'username'=>['like','%'.$data.'%'],
+//
+//        ];
+        $start = ($simulator-1)*80;
+        $end = $simulator*80;
+        return model('Accounts')
+            ->alias('acc')
+            ->field("acc.id,acc.friends,acc.new_friends,acc.new_nearby,acc.nearby_per,acc.status,acc.create_time,acc.username,new.id nid")
+            ->join('zl_new_accounts new','acc.username = new.username')
+            ->where("acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and acc.nearby_per<=1 and acc.status=1 and new.id>$start and new.id<=$end and username like '%$data%'")
+            ->paginate();
     }
     //获取某段数据
     public function getValueArea($start,$end){
