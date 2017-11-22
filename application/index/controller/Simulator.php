@@ -20,16 +20,12 @@ class Simulator extends Controller{
 
             $sql = "select acc.username,acc.create_time as cr_time,acc.login_status from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
-                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
+                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER by acc.cr_time DESC limit 1";
             $data_status = Db::query($sql);
-            $sql_max = "select acc.create_time as cr_time from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-                new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
-                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER BY acc.create_time desc limit 1";
-            $data_max = Db::query($sql_max);
             foreach($data_status as $key => $value){
-                if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600) && $value['cr_time']==$data_max['create_time']){
+                if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                   //model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
+                   // model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
                 }
             }
 //            $dd = $username = array();
