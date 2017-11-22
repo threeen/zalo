@@ -20,7 +20,7 @@ class Simulator extends Controller{
 
             $sql = "select acc.username,acc.create_time as cr_time,acc.login_status from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
-                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER by acc.cr_time DESC limit 1";
+                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER by acc.create_time DESC limit 1";
             $data_status = Db::query($sql);
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
