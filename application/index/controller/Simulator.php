@@ -25,6 +25,7 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
+                    break;
                    // model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
                 }
             }
