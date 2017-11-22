@@ -224,6 +224,7 @@ class Phone extends Controller{
                         $searchData = model('Accounts')->getSearchSimulatorCounts($data,$simulator_num);
                         return $this->fetch('admin/simulator_search',[
                             'searchData'=>$searchData,
+                            'simulator'=>$simulator_num
                         ]);
                     }else{
                         $count = model('Accounts')->getSearchCounts($data);
