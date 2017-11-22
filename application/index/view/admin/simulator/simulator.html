@@ -7,6 +7,9 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器总汇表 </nav>
 <div class="page-container">
+    <form action="{:url('Simulator/resetErrorAccounts')}" method="post">
+        <button id="" style=" float: right; margin-bottom: 3px; height: 29px;;" class="btn btn_success" type="submit">重置异常帐号</button>
+    </form>
     {volist name="data" id="vo" key="k"}
     <table width="200"  class="table table-border table-bordered table-bg table-hover table-sort table-style">
         <tr class="text-c">
