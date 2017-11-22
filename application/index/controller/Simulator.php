@@ -60,5 +60,6 @@ class Simulator extends Controller{
                  model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
             }
         }
+        $this->redirect(url('Simulator/index'));
     }
 }
