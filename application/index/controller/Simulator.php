@@ -26,7 +26,7 @@ class Simulator extends Controller{
                 acc.nearby_per<=1  ORDER by acc.create_time DESC limit 1";
             $data_status = Db::query($sql);
             foreach($data_status as $key => $value){
-                if(time()>(strtotime($value['cr_time'])+3600)){
+                if($data_status['login_status']==0 || time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     break;
                 }
