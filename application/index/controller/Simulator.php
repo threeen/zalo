@@ -23,11 +23,12 @@ class Simulator extends Controller{
                 acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER by acc.create_time DESC limit 1";
             $data_status = Db::query($sql);
             foreach($data_status as $key => $value){
-                if($value['login_status']==1 && time()>(strtotime($value['cr_time'])+3600)){
+                if(time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     break;
                    // model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
                 }
+
             }
 //            $dd = $username = array();
 //            if($data[$j]['status']==-1){
