@@ -5,6 +5,9 @@ use think\Db;
 
 class Simulator extends Controller{
     public function index(){
+
+        $time1 = strtotime(date("Y-m-d 00:00:00",strtotime("-1 day")));//前一天0点
+        $time2 = strtotime(date("Y-m-d 24:00:00",strtotime("-1 day")));//前一天24点
         $sql = "select count(*) from zl_new_accounts";
         $count = Db::query($sql);
         $live_acc = array();//单个模拟器同时在线帐号（异常）
@@ -20,28 +23,22 @@ class Simulator extends Controller{
 
             $sql = "select acc.username,acc.create_time as cr_time,acc.login_status from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
-                acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time ORDER by acc.create_time DESC limit 1";
+                acc.nearby_per<=1  ORDER by acc.create_time DESC limit 1";
             $data_status = Db::query($sql);
             foreach($data_status as $key => $value){
                 if(time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
                     break;
-                   // model('Accounts')->update(['login_status'=>0],['username'=>$value['username']]);
                 }
-
             }
-//            $dd = $username = array();
-//            if($data[$j]['status']==-1){
-//                $sql = "select acc.username from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
-//                new.id>$i and new.id <= ($i+80) and acc.login_status = 1 ORDER BY acc.create_time desc limit 1";
-//                $dd = Db::query($sql);
-//                $username []= $dd[0]['username'];
-//            }
+            $sql_yesterday = "select count(acc.username) as yes_count_username,sum(acc.new_friends) as yes_new_friend from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+                new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
+                acc.nearby_per<=1  and unix_timestamp(acc.create_time)>= $time1 and unix_timestamp(acc.create_time)< $time2";
+            $data_yesterday = Db::query($sql_yesterday);
+            $data[$j]['yes_count_username']=$data_yesterday[0]['yes_count_username'];
+            $data[$j]['yes_new_friend'] = $data_yesterday[0]['yes_new_friend'];
             $j++;
         }
-//        foreach($username as $value){
-//            model('Accounts')->update(['login_status'=>1],['username'=>$value]);
-//        }
         return $this->fetch('admin/simulator/simulator',[
             'data' => $data,
         ]);

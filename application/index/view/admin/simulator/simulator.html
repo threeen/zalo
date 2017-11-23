@@ -3,6 +3,7 @@
 <style>
     .table-style{ width: 300px; float: left; margin-right: 20px; margin-bottom: 20px;}
     .acc{ color: red;font-size: 20px;}
+    .yes_acc{ color: green;font-size: 16px;}
 </style>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 模拟器总汇表 </nav>
@@ -14,8 +15,11 @@
     {volist name="data" id="vo" key="k"}
     <table width="200"  class="table table-border table-bordered table-bg table-hover table-sort table-style">
         <tr class="text-c">
-            <td rowspan="3" width="10">{$k}</td>
+            <td rowspan="4" width="10">{$k}</td>
             <td colspan="6" width="50">运行帐号:<i class="acc">{$vo.day_acc}</i>--新增好友:<i class="acc">{$vo.new_fri|default=0}</i></td>
+        </tr>
+        <tr class="text-c">
+           <td colspan="6" width="50"> 昨天:运行帐号:<i class="yes_acc">{$vo.yes_count_username}</i>--新增好友:<i class="yes_acc">{$vo.yes_new_friend|default=0}</i></td>
         </tr>
         <tr class="text-c">
             <td width="50">{$vo.status|simulator_status}</td>
