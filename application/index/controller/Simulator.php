@@ -35,7 +35,7 @@ class Simulator extends Controller{
             $data_yesterday = Db::query($sql_yesterday);
             $data[$j]['yes_count_username']=$data_yesterday[0]['yes_count_username'];
             $data[$j]['yes_new_friend'] = $data_yesterday[0]['yes_new_friend'];
-            $j++;print_r($data);die;
+            $j++;
 
         }
         return $this->fetch('admin/simulator/simulator',[
