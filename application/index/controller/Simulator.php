@@ -28,7 +28,6 @@ class Simulator extends Controller{
             foreach($data_status as $key => $value){
                 if(time()>(strtotime($value['cr_time'])+3600)){
                     $data[$j]['status'] = -1;
-                    break;
                 }
             }
             $sql_yesterday = "select count(acc.username) as yes_count_username,sum(acc.new_friends) as yes_new_friend from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
