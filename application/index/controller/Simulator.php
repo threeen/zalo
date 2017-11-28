@@ -15,7 +15,7 @@ class Simulator extends Controller{
         $data = array();
         $j=0;
         for($i=0;$i<$count[0]['count(*)'];$i=$i+80){
-        $sql_day_count = "select COUNT(new.username) as day_acc,acc.username,acc.create_time,sum(acc.new_friends) as new_fri from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
+        $sql_day_count = "select acc.username,acc.create_time from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <=($i+80) and unix_timestamp(acc.create_time)>= $time";
         $data_day_count = Db::query($sql_day_count);
             print_r($data_day_count);exit;
