@@ -31,7 +31,7 @@ class Simulator extends Controller{
             }
             $sql_yesterday = "select count(acc.username) as yes_count_username,sum(acc.new_friends) as yes_new_friend from zl_accounts acc,zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
-                acc.nearby_per<=1  and unix_timestamp(acc.create_time)>= $time1 and unix_timestamp(acc.create_time)< $time2";
+                acc.nearby_per<=1  and (unix_timestamp(acc.create_time)-16*3600)>= $time1 and (unix_timestamp(acc.create_time)-16*3600)< $time2";
             $data_yesterday = Db::query($sql_yesterday);
             $data[$j]['yes_count_username']=$data_yesterday[0]['yes_count_username'];
             $data[$j]['yes_new_friend'] = $data_yesterday[0]['yes_new_friend'];
