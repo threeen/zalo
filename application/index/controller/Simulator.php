@@ -15,12 +15,12 @@ class Simulator extends Controller{
         $data = array();
         $j=0;
         for($i=0;$i<$count[0]['count(*)'];$i=$i+80){
-        $sql_day_count = "select COUNT(new.username) as day_acc,sum(acc.new_friends) as new_fri from zl_accounts acc join on zl_new_accounts new  where new.username=acc.username and
+        $sql_day_count = "select COUNT(new.username) as day_acc,sum(acc.new_friends) as new_fri from zl_accounts acc join zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
             acc.nearby_per<=1 and unix_timestamp(acc.create_time)>$time";
         $data_day_count = Db::query($sql_day_count);
         $data[$j]['new_fri'] = $data_day_count[0]['new_fri']; $data[$j]['day_acc'] = $data_day_count[0]['day_acc'];$data[$j]['status'] = 1;
-            $sql = "select acc.username,acc.create_time as cr_time,acc.login_status from zl_accounts acc  join on  zl_new_accounts new  where new.username=acc.username and
+            $sql = "select acc.username,acc.create_time as cr_time,acc.login_status from zl_accounts acc  join  zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  ORDER by acc.create_time DESC limit 1";
             $data_status = Db::query($sql);
@@ -29,7 +29,7 @@ class Simulator extends Controller{
                     $data[$j]['status'] = -1;
                 }
             }
-            $sql_yesterday = "select count(acc.username) as yes_count_username,sum(acc.new_friends) as yes_new_friend from zl_accounts acc join on  zl_new_accounts new  where new.username=acc.username and
+            $sql_yesterday = "select count(acc.username) as yes_count_username,sum(acc.new_friends) as yes_new_friend from zl_accounts acc join zl_new_accounts new  where new.username=acc.username and
                 new.id>$i and new.id <= ($i+80) and acc.friends>=0 and acc.new_friends>=0 and acc.nearby_per>=0 and acc.new_nearby>=0 and
                 acc.nearby_per<=1  and unix_timestamp(acc.create_time)>= $time1 and unix_timestamp(acc.create_time)< $time2";
             $data_yesterday = Db::query($sql_yesterday);
